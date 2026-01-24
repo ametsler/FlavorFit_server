@@ -1,0 +1,113 @@
+model DishType {
+  id String @id @default(cuid())
+
+  order Int
+  title String
+
+  recipes Recipe[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("dish_types")
+}
+
+model Recipe {
+  id String @id @default(cuid())
+
+  title       String
+  description String
+  cuisineType String     @map("cuisine_type")
+  difficulty  Difficulty
+  prepTime    Int        @map("prep_time")
+  cookTime    Int        @map("cook_time")
+  calories    Int?
+  protein     Int?
+  fats        Int?
+  fiber       Int?
+  rating      Decimal?
+
+  recipeIngredients RecipeIngredient[]
+  recipeSteps       RecipeStep[]
+  comments          Comment[]
+  likes             RecipeLike[]
+  RecipeView        RecipeView[]
+
+  author     User     @relation(fields: [authorId], references: [id])
+  authorId   String   @map("author_id")
+  dishType   DishType @relation(fields: [dishTypeId], references: [id])
+  dishTypeId String   @map("dish_type_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("recipes")
+}
+
+model RecipeStep {
+  id String @id @default(cuid())
+
+  order       Int
+  title       String
+  description String
+  imgUrl      String? @map("img_url")
+
+  recipe   Recipe @relation(fields: [recipeId], references: [id])
+  recipeId String @map("recipe_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("recipe_steps")
+}
+
+model RecipeIngredient {
+  id String @id @default(cuid())
+
+  quantity Decimal
+
+  OrderItem OrderItem[]
+
+  recipe       Recipe     @relation(fields: [recipeId], references: [id])
+  recipeId     String     @map("recipe_id")
+  ingredient   Ingredient @relation(fields: [ingredientId], references: [id])
+  ingredientId String     @map("ingredient_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([recipeId, ingredientId])
+  @@map("recipe_ingredients")
+}
+
+model Ingredient {
+  id String @id @default(cuid())
+
+  iconUrl String  @map("icon_url")
+  name    String
+  unit    Unit
+  price   Decimal
+
+  recipes    RecipeIngredient[]
+  orderItems OrderItem[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("ingredients")
+}
+
+enum Unit {
+  GRAM
+  MILLILITER
+  PIECE
+  TEASPOON
+  TABLESPOON
+  CLOVES
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}

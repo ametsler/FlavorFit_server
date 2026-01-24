@@ -1,0 +1,18 @@
+model Delivery {
+  id String @id @default(cuid())
+
+  name   String
+  phone  String
+  status DeliveryStatus @default(PREPARING)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("deliveries")
+}
+
+enum DeliveryStatus {
+  PREPARING
+  DELIVERY
+  COMPLETED
+}

@@ -1,0 +1,63 @@
+model RecipeLike {
+  id String @id @default(cuid())
+
+  recipe   Recipe @relation(fields: [recipeId], references: [id])
+  recipeId String @map("recipe_id")
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @map("user_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([recipeId, userId])
+  @@map("recipe_likes")
+}
+
+model RecipeView {
+  id String @id @default(cuid())
+
+  recipe   Recipe @relation(fields: [recipeId], references: [id])
+  recipeId String @map("recipe_id")
+  user     User   @relation(fields: [userId], references: [id])
+  userId   String @map("user_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([recipeId, userId])
+  @@map("likes")
+}
+
+model Comment {
+  id String @id @default(cuid())
+
+  content String
+
+  likes CommentLike[]
+
+  recipe   Recipe @relation(fields: [recipeId], references: [id])
+  recipeId String @map("recipe_id")
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId String @map("author_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("comments")
+}
+
+model CommentLike {
+  id String @id @default(cuid())
+
+  comment   Comment @relation(fields: [commentId], references: [id])
+  commentId String  @map("recipe_id")
+  user      User    @relation(fields: [userId], references: [id])
+  userId    String  @map("user_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([commentId, userId])
+  @@map("comment_likes")
+}
