@@ -1,0 +1,57 @@
+import { Field } from '@nestjs/graphql';
+import { InputType } from '@nestjs/graphql';
+import { Role } from 'prisma/generated/prisma/enums'
+import { ProfileCreateNestedOneWithoutUserInput } from '../profile/profile-create-nested-one-without-user.input';
+import { BodyMeasurementCreateNestedOneWithoutUserInput } from '../body-measurement/body-measurement-create-nested-one-without-user.input';
+import { RecipeLikeCreateNestedManyWithoutUserInput } from '../recipe-like/recipe-like-create-nested-many-without-user.input';
+import { Type } from 'class-transformer';
+import { RecipeViewCreateNestedManyWithoutUserInput } from '../recipe-view/recipe-view-create-nested-many-without-user.input';
+import { CommentCreateNestedManyWithoutAuthorInput } from '../comment/comment-create-nested-many-without-author.input';
+import { CommentLikeCreateNestedManyWithoutUserInput } from '../comment-like/comment-like-create-nested-many-without-user.input';
+import { OrderCreateNestedManyWithoutUserInput } from '../order/order-create-nested-many-without-user.input';
+
+@InputType()
+export class UserCreateWithoutRecipeInput {
+
+    @Field(() => String, {nullable:true})
+    id?: string;
+
+    @Field(() => String, {nullable:false})
+    email!: string;
+
+    @Field(() => String, {nullable:false})
+    password!: string;
+
+    @Field(() => Role, {nullable:true})
+    role?: `${Role}`;
+
+    @Field(() => Date, {nullable:true})
+    createdAt?: Date | string;
+
+    @Field(() => Date, {nullable:true})
+    updatedAt?: Date | string;
+
+    @Field(() => ProfileCreateNestedOneWithoutUserInput, {nullable:true})
+    profile?: ProfileCreateNestedOneWithoutUserInput;
+
+    @Field(() => BodyMeasurementCreateNestedOneWithoutUserInput, {nullable:true})
+    bodyMeasurement?: BodyMeasurementCreateNestedOneWithoutUserInput;
+
+    @Field(() => RecipeLikeCreateNestedManyWithoutUserInput, {nullable:true})
+    @Type(() => RecipeLikeCreateNestedManyWithoutUserInput)
+    recipeLike?: RecipeLikeCreateNestedManyWithoutUserInput;
+
+    @Field(() => RecipeViewCreateNestedManyWithoutUserInput, {nullable:true})
+    @Type(() => RecipeViewCreateNestedManyWithoutUserInput)
+    recipeView?: RecipeViewCreateNestedManyWithoutUserInput;
+
+    @Field(() => CommentCreateNestedManyWithoutAuthorInput, {nullable:true})
+    @Type(() => CommentCreateNestedManyWithoutAuthorInput)
+    comment?: CommentCreateNestedManyWithoutAuthorInput;
+
+    @Field(() => CommentLikeCreateNestedManyWithoutUserInput, {nullable:true})
+    commentLike?: CommentLikeCreateNestedManyWithoutUserInput;
+
+    @Field(() => OrderCreateNestedManyWithoutUserInput, {nullable:true})
+    order?: OrderCreateNestedManyWithoutUserInput;
+}

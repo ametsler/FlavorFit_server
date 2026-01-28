@@ -5,6 +5,12 @@ registerEnumType(Role, {
 	name: 'Role'
 })
 
+export type TCurrentUser = Omit<UserModel, 'password'>
+
+export type TRequestWithUser = {
+	user?: TCurrentUser
+}
+
 export interface IAuthTokenData {
 	id: string
 	role: Role

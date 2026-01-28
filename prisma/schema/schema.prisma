@@ -1,13 +1,19 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client"
   output   = "../generated/prisma"
   moduleFormat = "cjs"
+}
+
+generator nestgraphql {
+  moduleFormat       = "cjs"
+  provider           = "node node_modules/prisma-nestjs-graphql"
+  output             = "../generated/models"
+  prismaClientImport = "prisma/generated/prisma/client"
+
+  reExport                              = Directories
+  omitModelsCount                       = true
+  noAtomicOperations                    = true
+  requireSingleFieldsInWhereUniqueInput = true
 }
 
 datasource db {
