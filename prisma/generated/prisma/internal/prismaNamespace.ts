@@ -391,8 +391,8 @@ export const ModelName = {
   RecipeView: 'RecipeView',
   Comment: 'Comment',
   CommentLike: 'CommentLike',
-  DishType: 'DishType',
   Recipe: 'Recipe',
+  DishType: 'DishType',
   RecipeStep: 'RecipeStep',
   RecipeIngredient: 'RecipeIngredient',
   Ingredient: 'Ingredient',
@@ -414,7 +414,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "delivery" | "order" | "orderItem" | "recipeLike" | "recipeView" | "comment" | "commentLike" | "dishType" | "recipe" | "recipeStep" | "recipeIngredient" | "ingredient" | "user" | "profile" | "bodyMeasurement"
+    modelProps: "delivery" | "order" | "orderItem" | "recipeLike" | "recipeView" | "comment" | "commentLike" | "recipe" | "dishType" | "recipeStep" | "recipeIngredient" | "ingredient" | "user" | "profile" | "bodyMeasurement"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -936,80 +936,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    DishType: {
-      payload: Prisma.$DishTypePayload<ExtArgs>
-      fields: Prisma.DishTypeFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.DishTypeFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.DishTypeFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload>
-        }
-        findFirst: {
-          args: Prisma.DishTypeFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.DishTypeFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload>
-        }
-        findMany: {
-          args: Prisma.DishTypeFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload>[]
-        }
-        create: {
-          args: Prisma.DishTypeCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload>
-        }
-        createMany: {
-          args: Prisma.DishTypeCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.DishTypeCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload>[]
-        }
-        delete: {
-          args: Prisma.DishTypeDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload>
-        }
-        update: {
-          args: Prisma.DishTypeUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload>
-        }
-        deleteMany: {
-          args: Prisma.DishTypeDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.DishTypeUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.DishTypeUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload>[]
-        }
-        upsert: {
-          args: Prisma.DishTypeUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload>
-        }
-        aggregate: {
-          args: Prisma.DishTypeAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateDishType>
-        }
-        groupBy: {
-          args: Prisma.DishTypeGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.DishTypeGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.DishTypeCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.DishTypeCountAggregateOutputType> | number
-        }
-      }
-    }
     Recipe: {
       payload: Prisma.$RecipePayload<ExtArgs>
       fields: Prisma.RecipeFieldRefs
@@ -1081,6 +1007,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.RecipeCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.RecipeCountAggregateOutputType> | number
+        }
+      }
+    }
+    DishType: {
+      payload: Prisma.$DishTypePayload<ExtArgs>
+      fields: Prisma.DishTypeFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.DishTypeFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.DishTypeFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload>
+        }
+        findFirst: {
+          args: Prisma.DishTypeFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.DishTypeFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload>
+        }
+        findMany: {
+          args: Prisma.DishTypeFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload>[]
+        }
+        create: {
+          args: Prisma.DishTypeCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload>
+        }
+        createMany: {
+          args: Prisma.DishTypeCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.DishTypeCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload>[]
+        }
+        delete: {
+          args: Prisma.DishTypeDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload>
+        }
+        update: {
+          args: Prisma.DishTypeUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload>
+        }
+        deleteMany: {
+          args: Prisma.DishTypeDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.DishTypeUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.DishTypeUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload>[]
+        }
+        upsert: {
+          args: Prisma.DishTypeUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DishTypePayload>
+        }
+        aggregate: {
+          args: Prisma.DishTypeAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateDishType>
+        }
+        groupBy: {
+          args: Prisma.DishTypeGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DishTypeGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.DishTypeCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DishTypeCountAggregateOutputType> | number
         }
       }
     }
@@ -1649,17 +1649,6 @@ export const CommentLikeScalarFieldEnum = {
 export type CommentLikeScalarFieldEnum = (typeof CommentLikeScalarFieldEnum)[keyof typeof CommentLikeScalarFieldEnum]
 
 
-export const DishTypeScalarFieldEnum = {
-  id: 'id',
-  order: 'order',
-  title: 'title',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type DishTypeScalarFieldEnum = (typeof DishTypeScalarFieldEnum)[keyof typeof DishTypeScalarFieldEnum]
-
-
 export const RecipeScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -1680,6 +1669,17 @@ export const RecipeScalarFieldEnum = {
 } as const
 
 export type RecipeScalarFieldEnum = (typeof RecipeScalarFieldEnum)[keyof typeof RecipeScalarFieldEnum]
+
+
+export const DishTypeScalarFieldEnum = {
+  id: 'id',
+  order: 'order',
+  title: 'title',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DishTypeScalarFieldEnum = (typeof DishTypeScalarFieldEnum)[keyof typeof DishTypeScalarFieldEnum]
 
 
 export const RecipeStepScalarFieldEnum = {
@@ -1751,7 +1751,7 @@ export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeo
 
 export const BodyMeasurementScalarFieldEnum = {
   id: 'id',
-  heigth: 'heigth',
+  height: 'height',
   weight: 'weight',
   chest: 'chest',
   waist: 'waist',
@@ -1761,9 +1761,9 @@ export const BodyMeasurementScalarFieldEnum = {
   activityLevel: 'activityLevel',
   nutritionGoal: 'nutritionGoal',
   userId: 'userId',
+  profileId: 'profileId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  profileId: 'profileId'
+  updatedAt: 'updatedAt'
 } as const
 
 export type BodyMeasurementScalarFieldEnum = (typeof BodyMeasurementScalarFieldEnum)[keyof typeof BodyMeasurementScalarFieldEnum]
@@ -2082,8 +2082,8 @@ export type GlobalOmitConfig = {
   recipeView?: Prisma.RecipeViewOmit
   comment?: Prisma.CommentOmit
   commentLike?: Prisma.CommentLikeOmit
-  dishType?: Prisma.DishTypeOmit
   recipe?: Prisma.RecipeOmit
+  dishType?: Prisma.DishTypeOmit
   recipeStep?: Prisma.RecipeStepOmit
   recipeIngredient?: Prisma.RecipeIngredientOmit
   ingredient?: Prisma.IngredientOmit

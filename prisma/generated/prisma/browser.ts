@@ -53,15 +53,15 @@ export type Comment = Prisma.CommentModel
  */
 export type CommentLike = Prisma.CommentLikeModel
 /**
- * Model DishType
- * 
- */
-export type DishType = Prisma.DishTypeModel
-/**
  * Model Recipe
  * 
  */
 export type Recipe = Prisma.RecipeModel
+/**
+ * Model DishType
+ * 
+ */
+export type DishType = Prisma.DishTypeModel
 /**
  * Model RecipeStep
  * 

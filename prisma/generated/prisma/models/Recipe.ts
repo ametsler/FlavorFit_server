@@ -594,16 +594,6 @@ export type RecipeScalarRelationFilter = {
   isNot?: Prisma.RecipeWhereInput
 }
 
-export type RecipeListRelationFilter = {
-  every?: Prisma.RecipeWhereInput
-  some?: Prisma.RecipeWhereInput
-  none?: Prisma.RecipeWhereInput
-}
-
-export type RecipeOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
-}
-
 export type RecipeCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
@@ -681,6 +671,16 @@ export type RecipeSumOrderByAggregateInput = {
   rating?: Prisma.SortOrder
 }
 
+export type RecipeListRelationFilter = {
+  every?: Prisma.RecipeWhereInput
+  some?: Prisma.RecipeWhereInput
+  none?: Prisma.RecipeWhereInput
+}
+
+export type RecipeOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
 export type RecipeCreateNestedOneWithoutLikesInput = {
   create?: Prisma.XOR<Prisma.RecipeCreateWithoutLikesInput, Prisma.RecipeUncheckedCreateWithoutLikesInput>
   connectOrCreate?: Prisma.RecipeCreateOrConnectWithoutLikesInput
@@ -723,6 +723,26 @@ export type RecipeUpdateOneRequiredWithoutCommentsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.RecipeUpdateToOneWithWhereWithoutCommentsInput, Prisma.RecipeUpdateWithoutCommentsInput>, Prisma.RecipeUncheckedUpdateWithoutCommentsInput>
 }
 
+export type EnumDifficultyFieldUpdateOperationsInput = {
+  set?: $Enums.Difficulty
+}
+
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
+export type NullableDecimalFieldUpdateOperationsInput = {
+  set?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
+}
+
 export type RecipeCreateNestedManyWithoutDishTypeInput = {
   create?: Prisma.XOR<Prisma.RecipeCreateWithoutDishTypeInput, Prisma.RecipeUncheckedCreateWithoutDishTypeInput> | Prisma.RecipeCreateWithoutDishTypeInput[] | Prisma.RecipeUncheckedCreateWithoutDishTypeInput[]
   connectOrCreate?: Prisma.RecipeCreateOrConnectWithoutDishTypeInput | Prisma.RecipeCreateOrConnectWithoutDishTypeInput[]
@@ -763,18 +783,6 @@ export type RecipeUncheckedUpdateManyWithoutDishTypeNestedInput = {
   update?: Prisma.RecipeUpdateWithWhereUniqueWithoutDishTypeInput | Prisma.RecipeUpdateWithWhereUniqueWithoutDishTypeInput[]
   updateMany?: Prisma.RecipeUpdateManyWithWhereWithoutDishTypeInput | Prisma.RecipeUpdateManyWithWhereWithoutDishTypeInput[]
   deleteMany?: Prisma.RecipeScalarWhereInput | Prisma.RecipeScalarWhereInput[]
-}
-
-export type EnumDifficultyFieldUpdateOperationsInput = {
-  set?: $Enums.Difficulty
-}
-
-export type NullableDecimalFieldUpdateOperationsInput = {
-  set?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type RecipeCreateNestedOneWithoutRecipeStepsInput = {

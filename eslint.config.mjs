@@ -5,29 +5,30 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
-  {
-    ignores: ['eslint.config.mjs'],
-  },
-  eslint.configs.recommended,
-  ...tseslint.configs.recommendedTypeChecked,
-  eslintPluginPrettierRecommended,
-  {
-    languageOptions: {
-      globals: {
-        ...globals.node,
-        ...globals.jest,
-      },
-      sourceType: 'commonjs',
-      parserOptions: {
-        projectService: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-  },
-  {
-    rules: {
-      'no-console': 0,
-      "prettier/prettier": 0,
-    },
-  },
-);
+	{
+		ignores: ['eslint.config.mjs']
+	},
+	eslint.configs.recommended,
+	...tseslint.configs.recommendedTypeChecked,
+	eslintPluginPrettierRecommended,
+	{
+		languageOptions: {
+			globals: {
+				...globals.node,
+				...globals.jest
+			},
+			sourceType: 'commonjs',
+			parserOptions: {
+				projectService: true,
+				tsconfigRootDir: import.meta.dirname,
+				sourceType: 'module'
+			}
+		}
+	},
+	{
+		rules: {
+			'no-console': 0,
+			'prettier/prettier': 0
+		}
+	}
+)

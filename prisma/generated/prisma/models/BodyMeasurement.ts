@@ -27,7 +27,7 @@ export type AggregateBodyMeasurement = {
 }
 
 export type BodyMeasurementAvgAggregateOutputType = {
-  heigth: number | null
+  height: number | null
   weight: number | null
   chest: number | null
   waist: number | null
@@ -37,7 +37,7 @@ export type BodyMeasurementAvgAggregateOutputType = {
 }
 
 export type BodyMeasurementSumAggregateOutputType = {
-  heigth: number | null
+  height: number | null
   weight: number | null
   chest: number | null
   waist: number | null
@@ -48,7 +48,7 @@ export type BodyMeasurementSumAggregateOutputType = {
 
 export type BodyMeasurementMinAggregateOutputType = {
   id: string | null
-  heigth: number | null
+  height: number | null
   weight: number | null
   chest: number | null
   waist: number | null
@@ -58,14 +58,14 @@ export type BodyMeasurementMinAggregateOutputType = {
   activityLevel: $Enums.ActivityLevel | null
   nutritionGoal: $Enums.NutritionGoal | null
   userId: string | null
+  profileId: string | null
   createdAt: Date | null
   updatedAt: Date | null
-  profileId: string | null
 }
 
 export type BodyMeasurementMaxAggregateOutputType = {
   id: string | null
-  heigth: number | null
+  height: number | null
   weight: number | null
   chest: number | null
   waist: number | null
@@ -75,14 +75,14 @@ export type BodyMeasurementMaxAggregateOutputType = {
   activityLevel: $Enums.ActivityLevel | null
   nutritionGoal: $Enums.NutritionGoal | null
   userId: string | null
+  profileId: string | null
   createdAt: Date | null
   updatedAt: Date | null
-  profileId: string | null
 }
 
 export type BodyMeasurementCountAggregateOutputType = {
   id: number
-  heigth: number
+  height: number
   weight: number
   chest: number
   waist: number
@@ -92,15 +92,15 @@ export type BodyMeasurementCountAggregateOutputType = {
   activityLevel: number
   nutritionGoal: number
   userId: number
+  profileId: number
   createdAt: number
   updatedAt: number
-  profileId: number
   _all: number
 }
 
 
 export type BodyMeasurementAvgAggregateInputType = {
-  heigth?: true
+  height?: true
   weight?: true
   chest?: true
   waist?: true
@@ -110,7 +110,7 @@ export type BodyMeasurementAvgAggregateInputType = {
 }
 
 export type BodyMeasurementSumAggregateInputType = {
-  heigth?: true
+  height?: true
   weight?: true
   chest?: true
   waist?: true
@@ -121,7 +121,7 @@ export type BodyMeasurementSumAggregateInputType = {
 
 export type BodyMeasurementMinAggregateInputType = {
   id?: true
-  heigth?: true
+  height?: true
   weight?: true
   chest?: true
   waist?: true
@@ -131,14 +131,14 @@ export type BodyMeasurementMinAggregateInputType = {
   activityLevel?: true
   nutritionGoal?: true
   userId?: true
+  profileId?: true
   createdAt?: true
   updatedAt?: true
-  profileId?: true
 }
 
 export type BodyMeasurementMaxAggregateInputType = {
   id?: true
-  heigth?: true
+  height?: true
   weight?: true
   chest?: true
   waist?: true
@@ -148,14 +148,14 @@ export type BodyMeasurementMaxAggregateInputType = {
   activityLevel?: true
   nutritionGoal?: true
   userId?: true
+  profileId?: true
   createdAt?: true
   updatedAt?: true
-  profileId?: true
 }
 
 export type BodyMeasurementCountAggregateInputType = {
   id?: true
-  heigth?: true
+  height?: true
   weight?: true
   chest?: true
   waist?: true
@@ -165,9 +165,9 @@ export type BodyMeasurementCountAggregateInputType = {
   activityLevel?: true
   nutritionGoal?: true
   userId?: true
+  profileId?: true
   createdAt?: true
   updatedAt?: true
-  profileId?: true
   _all?: true
 }
 
@@ -259,7 +259,7 @@ export type BodyMeasurementGroupByArgs<ExtArgs extends runtime.Types.Extensions.
 
 export type BodyMeasurementGroupByOutputType = {
   id: string
-  heigth: number | null
+  height: number | null
   weight: number | null
   chest: number | null
   waist: number | null
@@ -269,9 +269,9 @@ export type BodyMeasurementGroupByOutputType = {
   activityLevel: $Enums.ActivityLevel | null
   nutritionGoal: $Enums.NutritionGoal | null
   userId: string
+  profileId: string | null
   createdAt: Date
   updatedAt: Date
-  profileId: string | null
   _count: BodyMeasurementCountAggregateOutputType | null
   _avg: BodyMeasurementAvgAggregateOutputType | null
   _sum: BodyMeasurementSumAggregateOutputType | null
@@ -299,7 +299,7 @@ export type BodyMeasurementWhereInput = {
   OR?: Prisma.BodyMeasurementWhereInput[]
   NOT?: Prisma.BodyMeasurementWhereInput | Prisma.BodyMeasurementWhereInput[]
   id?: Prisma.StringFilter<"BodyMeasurement"> | string
-  heigth?: Prisma.IntNullableFilter<"BodyMeasurement"> | number | null
+  height?: Prisma.IntNullableFilter<"BodyMeasurement"> | number | null
   weight?: Prisma.IntNullableFilter<"BodyMeasurement"> | number | null
   chest?: Prisma.IntNullableFilter<"BodyMeasurement"> | number | null
   waist?: Prisma.IntNullableFilter<"BodyMeasurement"> | number | null
@@ -309,16 +309,16 @@ export type BodyMeasurementWhereInput = {
   activityLevel?: Prisma.EnumActivityLevelNullableFilter<"BodyMeasurement"> | $Enums.ActivityLevel | null
   nutritionGoal?: Prisma.EnumNutritionGoalNullableFilter<"BodyMeasurement"> | $Enums.NutritionGoal | null
   userId?: Prisma.StringFilter<"BodyMeasurement"> | string
+  profileId?: Prisma.StringNullableFilter<"BodyMeasurement"> | string | null
   createdAt?: Prisma.DateTimeFilter<"BodyMeasurement"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BodyMeasurement"> | Date | string
-  profileId?: Prisma.StringNullableFilter<"BodyMeasurement"> | string | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  Profile?: Prisma.XOR<Prisma.ProfileNullableScalarRelationFilter, Prisma.ProfileWhereInput> | null
+  profile?: Prisma.XOR<Prisma.ProfileNullableScalarRelationFilter, Prisma.ProfileWhereInput> | null
 }
 
 export type BodyMeasurementOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  heigth?: Prisma.SortOrderInput | Prisma.SortOrder
+  height?: Prisma.SortOrderInput | Prisma.SortOrder
   weight?: Prisma.SortOrderInput | Prisma.SortOrder
   chest?: Prisma.SortOrderInput | Prisma.SortOrder
   waist?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -328,11 +328,11 @@ export type BodyMeasurementOrderByWithRelationInput = {
   activityLevel?: Prisma.SortOrderInput | Prisma.SortOrder
   nutritionGoal?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
+  profileId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  profileId?: Prisma.SortOrderInput | Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
-  Profile?: Prisma.ProfileOrderByWithRelationInput
+  profile?: Prisma.ProfileOrderByWithRelationInput
 }
 
 export type BodyMeasurementWhereUniqueInput = Prisma.AtLeast<{
@@ -341,7 +341,7 @@ export type BodyMeasurementWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.BodyMeasurementWhereInput | Prisma.BodyMeasurementWhereInput[]
   OR?: Prisma.BodyMeasurementWhereInput[]
   NOT?: Prisma.BodyMeasurementWhereInput | Prisma.BodyMeasurementWhereInput[]
-  heigth?: Prisma.IntNullableFilter<"BodyMeasurement"> | number | null
+  height?: Prisma.IntNullableFilter<"BodyMeasurement"> | number | null
   weight?: Prisma.IntNullableFilter<"BodyMeasurement"> | number | null
   chest?: Prisma.IntNullableFilter<"BodyMeasurement"> | number | null
   waist?: Prisma.IntNullableFilter<"BodyMeasurement"> | number | null
@@ -350,16 +350,16 @@ export type BodyMeasurementWhereUniqueInput = Prisma.AtLeast<{
   goalWeight?: Prisma.IntNullableFilter<"BodyMeasurement"> | number | null
   activityLevel?: Prisma.EnumActivityLevelNullableFilter<"BodyMeasurement"> | $Enums.ActivityLevel | null
   nutritionGoal?: Prisma.EnumNutritionGoalNullableFilter<"BodyMeasurement"> | $Enums.NutritionGoal | null
+  profileId?: Prisma.StringNullableFilter<"BodyMeasurement"> | string | null
   createdAt?: Prisma.DateTimeFilter<"BodyMeasurement"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BodyMeasurement"> | Date | string
-  profileId?: Prisma.StringNullableFilter<"BodyMeasurement"> | string | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  Profile?: Prisma.XOR<Prisma.ProfileNullableScalarRelationFilter, Prisma.ProfileWhereInput> | null
+  profile?: Prisma.XOR<Prisma.ProfileNullableScalarRelationFilter, Prisma.ProfileWhereInput> | null
 }, "id" | "userId">
 
 export type BodyMeasurementOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  heigth?: Prisma.SortOrderInput | Prisma.SortOrder
+  height?: Prisma.SortOrderInput | Prisma.SortOrder
   weight?: Prisma.SortOrderInput | Prisma.SortOrder
   chest?: Prisma.SortOrderInput | Prisma.SortOrder
   waist?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -369,9 +369,9 @@ export type BodyMeasurementOrderByWithAggregationInput = {
   activityLevel?: Prisma.SortOrderInput | Prisma.SortOrder
   nutritionGoal?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
+  profileId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  profileId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.BodyMeasurementCountOrderByAggregateInput
   _avg?: Prisma.BodyMeasurementAvgOrderByAggregateInput
   _max?: Prisma.BodyMeasurementMaxOrderByAggregateInput
@@ -384,7 +384,7 @@ export type BodyMeasurementScalarWhereWithAggregatesInput = {
   OR?: Prisma.BodyMeasurementScalarWhereWithAggregatesInput[]
   NOT?: Prisma.BodyMeasurementScalarWhereWithAggregatesInput | Prisma.BodyMeasurementScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"BodyMeasurement"> | string
-  heigth?: Prisma.IntNullableWithAggregatesFilter<"BodyMeasurement"> | number | null
+  height?: Prisma.IntNullableWithAggregatesFilter<"BodyMeasurement"> | number | null
   weight?: Prisma.IntNullableWithAggregatesFilter<"BodyMeasurement"> | number | null
   chest?: Prisma.IntNullableWithAggregatesFilter<"BodyMeasurement"> | number | null
   waist?: Prisma.IntNullableWithAggregatesFilter<"BodyMeasurement"> | number | null
@@ -394,14 +394,14 @@ export type BodyMeasurementScalarWhereWithAggregatesInput = {
   activityLevel?: Prisma.EnumActivityLevelNullableWithAggregatesFilter<"BodyMeasurement"> | $Enums.ActivityLevel | null
   nutritionGoal?: Prisma.EnumNutritionGoalNullableWithAggregatesFilter<"BodyMeasurement"> | $Enums.NutritionGoal | null
   userId?: Prisma.StringWithAggregatesFilter<"BodyMeasurement"> | string
+  profileId?: Prisma.StringNullableWithAggregatesFilter<"BodyMeasurement"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"BodyMeasurement"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"BodyMeasurement"> | Date | string
-  profileId?: Prisma.StringNullableWithAggregatesFilter<"BodyMeasurement"> | string | null
 }
 
 export type BodyMeasurementCreateInput = {
   id?: string
-  heigth?: number | null
+  height?: number | null
   weight?: number | null
   chest?: number | null
   waist?: number | null
@@ -413,12 +413,12 @@ export type BodyMeasurementCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutBodyMeasurementInput
-  Profile?: Prisma.ProfileCreateNestedOneWithoutBodyMeasurementsInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutBodyMeasurementsInput
 }
 
 export type BodyMeasurementUncheckedCreateInput = {
   id?: string
-  heigth?: number | null
+  height?: number | null
   weight?: number | null
   chest?: number | null
   waist?: number | null
@@ -428,14 +428,14 @@ export type BodyMeasurementUncheckedCreateInput = {
   activityLevel?: $Enums.ActivityLevel | null
   nutritionGoal?: $Enums.NutritionGoal | null
   userId: string
+  profileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  profileId?: string | null
 }
 
 export type BodyMeasurementUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  heigth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   weight?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   chest?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   waist?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -447,12 +447,12 @@ export type BodyMeasurementUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutBodyMeasurementNestedInput
-  Profile?: Prisma.ProfileUpdateOneWithoutBodyMeasurementsNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutBodyMeasurementsNestedInput
 }
 
 export type BodyMeasurementUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  heigth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   weight?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   chest?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   waist?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -462,14 +462,14 @@ export type BodyMeasurementUncheckedUpdateInput = {
   activityLevel?: Prisma.NullableEnumActivityLevelFieldUpdateOperationsInput | $Enums.ActivityLevel | null
   nutritionGoal?: Prisma.NullableEnumNutritionGoalFieldUpdateOperationsInput | $Enums.NutritionGoal | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type BodyMeasurementCreateManyInput = {
   id?: string
-  heigth?: number | null
+  height?: number | null
   weight?: number | null
   chest?: number | null
   waist?: number | null
@@ -479,14 +479,14 @@ export type BodyMeasurementCreateManyInput = {
   activityLevel?: $Enums.ActivityLevel | null
   nutritionGoal?: $Enums.NutritionGoal | null
   userId: string
+  profileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  profileId?: string | null
 }
 
 export type BodyMeasurementUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  heigth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   weight?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   chest?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   waist?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -501,7 +501,7 @@ export type BodyMeasurementUpdateManyMutationInput = {
 
 export type BodyMeasurementUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  heigth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   weight?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   chest?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   waist?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -511,9 +511,9 @@ export type BodyMeasurementUncheckedUpdateManyInput = {
   activityLevel?: Prisma.NullableEnumActivityLevelFieldUpdateOperationsInput | $Enums.ActivityLevel | null
   nutritionGoal?: Prisma.NullableEnumNutritionGoalFieldUpdateOperationsInput | $Enums.NutritionGoal | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type BodyMeasurementNullableScalarRelationFilter = {
@@ -533,7 +533,7 @@ export type BodyMeasurementOrderByRelationAggregateInput = {
 
 export type BodyMeasurementCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  heigth?: Prisma.SortOrder
+  height?: Prisma.SortOrder
   weight?: Prisma.SortOrder
   chest?: Prisma.SortOrder
   waist?: Prisma.SortOrder
@@ -543,13 +543,13 @@ export type BodyMeasurementCountOrderByAggregateInput = {
   activityLevel?: Prisma.SortOrder
   nutritionGoal?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  profileId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  profileId?: Prisma.SortOrder
 }
 
 export type BodyMeasurementAvgOrderByAggregateInput = {
-  heigth?: Prisma.SortOrder
+  height?: Prisma.SortOrder
   weight?: Prisma.SortOrder
   chest?: Prisma.SortOrder
   waist?: Prisma.SortOrder
@@ -560,7 +560,7 @@ export type BodyMeasurementAvgOrderByAggregateInput = {
 
 export type BodyMeasurementMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  heigth?: Prisma.SortOrder
+  height?: Prisma.SortOrder
   weight?: Prisma.SortOrder
   chest?: Prisma.SortOrder
   waist?: Prisma.SortOrder
@@ -570,14 +570,14 @@ export type BodyMeasurementMaxOrderByAggregateInput = {
   activityLevel?: Prisma.SortOrder
   nutritionGoal?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  profileId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  profileId?: Prisma.SortOrder
 }
 
 export type BodyMeasurementMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  heigth?: Prisma.SortOrder
+  height?: Prisma.SortOrder
   weight?: Prisma.SortOrder
   chest?: Prisma.SortOrder
   waist?: Prisma.SortOrder
@@ -587,13 +587,13 @@ export type BodyMeasurementMinOrderByAggregateInput = {
   activityLevel?: Prisma.SortOrder
   nutritionGoal?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  profileId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  profileId?: Prisma.SortOrder
 }
 
 export type BodyMeasurementSumOrderByAggregateInput = {
-  heigth?: Prisma.SortOrder
+  height?: Prisma.SortOrder
   weight?: Prisma.SortOrder
   chest?: Prisma.SortOrder
   waist?: Prisma.SortOrder
@@ -686,7 +686,7 @@ export type NullableEnumNutritionGoalFieldUpdateOperationsInput = {
 
 export type BodyMeasurementCreateWithoutUserInput = {
   id?: string
-  heigth?: number | null
+  height?: number | null
   weight?: number | null
   chest?: number | null
   waist?: number | null
@@ -697,12 +697,12 @@ export type BodyMeasurementCreateWithoutUserInput = {
   nutritionGoal?: $Enums.NutritionGoal | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  Profile?: Prisma.ProfileCreateNestedOneWithoutBodyMeasurementsInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutBodyMeasurementsInput
 }
 
 export type BodyMeasurementUncheckedCreateWithoutUserInput = {
   id?: string
-  heigth?: number | null
+  height?: number | null
   weight?: number | null
   chest?: number | null
   waist?: number | null
@@ -711,9 +711,9 @@ export type BodyMeasurementUncheckedCreateWithoutUserInput = {
   goalWeight?: number | null
   activityLevel?: $Enums.ActivityLevel | null
   nutritionGoal?: $Enums.NutritionGoal | null
+  profileId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  profileId?: string | null
 }
 
 export type BodyMeasurementCreateOrConnectWithoutUserInput = {
@@ -734,7 +734,7 @@ export type BodyMeasurementUpdateToOneWithWhereWithoutUserInput = {
 
 export type BodyMeasurementUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  heigth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   weight?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   chest?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   waist?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -745,12 +745,12 @@ export type BodyMeasurementUpdateWithoutUserInput = {
   nutritionGoal?: Prisma.NullableEnumNutritionGoalFieldUpdateOperationsInput | $Enums.NutritionGoal | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  Profile?: Prisma.ProfileUpdateOneWithoutBodyMeasurementsNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutBodyMeasurementsNestedInput
 }
 
 export type BodyMeasurementUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  heigth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   weight?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   chest?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   waist?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -759,14 +759,14 @@ export type BodyMeasurementUncheckedUpdateWithoutUserInput = {
   goalWeight?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   activityLevel?: Prisma.NullableEnumActivityLevelFieldUpdateOperationsInput | $Enums.ActivityLevel | null
   nutritionGoal?: Prisma.NullableEnumNutritionGoalFieldUpdateOperationsInput | $Enums.NutritionGoal | null
+  profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  profileId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type BodyMeasurementCreateWithoutProfileInput = {
   id?: string
-  heigth?: number | null
+  height?: number | null
   weight?: number | null
   chest?: number | null
   waist?: number | null
@@ -782,7 +782,7 @@ export type BodyMeasurementCreateWithoutProfileInput = {
 
 export type BodyMeasurementUncheckedCreateWithoutProfileInput = {
   id?: string
-  heigth?: number | null
+  height?: number | null
   weight?: number | null
   chest?: number | null
   waist?: number | null
@@ -827,7 +827,7 @@ export type BodyMeasurementScalarWhereInput = {
   OR?: Prisma.BodyMeasurementScalarWhereInput[]
   NOT?: Prisma.BodyMeasurementScalarWhereInput | Prisma.BodyMeasurementScalarWhereInput[]
   id?: Prisma.StringFilter<"BodyMeasurement"> | string
-  heigth?: Prisma.IntNullableFilter<"BodyMeasurement"> | number | null
+  height?: Prisma.IntNullableFilter<"BodyMeasurement"> | number | null
   weight?: Prisma.IntNullableFilter<"BodyMeasurement"> | number | null
   chest?: Prisma.IntNullableFilter<"BodyMeasurement"> | number | null
   waist?: Prisma.IntNullableFilter<"BodyMeasurement"> | number | null
@@ -837,14 +837,14 @@ export type BodyMeasurementScalarWhereInput = {
   activityLevel?: Prisma.EnumActivityLevelNullableFilter<"BodyMeasurement"> | $Enums.ActivityLevel | null
   nutritionGoal?: Prisma.EnumNutritionGoalNullableFilter<"BodyMeasurement"> | $Enums.NutritionGoal | null
   userId?: Prisma.StringFilter<"BodyMeasurement"> | string
+  profileId?: Prisma.StringNullableFilter<"BodyMeasurement"> | string | null
   createdAt?: Prisma.DateTimeFilter<"BodyMeasurement"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BodyMeasurement"> | Date | string
-  profileId?: Prisma.StringNullableFilter<"BodyMeasurement"> | string | null
 }
 
 export type BodyMeasurementCreateManyProfileInput = {
   id?: string
-  heigth?: number | null
+  height?: number | null
   weight?: number | null
   chest?: number | null
   waist?: number | null
@@ -860,7 +860,7 @@ export type BodyMeasurementCreateManyProfileInput = {
 
 export type BodyMeasurementUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  heigth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   weight?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   chest?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   waist?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -876,7 +876,7 @@ export type BodyMeasurementUpdateWithoutProfileInput = {
 
 export type BodyMeasurementUncheckedUpdateWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  heigth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   weight?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   chest?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   waist?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -892,7 +892,7 @@ export type BodyMeasurementUncheckedUpdateWithoutProfileInput = {
 
 export type BodyMeasurementUncheckedUpdateManyWithoutProfileInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  heigth?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   weight?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   chest?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   waist?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -910,7 +910,7 @@ export type BodyMeasurementUncheckedUpdateManyWithoutProfileInput = {
 
 export type BodyMeasurementSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  heigth?: boolean
+  height?: boolean
   weight?: boolean
   chest?: boolean
   waist?: boolean
@@ -920,16 +920,16 @@ export type BodyMeasurementSelect<ExtArgs extends runtime.Types.Extensions.Inter
   activityLevel?: boolean
   nutritionGoal?: boolean
   userId?: boolean
+  profileId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  profileId?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  Profile?: boolean | Prisma.BodyMeasurement$ProfileArgs<ExtArgs>
+  profile?: boolean | Prisma.BodyMeasurement$profileArgs<ExtArgs>
 }, ExtArgs["result"]["bodyMeasurement"]>
 
 export type BodyMeasurementSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  heigth?: boolean
+  height?: boolean
   weight?: boolean
   chest?: boolean
   waist?: boolean
@@ -939,16 +939,16 @@ export type BodyMeasurementSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   activityLevel?: boolean
   nutritionGoal?: boolean
   userId?: boolean
+  profileId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  profileId?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  Profile?: boolean | Prisma.BodyMeasurement$ProfileArgs<ExtArgs>
+  profile?: boolean | Prisma.BodyMeasurement$profileArgs<ExtArgs>
 }, ExtArgs["result"]["bodyMeasurement"]>
 
 export type BodyMeasurementSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  heigth?: boolean
+  height?: boolean
   weight?: boolean
   chest?: boolean
   waist?: boolean
@@ -958,16 +958,16 @@ export type BodyMeasurementSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   activityLevel?: boolean
   nutritionGoal?: boolean
   userId?: boolean
+  profileId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  profileId?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  Profile?: boolean | Prisma.BodyMeasurement$ProfileArgs<ExtArgs>
+  profile?: boolean | Prisma.BodyMeasurement$profileArgs<ExtArgs>
 }, ExtArgs["result"]["bodyMeasurement"]>
 
 export type BodyMeasurementSelectScalar = {
   id?: boolean
-  heigth?: boolean
+  height?: boolean
   weight?: boolean
   chest?: boolean
   waist?: boolean
@@ -977,34 +977,34 @@ export type BodyMeasurementSelectScalar = {
   activityLevel?: boolean
   nutritionGoal?: boolean
   userId?: boolean
+  profileId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
-  profileId?: boolean
 }
 
-export type BodyMeasurementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "heigth" | "weight" | "chest" | "waist" | "thigh" | "arm" | "goalWeight" | "activityLevel" | "nutritionGoal" | "userId" | "createdAt" | "updatedAt" | "profileId", ExtArgs["result"]["bodyMeasurement"]>
+export type BodyMeasurementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "height" | "weight" | "chest" | "waist" | "thigh" | "arm" | "goalWeight" | "activityLevel" | "nutritionGoal" | "userId" | "profileId" | "createdAt" | "updatedAt", ExtArgs["result"]["bodyMeasurement"]>
 export type BodyMeasurementInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  Profile?: boolean | Prisma.BodyMeasurement$ProfileArgs<ExtArgs>
+  profile?: boolean | Prisma.BodyMeasurement$profileArgs<ExtArgs>
 }
 export type BodyMeasurementIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  Profile?: boolean | Prisma.BodyMeasurement$ProfileArgs<ExtArgs>
+  profile?: boolean | Prisma.BodyMeasurement$profileArgs<ExtArgs>
 }
 export type BodyMeasurementIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  Profile?: boolean | Prisma.BodyMeasurement$ProfileArgs<ExtArgs>
+  profile?: boolean | Prisma.BodyMeasurement$profileArgs<ExtArgs>
 }
 
 export type $BodyMeasurementPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "BodyMeasurement"
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
-    Profile: Prisma.$ProfilePayload<ExtArgs> | null
+    profile: Prisma.$ProfilePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    heigth: number | null
+    height: number | null
     weight: number | null
     chest: number | null
     waist: number | null
@@ -1014,9 +1014,9 @@ export type $BodyMeasurementPayload<ExtArgs extends runtime.Types.Extensions.Int
     activityLevel: $Enums.ActivityLevel | null
     nutritionGoal: $Enums.NutritionGoal | null
     userId: string
+    profileId: string | null
     createdAt: Date
     updatedAt: Date
-    profileId: string | null
   }, ExtArgs["result"]["bodyMeasurement"]>
   composites: {}
 }
@@ -1412,7 +1412,7 @@ readonly fields: BodyMeasurementFieldRefs;
 export interface Prisma__BodyMeasurementClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  Profile<T extends Prisma.BodyMeasurement$ProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BodyMeasurement$ProfileArgs<ExtArgs>>): Prisma.Prisma__ProfileClient<runtime.Types.Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  profile<T extends Prisma.BodyMeasurement$profileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BodyMeasurement$profileArgs<ExtArgs>>): Prisma.Prisma__ProfileClient<runtime.Types.Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1443,7 +1443,7 @@ export interface Prisma__BodyMeasurementClient<T, Null = never, ExtArgs extends 
  */
 export interface BodyMeasurementFieldRefs {
   readonly id: Prisma.FieldRef<"BodyMeasurement", 'String'>
-  readonly heigth: Prisma.FieldRef<"BodyMeasurement", 'Int'>
+  readonly height: Prisma.FieldRef<"BodyMeasurement", 'Int'>
   readonly weight: Prisma.FieldRef<"BodyMeasurement", 'Int'>
   readonly chest: Prisma.FieldRef<"BodyMeasurement", 'Int'>
   readonly waist: Prisma.FieldRef<"BodyMeasurement", 'Int'>
@@ -1453,9 +1453,9 @@ export interface BodyMeasurementFieldRefs {
   readonly activityLevel: Prisma.FieldRef<"BodyMeasurement", 'ActivityLevel'>
   readonly nutritionGoal: Prisma.FieldRef<"BodyMeasurement", 'NutritionGoal'>
   readonly userId: Prisma.FieldRef<"BodyMeasurement", 'String'>
+  readonly profileId: Prisma.FieldRef<"BodyMeasurement", 'String'>
   readonly createdAt: Prisma.FieldRef<"BodyMeasurement", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"BodyMeasurement", 'DateTime'>
-  readonly profileId: Prisma.FieldRef<"BodyMeasurement", 'String'>
 }
     
 
@@ -1852,9 +1852,9 @@ export type BodyMeasurementDeleteManyArgs<ExtArgs extends runtime.Types.Extensio
 }
 
 /**
- * BodyMeasurement.Profile
+ * BodyMeasurement.profile
  */
-export type BodyMeasurement$ProfileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type BodyMeasurement$profileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Profile
    */

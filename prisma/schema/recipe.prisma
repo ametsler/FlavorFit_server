@@ -1,17 +1,3 @@
-model DishType {
-  id String @id @default(cuid())
-
-  order Int
-  title String
-
-  recipes Recipe[]
-
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  @@map("dish_types")
-}
-
 model Recipe {
   id String @id @default(cuid())
 
@@ -42,6 +28,20 @@ model Recipe {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("recipes")
+}
+
+model DishType {
+  id String @id @default(cuid())
+
+  order Int
+  title String
+
+  recipes Recipe[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("dish_types")
 }
 
 model RecipeStep {

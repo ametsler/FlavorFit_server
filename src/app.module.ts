@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common'
+import { Module, ValidationPipe } from '@nestjs/common'
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { AuthModule } from './auth/auth.module'
@@ -11,6 +11,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { getGraphQLConfig } from 'src/config/graphql.config'
+import { APP_PIPE } from '@nestjs/core'
 
 @Module({
 	imports: [
@@ -29,6 +30,15 @@ import { getGraphQLConfig } from 'src/config/graphql.config'
 		PrismaModule
 	],
 	controllers: [AppController],
-	providers: [AppService]
+	providers: [
+		AppService,
+		{
+			provide: APP_PIPE,
+			useValue: new ValidationPipe({
+				whitelist: true,
+				transform: true
+			})
+		}
+	]
 })
 export class AppModule {}

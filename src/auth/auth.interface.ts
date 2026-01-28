@@ -28,6 +28,4 @@ export class AuthResponse {
 	user: UserModel
 	@Field()
 	accessToken: string
-	@Field()
-	refreshToken: string
 }

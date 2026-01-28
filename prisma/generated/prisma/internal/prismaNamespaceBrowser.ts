@@ -58,8 +58,8 @@ export const ModelName = {
   RecipeView: 'RecipeView',
   Comment: 'Comment',
   CommentLike: 'CommentLike',
-  DishType: 'DishType',
   Recipe: 'Recipe',
+  DishType: 'DishType',
   RecipeStep: 'RecipeStep',
   RecipeIngredient: 'RecipeIngredient',
   Ingredient: 'Ingredient',
@@ -166,17 +166,6 @@ export const CommentLikeScalarFieldEnum = {
 export type CommentLikeScalarFieldEnum = (typeof CommentLikeScalarFieldEnum)[keyof typeof CommentLikeScalarFieldEnum]
 
 
-export const DishTypeScalarFieldEnum = {
-  id: 'id',
-  order: 'order',
-  title: 'title',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type DishTypeScalarFieldEnum = (typeof DishTypeScalarFieldEnum)[keyof typeof DishTypeScalarFieldEnum]
-
-
 export const RecipeScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -197,6 +186,17 @@ export const RecipeScalarFieldEnum = {
 } as const
 
 export type RecipeScalarFieldEnum = (typeof RecipeScalarFieldEnum)[keyof typeof RecipeScalarFieldEnum]
+
+
+export const DishTypeScalarFieldEnum = {
+  id: 'id',
+  order: 'order',
+  title: 'title',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DishTypeScalarFieldEnum = (typeof DishTypeScalarFieldEnum)[keyof typeof DishTypeScalarFieldEnum]
 
 
 export const RecipeStepScalarFieldEnum = {
@@ -268,7 +268,7 @@ export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeo
 
 export const BodyMeasurementScalarFieldEnum = {
   id: 'id',
-  heigth: 'heigth',
+  height: 'height',
   weight: 'weight',
   chest: 'chest',
   waist: 'waist',
@@ -278,9 +278,9 @@ export const BodyMeasurementScalarFieldEnum = {
   activityLevel: 'activityLevel',
   nutritionGoal: 'nutritionGoal',
   userId: 'userId',
+  profileId: 'profileId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  profileId: 'profileId'
+  updatedAt: 'updatedAt'
 } as const
 
 export type BodyMeasurementScalarFieldEnum = (typeof BodyMeasurementScalarFieldEnum)[keyof typeof BodyMeasurementScalarFieldEnum]

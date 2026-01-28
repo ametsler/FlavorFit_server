@@ -191,13 +191,13 @@ export type UserWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   profile?: Prisma.XOR<Prisma.ProfileNullableScalarRelationFilter, Prisma.ProfileWhereInput> | null
+  bodyMeasurement?: Prisma.XOR<Prisma.BodyMeasurementNullableScalarRelationFilter, Prisma.BodyMeasurementWhereInput> | null
   recipe?: Prisma.RecipeListRelationFilter
   recipeLike?: Prisma.RecipeLikeListRelationFilter
   recipeView?: Prisma.RecipeViewListRelationFilter
   comment?: Prisma.CommentListRelationFilter
   commentLike?: Prisma.CommentLikeListRelationFilter
   order?: Prisma.OrderListRelationFilter
-  bodyMeasurement?: Prisma.XOR<Prisma.BodyMeasurementNullableScalarRelationFilter, Prisma.BodyMeasurementWhereInput> | null
 }
 
 export type UserOrderByWithRelationInput = {
@@ -208,13 +208,13 @@ export type UserOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   profile?: Prisma.ProfileOrderByWithRelationInput
+  bodyMeasurement?: Prisma.BodyMeasurementOrderByWithRelationInput
   recipe?: Prisma.RecipeOrderByRelationAggregateInput
   recipeLike?: Prisma.RecipeLikeOrderByRelationAggregateInput
   recipeView?: Prisma.RecipeViewOrderByRelationAggregateInput
   comment?: Prisma.CommentOrderByRelationAggregateInput
   commentLike?: Prisma.CommentLikeOrderByRelationAggregateInput
   order?: Prisma.OrderOrderByRelationAggregateInput
-  bodyMeasurement?: Prisma.BodyMeasurementOrderByWithRelationInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -228,13 +228,13 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   profile?: Prisma.XOR<Prisma.ProfileNullableScalarRelationFilter, Prisma.ProfileWhereInput> | null
+  bodyMeasurement?: Prisma.XOR<Prisma.BodyMeasurementNullableScalarRelationFilter, Prisma.BodyMeasurementWhereInput> | null
   recipe?: Prisma.RecipeListRelationFilter
   recipeLike?: Prisma.RecipeLikeListRelationFilter
   recipeView?: Prisma.RecipeViewListRelationFilter
   comment?: Prisma.CommentListRelationFilter
   commentLike?: Prisma.CommentLikeListRelationFilter
   order?: Prisma.OrderListRelationFilter
-  bodyMeasurement?: Prisma.XOR<Prisma.BodyMeasurementNullableScalarRelationFilter, Prisma.BodyMeasurementWhereInput> | null
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -269,13 +269,13 @@ export type UserCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  bodyMeasurement?: Prisma.BodyMeasurementCreateNestedOneWithoutUserInput
   recipe?: Prisma.RecipeCreateNestedManyWithoutAuthorInput
   recipeLike?: Prisma.RecipeLikeCreateNestedManyWithoutUserInput
   recipeView?: Prisma.RecipeViewCreateNestedManyWithoutUserInput
   comment?: Prisma.CommentCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeCreateNestedManyWithoutUserInput
   order?: Prisma.OrderCreateNestedManyWithoutUserInput
-  bodyMeasurement?: Prisma.BodyMeasurementCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -286,13 +286,13 @@ export type UserUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  bodyMeasurement?: Prisma.BodyMeasurementUncheckedCreateNestedOneWithoutUserInput
   recipe?: Prisma.RecipeUncheckedCreateNestedManyWithoutAuthorInput
   recipeLike?: Prisma.RecipeLikeUncheckedCreateNestedManyWithoutUserInput
   recipeView?: Prisma.RecipeViewUncheckedCreateNestedManyWithoutUserInput
   comment?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeUncheckedCreateNestedManyWithoutUserInput
   order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
-  bodyMeasurement?: Prisma.BodyMeasurementUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -303,13 +303,13 @@ export type UserUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  bodyMeasurement?: Prisma.BodyMeasurementUpdateOneWithoutUserNestedInput
   recipe?: Prisma.RecipeUpdateManyWithoutAuthorNestedInput
   recipeLike?: Prisma.RecipeLikeUpdateManyWithoutUserNestedInput
   recipeView?: Prisma.RecipeViewUpdateManyWithoutUserNestedInput
   comment?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUpdateManyWithoutUserNestedInput
-  bodyMeasurement?: Prisma.BodyMeasurementUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -320,13 +320,13 @@ export type UserUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  bodyMeasurement?: Prisma.BodyMeasurementUncheckedUpdateOneWithoutUserNestedInput
   recipe?: Prisma.RecipeUncheckedUpdateManyWithoutAuthorNestedInput
   recipeLike?: Prisma.RecipeLikeUncheckedUpdateManyWithoutUserNestedInput
   recipeView?: Prisma.RecipeViewUncheckedUpdateManyWithoutUserNestedInput
   comment?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUncheckedUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
-  bodyMeasurement?: Prisma.BodyMeasurementUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -512,12 +512,12 @@ export type UserCreateWithoutOrderInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  bodyMeasurement?: Prisma.BodyMeasurementCreateNestedOneWithoutUserInput
   recipe?: Prisma.RecipeCreateNestedManyWithoutAuthorInput
   recipeLike?: Prisma.RecipeLikeCreateNestedManyWithoutUserInput
   recipeView?: Prisma.RecipeViewCreateNestedManyWithoutUserInput
   comment?: Prisma.CommentCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeCreateNestedManyWithoutUserInput
-  bodyMeasurement?: Prisma.BodyMeasurementCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutOrderInput = {
@@ -528,12 +528,12 @@ export type UserUncheckedCreateWithoutOrderInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  bodyMeasurement?: Prisma.BodyMeasurementUncheckedCreateNestedOneWithoutUserInput
   recipe?: Prisma.RecipeUncheckedCreateNestedManyWithoutAuthorInput
   recipeLike?: Prisma.RecipeLikeUncheckedCreateNestedManyWithoutUserInput
   recipeView?: Prisma.RecipeViewUncheckedCreateNestedManyWithoutUserInput
   comment?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeUncheckedCreateNestedManyWithoutUserInput
-  bodyMeasurement?: Prisma.BodyMeasurementUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutOrderInput = {
@@ -560,12 +560,12 @@ export type UserUpdateWithoutOrderInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  bodyMeasurement?: Prisma.BodyMeasurementUpdateOneWithoutUserNestedInput
   recipe?: Prisma.RecipeUpdateManyWithoutAuthorNestedInput
   recipeLike?: Prisma.RecipeLikeUpdateManyWithoutUserNestedInput
   recipeView?: Prisma.RecipeViewUpdateManyWithoutUserNestedInput
   comment?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUpdateManyWithoutUserNestedInput
-  bodyMeasurement?: Prisma.BodyMeasurementUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOrderInput = {
@@ -576,12 +576,12 @@ export type UserUncheckedUpdateWithoutOrderInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  bodyMeasurement?: Prisma.BodyMeasurementUncheckedUpdateOneWithoutUserNestedInput
   recipe?: Prisma.RecipeUncheckedUpdateManyWithoutAuthorNestedInput
   recipeLike?: Prisma.RecipeLikeUncheckedUpdateManyWithoutUserNestedInput
   recipeView?: Prisma.RecipeViewUncheckedUpdateManyWithoutUserNestedInput
   comment?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUncheckedUpdateManyWithoutUserNestedInput
-  bodyMeasurement?: Prisma.BodyMeasurementUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRecipeLikeInput = {
@@ -592,12 +592,12 @@ export type UserCreateWithoutRecipeLikeInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  bodyMeasurement?: Prisma.BodyMeasurementCreateNestedOneWithoutUserInput
   recipe?: Prisma.RecipeCreateNestedManyWithoutAuthorInput
   recipeView?: Prisma.RecipeViewCreateNestedManyWithoutUserInput
   comment?: Prisma.CommentCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeCreateNestedManyWithoutUserInput
   order?: Prisma.OrderCreateNestedManyWithoutUserInput
-  bodyMeasurement?: Prisma.BodyMeasurementCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRecipeLikeInput = {
@@ -608,12 +608,12 @@ export type UserUncheckedCreateWithoutRecipeLikeInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  bodyMeasurement?: Prisma.BodyMeasurementUncheckedCreateNestedOneWithoutUserInput
   recipe?: Prisma.RecipeUncheckedCreateNestedManyWithoutAuthorInput
   recipeView?: Prisma.RecipeViewUncheckedCreateNestedManyWithoutUserInput
   comment?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeUncheckedCreateNestedManyWithoutUserInput
   order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
-  bodyMeasurement?: Prisma.BodyMeasurementUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRecipeLikeInput = {
@@ -640,12 +640,12 @@ export type UserUpdateWithoutRecipeLikeInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  bodyMeasurement?: Prisma.BodyMeasurementUpdateOneWithoutUserNestedInput
   recipe?: Prisma.RecipeUpdateManyWithoutAuthorNestedInput
   recipeView?: Prisma.RecipeViewUpdateManyWithoutUserNestedInput
   comment?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUpdateManyWithoutUserNestedInput
-  bodyMeasurement?: Prisma.BodyMeasurementUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRecipeLikeInput = {
@@ -656,12 +656,12 @@ export type UserUncheckedUpdateWithoutRecipeLikeInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  bodyMeasurement?: Prisma.BodyMeasurementUncheckedUpdateOneWithoutUserNestedInput
   recipe?: Prisma.RecipeUncheckedUpdateManyWithoutAuthorNestedInput
   recipeView?: Prisma.RecipeViewUncheckedUpdateManyWithoutUserNestedInput
   comment?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUncheckedUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
-  bodyMeasurement?: Prisma.BodyMeasurementUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRecipeViewInput = {
@@ -672,12 +672,12 @@ export type UserCreateWithoutRecipeViewInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  bodyMeasurement?: Prisma.BodyMeasurementCreateNestedOneWithoutUserInput
   recipe?: Prisma.RecipeCreateNestedManyWithoutAuthorInput
   recipeLike?: Prisma.RecipeLikeCreateNestedManyWithoutUserInput
   comment?: Prisma.CommentCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeCreateNestedManyWithoutUserInput
   order?: Prisma.OrderCreateNestedManyWithoutUserInput
-  bodyMeasurement?: Prisma.BodyMeasurementCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRecipeViewInput = {
@@ -688,12 +688,12 @@ export type UserUncheckedCreateWithoutRecipeViewInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  bodyMeasurement?: Prisma.BodyMeasurementUncheckedCreateNestedOneWithoutUserInput
   recipe?: Prisma.RecipeUncheckedCreateNestedManyWithoutAuthorInput
   recipeLike?: Prisma.RecipeLikeUncheckedCreateNestedManyWithoutUserInput
   comment?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeUncheckedCreateNestedManyWithoutUserInput
   order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
-  bodyMeasurement?: Prisma.BodyMeasurementUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRecipeViewInput = {
@@ -720,12 +720,12 @@ export type UserUpdateWithoutRecipeViewInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  bodyMeasurement?: Prisma.BodyMeasurementUpdateOneWithoutUserNestedInput
   recipe?: Prisma.RecipeUpdateManyWithoutAuthorNestedInput
   recipeLike?: Prisma.RecipeLikeUpdateManyWithoutUserNestedInput
   comment?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUpdateManyWithoutUserNestedInput
-  bodyMeasurement?: Prisma.BodyMeasurementUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRecipeViewInput = {
@@ -736,12 +736,12 @@ export type UserUncheckedUpdateWithoutRecipeViewInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  bodyMeasurement?: Prisma.BodyMeasurementUncheckedUpdateOneWithoutUserNestedInput
   recipe?: Prisma.RecipeUncheckedUpdateManyWithoutAuthorNestedInput
   recipeLike?: Prisma.RecipeLikeUncheckedUpdateManyWithoutUserNestedInput
   comment?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUncheckedUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
-  bodyMeasurement?: Prisma.BodyMeasurementUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCommentInput = {
@@ -752,12 +752,12 @@ export type UserCreateWithoutCommentInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  bodyMeasurement?: Prisma.BodyMeasurementCreateNestedOneWithoutUserInput
   recipe?: Prisma.RecipeCreateNestedManyWithoutAuthorInput
   recipeLike?: Prisma.RecipeLikeCreateNestedManyWithoutUserInput
   recipeView?: Prisma.RecipeViewCreateNestedManyWithoutUserInput
   commentLike?: Prisma.CommentLikeCreateNestedManyWithoutUserInput
   order?: Prisma.OrderCreateNestedManyWithoutUserInput
-  bodyMeasurement?: Prisma.BodyMeasurementCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommentInput = {
@@ -768,12 +768,12 @@ export type UserUncheckedCreateWithoutCommentInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  bodyMeasurement?: Prisma.BodyMeasurementUncheckedCreateNestedOneWithoutUserInput
   recipe?: Prisma.RecipeUncheckedCreateNestedManyWithoutAuthorInput
   recipeLike?: Prisma.RecipeLikeUncheckedCreateNestedManyWithoutUserInput
   recipeView?: Prisma.RecipeViewUncheckedCreateNestedManyWithoutUserInput
   commentLike?: Prisma.CommentLikeUncheckedCreateNestedManyWithoutUserInput
   order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
-  bodyMeasurement?: Prisma.BodyMeasurementUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommentInput = {
@@ -800,12 +800,12 @@ export type UserUpdateWithoutCommentInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  bodyMeasurement?: Prisma.BodyMeasurementUpdateOneWithoutUserNestedInput
   recipe?: Prisma.RecipeUpdateManyWithoutAuthorNestedInput
   recipeLike?: Prisma.RecipeLikeUpdateManyWithoutUserNestedInput
   recipeView?: Prisma.RecipeViewUpdateManyWithoutUserNestedInput
   commentLike?: Prisma.CommentLikeUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUpdateManyWithoutUserNestedInput
-  bodyMeasurement?: Prisma.BodyMeasurementUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentInput = {
@@ -816,12 +816,12 @@ export type UserUncheckedUpdateWithoutCommentInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  bodyMeasurement?: Prisma.BodyMeasurementUncheckedUpdateOneWithoutUserNestedInput
   recipe?: Prisma.RecipeUncheckedUpdateManyWithoutAuthorNestedInput
   recipeLike?: Prisma.RecipeLikeUncheckedUpdateManyWithoutUserNestedInput
   recipeView?: Prisma.RecipeViewUncheckedUpdateManyWithoutUserNestedInput
   commentLike?: Prisma.CommentLikeUncheckedUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
-  bodyMeasurement?: Prisma.BodyMeasurementUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCommentLikeInput = {
@@ -832,12 +832,12 @@ export type UserCreateWithoutCommentLikeInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  bodyMeasurement?: Prisma.BodyMeasurementCreateNestedOneWithoutUserInput
   recipe?: Prisma.RecipeCreateNestedManyWithoutAuthorInput
   recipeLike?: Prisma.RecipeLikeCreateNestedManyWithoutUserInput
   recipeView?: Prisma.RecipeViewCreateNestedManyWithoutUserInput
   comment?: Prisma.CommentCreateNestedManyWithoutAuthorInput
   order?: Prisma.OrderCreateNestedManyWithoutUserInput
-  bodyMeasurement?: Prisma.BodyMeasurementCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommentLikeInput = {
@@ -848,12 +848,12 @@ export type UserUncheckedCreateWithoutCommentLikeInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  bodyMeasurement?: Prisma.BodyMeasurementUncheckedCreateNestedOneWithoutUserInput
   recipe?: Prisma.RecipeUncheckedCreateNestedManyWithoutAuthorInput
   recipeLike?: Prisma.RecipeLikeUncheckedCreateNestedManyWithoutUserInput
   recipeView?: Prisma.RecipeViewUncheckedCreateNestedManyWithoutUserInput
   comment?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
   order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
-  bodyMeasurement?: Prisma.BodyMeasurementUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommentLikeInput = {
@@ -880,12 +880,12 @@ export type UserUpdateWithoutCommentLikeInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  bodyMeasurement?: Prisma.BodyMeasurementUpdateOneWithoutUserNestedInput
   recipe?: Prisma.RecipeUpdateManyWithoutAuthorNestedInput
   recipeLike?: Prisma.RecipeLikeUpdateManyWithoutUserNestedInput
   recipeView?: Prisma.RecipeViewUpdateManyWithoutUserNestedInput
   comment?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
   order?: Prisma.OrderUpdateManyWithoutUserNestedInput
-  bodyMeasurement?: Prisma.BodyMeasurementUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentLikeInput = {
@@ -896,12 +896,12 @@ export type UserUncheckedUpdateWithoutCommentLikeInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  bodyMeasurement?: Prisma.BodyMeasurementUncheckedUpdateOneWithoutUserNestedInput
   recipe?: Prisma.RecipeUncheckedUpdateManyWithoutAuthorNestedInput
   recipeLike?: Prisma.RecipeLikeUncheckedUpdateManyWithoutUserNestedInput
   recipeView?: Prisma.RecipeViewUncheckedUpdateManyWithoutUserNestedInput
   comment?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
   order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
-  bodyMeasurement?: Prisma.BodyMeasurementUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRecipeInput = {
@@ -912,12 +912,12 @@ export type UserCreateWithoutRecipeInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  bodyMeasurement?: Prisma.BodyMeasurementCreateNestedOneWithoutUserInput
   recipeLike?: Prisma.RecipeLikeCreateNestedManyWithoutUserInput
   recipeView?: Prisma.RecipeViewCreateNestedManyWithoutUserInput
   comment?: Prisma.CommentCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeCreateNestedManyWithoutUserInput
   order?: Prisma.OrderCreateNestedManyWithoutUserInput
-  bodyMeasurement?: Prisma.BodyMeasurementCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRecipeInput = {
@@ -928,12 +928,12 @@ export type UserUncheckedCreateWithoutRecipeInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  bodyMeasurement?: Prisma.BodyMeasurementUncheckedCreateNestedOneWithoutUserInput
   recipeLike?: Prisma.RecipeLikeUncheckedCreateNestedManyWithoutUserInput
   recipeView?: Prisma.RecipeViewUncheckedCreateNestedManyWithoutUserInput
   comment?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeUncheckedCreateNestedManyWithoutUserInput
   order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
-  bodyMeasurement?: Prisma.BodyMeasurementUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRecipeInput = {
@@ -960,12 +960,12 @@ export type UserUpdateWithoutRecipeInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  bodyMeasurement?: Prisma.BodyMeasurementUpdateOneWithoutUserNestedInput
   recipeLike?: Prisma.RecipeLikeUpdateManyWithoutUserNestedInput
   recipeView?: Prisma.RecipeViewUpdateManyWithoutUserNestedInput
   comment?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUpdateManyWithoutUserNestedInput
-  bodyMeasurement?: Prisma.BodyMeasurementUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRecipeInput = {
@@ -976,12 +976,12 @@ export type UserUncheckedUpdateWithoutRecipeInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  bodyMeasurement?: Prisma.BodyMeasurementUncheckedUpdateOneWithoutUserNestedInput
   recipeLike?: Prisma.RecipeLikeUncheckedUpdateManyWithoutUserNestedInput
   recipeView?: Prisma.RecipeViewUncheckedUpdateManyWithoutUserNestedInput
   comment?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUncheckedUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
-  bodyMeasurement?: Prisma.BodyMeasurementUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutProfileInput = {
@@ -991,13 +991,13 @@ export type UserCreateWithoutProfileInput = {
   role?: $Enums.Role
   createdAt?: Date | string
   updatedAt?: Date | string
+  bodyMeasurement?: Prisma.BodyMeasurementCreateNestedOneWithoutUserInput
   recipe?: Prisma.RecipeCreateNestedManyWithoutAuthorInput
   recipeLike?: Prisma.RecipeLikeCreateNestedManyWithoutUserInput
   recipeView?: Prisma.RecipeViewCreateNestedManyWithoutUserInput
   comment?: Prisma.CommentCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeCreateNestedManyWithoutUserInput
   order?: Prisma.OrderCreateNestedManyWithoutUserInput
-  bodyMeasurement?: Prisma.BodyMeasurementCreateNestedOneWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProfileInput = {
@@ -1007,13 +1007,13 @@ export type UserUncheckedCreateWithoutProfileInput = {
   role?: $Enums.Role
   createdAt?: Date | string
   updatedAt?: Date | string
+  bodyMeasurement?: Prisma.BodyMeasurementUncheckedCreateNestedOneWithoutUserInput
   recipe?: Prisma.RecipeUncheckedCreateNestedManyWithoutAuthorInput
   recipeLike?: Prisma.RecipeLikeUncheckedCreateNestedManyWithoutUserInput
   recipeView?: Prisma.RecipeViewUncheckedCreateNestedManyWithoutUserInput
   comment?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeUncheckedCreateNestedManyWithoutUserInput
   order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
-  bodyMeasurement?: Prisma.BodyMeasurementUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProfileInput = {
@@ -1039,13 +1039,13 @@ export type UserUpdateWithoutProfileInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bodyMeasurement?: Prisma.BodyMeasurementUpdateOneWithoutUserNestedInput
   recipe?: Prisma.RecipeUpdateManyWithoutAuthorNestedInput
   recipeLike?: Prisma.RecipeLikeUpdateManyWithoutUserNestedInput
   recipeView?: Prisma.RecipeViewUpdateManyWithoutUserNestedInput
   comment?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUpdateManyWithoutUserNestedInput
-  bodyMeasurement?: Prisma.BodyMeasurementUpdateOneWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProfileInput = {
@@ -1055,13 +1055,13 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  bodyMeasurement?: Prisma.BodyMeasurementUncheckedUpdateOneWithoutUserNestedInput
   recipe?: Prisma.RecipeUncheckedUpdateManyWithoutAuthorNestedInput
   recipeLike?: Prisma.RecipeLikeUncheckedUpdateManyWithoutUserNestedInput
   recipeView?: Prisma.RecipeViewUncheckedUpdateManyWithoutUserNestedInput
   comment?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUncheckedUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
-  bodyMeasurement?: Prisma.BodyMeasurementUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBodyMeasurementInput = {
@@ -1228,13 +1228,13 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   createdAt?: boolean
   updatedAt?: boolean
   profile?: boolean | Prisma.User$profileArgs<ExtArgs>
+  bodyMeasurement?: boolean | Prisma.User$bodyMeasurementArgs<ExtArgs>
   recipe?: boolean | Prisma.User$recipeArgs<ExtArgs>
   recipeLike?: boolean | Prisma.User$recipeLikeArgs<ExtArgs>
   recipeView?: boolean | Prisma.User$recipeViewArgs<ExtArgs>
   comment?: boolean | Prisma.User$commentArgs<ExtArgs>
   commentLike?: boolean | Prisma.User$commentLikeArgs<ExtArgs>
   order?: boolean | Prisma.User$orderArgs<ExtArgs>
-  bodyMeasurement?: boolean | Prisma.User$bodyMeasurementArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1268,13 +1268,13 @@ export type UserSelectScalar = {
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "password" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   profile?: boolean | Prisma.User$profileArgs<ExtArgs>
+  bodyMeasurement?: boolean | Prisma.User$bodyMeasurementArgs<ExtArgs>
   recipe?: boolean | Prisma.User$recipeArgs<ExtArgs>
   recipeLike?: boolean | Prisma.User$recipeLikeArgs<ExtArgs>
   recipeView?: boolean | Prisma.User$recipeViewArgs<ExtArgs>
   comment?: boolean | Prisma.User$commentArgs<ExtArgs>
   commentLike?: boolean | Prisma.User$commentLikeArgs<ExtArgs>
   order?: boolean | Prisma.User$orderArgs<ExtArgs>
-  bodyMeasurement?: boolean | Prisma.User$bodyMeasurementArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1284,13 +1284,13 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   name: "User"
   objects: {
     profile: Prisma.$ProfilePayload<ExtArgs> | null
+    bodyMeasurement: Prisma.$BodyMeasurementPayload<ExtArgs> | null
     recipe: Prisma.$RecipePayload<ExtArgs>[]
     recipeLike: Prisma.$RecipeLikePayload<ExtArgs>[]
     recipeView: Prisma.$RecipeViewPayload<ExtArgs>[]
     comment: Prisma.$CommentPayload<ExtArgs>[]
     commentLike: Prisma.$CommentLikePayload<ExtArgs>[]
     order: Prisma.$OrderPayload<ExtArgs>[]
-    bodyMeasurement: Prisma.$BodyMeasurementPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1694,13 +1694,13 @@ readonly fields: UserFieldRefs;
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   profile<T extends Prisma.User$profileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$profileArgs<ExtArgs>>): Prisma.Prisma__ProfileClient<runtime.Types.Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  bodyMeasurement<T extends Prisma.User$bodyMeasurementArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$bodyMeasurementArgs<ExtArgs>>): Prisma.Prisma__BodyMeasurementClient<runtime.Types.Result.GetResult<Prisma.$BodyMeasurementPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   recipe<T extends Prisma.User$recipeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$recipeArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecipePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   recipeLike<T extends Prisma.User$recipeLikeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$recipeLikeArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecipeLikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   recipeView<T extends Prisma.User$recipeViewArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$recipeViewArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecipeViewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   comment<T extends Prisma.User$commentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$commentArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   commentLike<T extends Prisma.User$commentLikeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$commentLikeArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentLikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   order<T extends Prisma.User$orderArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$orderArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  bodyMeasurement<T extends Prisma.User$bodyMeasurementArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$bodyMeasurementArgs<ExtArgs>>): Prisma.Prisma__BodyMeasurementClient<runtime.Types.Result.GetResult<Prisma.$BodyMeasurementPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2143,6 +2143,25 @@ export type User$profileArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 }
 
 /**
+ * User.bodyMeasurement
+ */
+export type User$bodyMeasurementArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BodyMeasurement
+   */
+  select?: Prisma.BodyMeasurementSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BodyMeasurement
+   */
+  omit?: Prisma.BodyMeasurementOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BodyMeasurementInclude<ExtArgs> | null
+  where?: Prisma.BodyMeasurementWhereInput
+}
+
+/**
  * User.recipe
  */
 export type User$recipeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2284,25 +2303,6 @@ export type User$orderArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
   take?: number
   skip?: number
   distinct?: Prisma.OrderScalarFieldEnum | Prisma.OrderScalarFieldEnum[]
-}
-
-/**
- * User.bodyMeasurement
- */
-export type User$bodyMeasurementArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the BodyMeasurement
-   */
-  select?: Prisma.BodyMeasurementSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the BodyMeasurement
-   */
-  omit?: Prisma.BodyMeasurementOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.BodyMeasurementInclude<ExtArgs> | null
-  where?: Prisma.BodyMeasurementWhereInput
 }
 
 /**

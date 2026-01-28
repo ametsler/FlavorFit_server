@@ -1,18 +1,18 @@
 model User {
   id String @id @default(cuid())
 
-  email    String   @unique
-  password String
-  role     Role     @default(USER)
-  profile  Profile?
-
-  recipe          Recipe[]
-  recipeLike      RecipeLike[]
-  recipeView      RecipeView[]
-  comment         Comment[]
-  commentLike     CommentLike[]
-  order           Order[]
+  email           String           @unique
+  password        String
+  role            Role             @default(USER)
+  profile         Profile?
   bodyMeasurement BodyMeasurement?
+
+  recipe      Recipe[]
+  recipeLike  RecipeLike[]
+  recipeView  RecipeView[]
+  comment     Comment[]
+  commentLike CommentLike[]
+  order       Order[]
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -30,12 +30,13 @@ model Profile {
   photo    String?
   contact  String?
 
+  bodyMeasurements BodyMeasurement[]
+
   user   User   @relation(fields: [userId], references: [id])
   userId String @unique @map("user_id")
 
-  createdAt        DateTime          @default(now()) @map("created_at")
-  updatedAt        DateTime          @updatedAt @map("updated_at")
-  bodyMeasurements BodyMeasurement[]
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("profiles")
 }
@@ -43,24 +44,24 @@ model Profile {
 model BodyMeasurement {
   id String @id @default(cuid())
 
-  heigth      Int?
-  weight      Int?
-  chest       Int?
-  waist       Int?
-  thigh       Int?
-  arm         Int?
+  height     Int?
+  weight     Int?
+  chest      Int?
+  waist      Int?
+  thigh      Int?
+  arm        Int?
   goalWeight Int? @map("goal_weight")
 
   activityLevel ActivityLevel? @map("activity_level")
   nutritionGoal NutritionGoal? @map("nutrition_goal")
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String @unique @map("user_id")
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @unique @map("user_id")
+  profile   Profile? @relation(fields: [profileId], references: [id])
+  profileId String?  @map("profile_id")
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
-  Profile   Profile? @relation(fields: [profileId], references: [id])
-  profileId String? @map("profile_id")
 
   @@map("body_measurements")
 }

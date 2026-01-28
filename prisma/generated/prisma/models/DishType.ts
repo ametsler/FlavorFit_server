@@ -324,6 +324,11 @@ export type DishTypeUncheckedUpdateManyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+export type DishTypeScalarRelationFilter = {
+  is?: Prisma.DishTypeWhereInput
+  isNot?: Prisma.DishTypeWhereInput
+}
+
 export type DishTypeCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   order?: Prisma.SortOrder
@@ -354,19 +359,6 @@ export type DishTypeMinOrderByAggregateInput = {
 
 export type DishTypeSumOrderByAggregateInput = {
   order?: Prisma.SortOrder
-}
-
-export type DishTypeScalarRelationFilter = {
-  is?: Prisma.DishTypeWhereInput
-  isNot?: Prisma.DishTypeWhereInput
-}
-
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
 }
 
 export type DishTypeCreateNestedOneWithoutRecipesInput = {
