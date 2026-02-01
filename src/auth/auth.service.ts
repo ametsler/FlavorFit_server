@@ -22,7 +22,7 @@ export class AuthService {
 		private usersService: UsersService
 	) {}
 
-	private REFRESH_TOKEN_NAME = 'refreshToken'
+	REFRESH_TOKEN_NAME = 'refreshToken'
 
 	async register(input: AuthInput) {
 		try {
@@ -59,6 +59,25 @@ export class AuthService {
 
 	async login(input: AuthInput) {
 		const user = await this.validateUser(input)
+
+		const tokens = this.generateTokens({
+			id: user.id,
+			role: user.role
+		})
+
+		return { user, ...tokens }
+	}
+
+	async getNewTokens(refreshToken: string) {
+		const data = this.jwtService.verify<IAuthTokenData>(refreshToken)
+		if (!data) {
+			throw new BadRequestException('Invalid refresh token')
+		}
+		const user = await this.usersService.findById(data.id)
+
+		if (!user) {
+			throw new NotFoundException('User not found')
+		}
 
 		const tokens = this.generateTokens({
 			id: user.id,
