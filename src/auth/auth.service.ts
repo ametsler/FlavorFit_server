@@ -8,7 +8,7 @@ import { ConfigService } from '@nestjs/config'
 import { JwtService } from '@nestjs/jwt'
 import { AuthInput } from 'src/auth/auth.input'
 import { hash, verify } from 'argon2'
-import { IAuthTokenData } from 'src/auth/auth.interface'
+import { TAuthTokenData } from 'src/auth/auth.interface'
 import { UsersService } from 'src/users/users.service'
 import { Response } from 'express'
 import { isDev } from 'src/utils/is-dev.utils'
@@ -69,7 +69,7 @@ export class AuthService {
 	}
 
 	async getNewTokens(refreshToken: string) {
-		const data = this.jwtService.verify<IAuthTokenData>(refreshToken)
+		const data = this.jwtService.verify<TAuthTokenData>(refreshToken)
 		if (!data) {
 			throw new BadRequestException('Invalid refresh token')
 		}
@@ -103,7 +103,7 @@ export class AuthService {
 		return user
 	}
 
-	private generateTokens(data: IAuthTokenData) {
+	private generateTokens(data: TAuthTokenData) {
 		const accessToken = this.jwtService.sign(data, {
 			expiresIn: '1h'
 		})

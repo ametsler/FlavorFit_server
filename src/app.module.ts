@@ -5,13 +5,16 @@ import { AuthModule } from './auth/auth.module'
 import { UsersModule } from './users/users.module'
 import { IngredientsModule } from './recipes/ingredients/ingredients.module'
 import { RecipesModule } from './recipes/recipes.module'
-import { OrdersModule } from './orders/orders.module'
 import { PrismaModule } from './prisma/prisma.module'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { getGraphQLConfig } from 'src/config/graphql.config'
 import { APP_PIPE } from '@nestjs/core'
+import { StepModule } from './recipes/step/step.module';
+import { CommentsModule } from './comments/comments.module';
+import { OrdersModule } from './orders/orders.module';
+import { DeliveriesModule } from './deliveries/deliveries.module';
 
 @Module({
 	imports: [
@@ -27,7 +30,10 @@ import { APP_PIPE } from '@nestjs/core'
 		IngredientsModule,
 		RecipesModule,
 		OrdersModule,
-		PrismaModule
+		PrismaModule,
+		StepModule,
+		CommentsModule,
+		DeliveriesModule
 	],
 	controllers: [AppController],
 	providers: [

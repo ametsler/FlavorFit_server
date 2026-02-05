@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { PrismaService } from 'src/prisma/prisma.service'
-import type { UserUpdateInput } from 'prisma/generated/models/user'
 import type { Prisma } from 'prisma/generated/prisma/client'
 import { hash } from 'argon2'
+import { UpdateUserInput } from 'src/users/inputs/update-user.input'
 
 @Injectable()
 export class UsersService {
@@ -31,9 +31,9 @@ export class UsersService {
 		})
 	}
 
-	async updateProfile(id: string, input: UserUpdateInput) {
-		const { profile, bodyMeasurement, password, ...data } = input
-		// TODO: Check user exists
+	async updateProfile(id: string, input: UpdateUserInput) {
+		const { profile, bodyMeasurement, password, email, role } = input
+
 		const user = await this.findById(id)
 
 		if (!user) {
@@ -47,26 +47,26 @@ export class UsersService {
 			? {
 					profile: {
 						upsert: {
-							create: profile as Prisma.ProfileCreateWithoutUserInput,
-							update: profile as Prisma.ProfileUpdateWithoutUserInput
+							create: profile,
+							update: profile
 						}
 					}
 				}
 			: {}
 
-		// const updateBodyMeasurement: Prisma.XOR<
-		// 	Prisma.UserUpdateInput,
-		// 	Prisma.UserUncheckedUpdateInput
-		// > = bodyMeasurement
-		// 	? {
-		// 			bodyMeasurement: {
-		// 				upsert: {
-		// 					create: bodyMeasurement,
-		// 					update: bodyMeasurement
-		// 				}
-		// 			}
-		// 		}
-		// 	: {}
+		const updateBodyMeasurement: Prisma.XOR<
+			Prisma.UserUpdateInput,
+			Prisma.UserUncheckedUpdateInput
+		> = bodyMeasurement
+			? {
+					bodyMeasurement: {
+						upsert: {
+							create: bodyMeasurement,
+							update: bodyMeasurement
+						}
+					}
+				}
+			: {}
 
 		const hashedPassword = password
 			? {
@@ -79,8 +79,9 @@ export class UsersService {
 			data: {
 				...hashedPassword,
 				...updateProfile,
-				// ...updateBodyMeasurement,
-				email: data.email
+				...updateBodyMeasurement,
+				email,
+				role
 			},
 			include: {
 				bodyMeasurement: true,

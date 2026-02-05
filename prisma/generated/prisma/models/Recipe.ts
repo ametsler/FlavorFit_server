@@ -32,6 +32,7 @@ export type RecipeAvgAggregateOutputType = {
   calories: number | null
   protein: number | null
   fats: number | null
+  carbohydrates: number | null
   fiber: number | null
   rating: runtime.Decimal | null
 }
@@ -42,6 +43,7 @@ export type RecipeSumAggregateOutputType = {
   calories: number | null
   protein: number | null
   fats: number | null
+  carbohydrates: number | null
   fiber: number | null
   rating: runtime.Decimal | null
 }
@@ -57,6 +59,7 @@ export type RecipeMinAggregateOutputType = {
   calories: number | null
   protein: number | null
   fats: number | null
+  carbohydrates: number | null
   fiber: number | null
   rating: runtime.Decimal | null
   authorId: string | null
@@ -76,6 +79,7 @@ export type RecipeMaxAggregateOutputType = {
   calories: number | null
   protein: number | null
   fats: number | null
+  carbohydrates: number | null
   fiber: number | null
   rating: runtime.Decimal | null
   authorId: string | null
@@ -95,6 +99,7 @@ export type RecipeCountAggregateOutputType = {
   calories: number
   protein: number
   fats: number
+  carbohydrates: number
   fiber: number
   rating: number
   authorId: number
@@ -111,6 +116,7 @@ export type RecipeAvgAggregateInputType = {
   calories?: true
   protein?: true
   fats?: true
+  carbohydrates?: true
   fiber?: true
   rating?: true
 }
@@ -121,6 +127,7 @@ export type RecipeSumAggregateInputType = {
   calories?: true
   protein?: true
   fats?: true
+  carbohydrates?: true
   fiber?: true
   rating?: true
 }
@@ -136,6 +143,7 @@ export type RecipeMinAggregateInputType = {
   calories?: true
   protein?: true
   fats?: true
+  carbohydrates?: true
   fiber?: true
   rating?: true
   authorId?: true
@@ -155,6 +163,7 @@ export type RecipeMaxAggregateInputType = {
   calories?: true
   protein?: true
   fats?: true
+  carbohydrates?: true
   fiber?: true
   rating?: true
   authorId?: true
@@ -174,6 +183,7 @@ export type RecipeCountAggregateInputType = {
   calories?: true
   protein?: true
   fats?: true
+  carbohydrates?: true
   fiber?: true
   rating?: true
   authorId?: true
@@ -280,6 +290,7 @@ export type RecipeGroupByOutputType = {
   calories: number | null
   protein: number | null
   fats: number | null
+  carbohydrates: number | null
   fiber: number | null
   rating: runtime.Decimal | null
   authorId: string
@@ -322,6 +333,7 @@ export type RecipeWhereInput = {
   calories?: Prisma.IntNullableFilter<"Recipe"> | number | null
   protein?: Prisma.IntNullableFilter<"Recipe"> | number | null
   fats?: Prisma.IntNullableFilter<"Recipe"> | number | null
+  carbohydrates?: Prisma.IntNullableFilter<"Recipe"> | number | null
   fiber?: Prisma.IntNullableFilter<"Recipe"> | number | null
   rating?: Prisma.DecimalNullableFilter<"Recipe"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId?: Prisma.StringFilter<"Recipe"> | string
@@ -333,6 +345,7 @@ export type RecipeWhereInput = {
   comments?: Prisma.CommentListRelationFilter
   likes?: Prisma.RecipeLikeListRelationFilter
   RecipeView?: Prisma.RecipeViewListRelationFilter
+  RecipeTag?: Prisma.RecipeTagListRelationFilter
   author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   dishType?: Prisma.XOR<Prisma.DishTypeScalarRelationFilter, Prisma.DishTypeWhereInput>
 }
@@ -348,6 +361,7 @@ export type RecipeOrderByWithRelationInput = {
   calories?: Prisma.SortOrderInput | Prisma.SortOrder
   protein?: Prisma.SortOrderInput | Prisma.SortOrder
   fats?: Prisma.SortOrderInput | Prisma.SortOrder
+  carbohydrates?: Prisma.SortOrderInput | Prisma.SortOrder
   fiber?: Prisma.SortOrderInput | Prisma.SortOrder
   rating?: Prisma.SortOrderInput | Prisma.SortOrder
   authorId?: Prisma.SortOrder
@@ -359,6 +373,7 @@ export type RecipeOrderByWithRelationInput = {
   comments?: Prisma.CommentOrderByRelationAggregateInput
   likes?: Prisma.RecipeLikeOrderByRelationAggregateInput
   RecipeView?: Prisma.RecipeViewOrderByRelationAggregateInput
+  RecipeTag?: Prisma.RecipeTagOrderByRelationAggregateInput
   author?: Prisma.UserOrderByWithRelationInput
   dishType?: Prisma.DishTypeOrderByWithRelationInput
 }
@@ -377,6 +392,7 @@ export type RecipeWhereUniqueInput = Prisma.AtLeast<{
   calories?: Prisma.IntNullableFilter<"Recipe"> | number | null
   protein?: Prisma.IntNullableFilter<"Recipe"> | number | null
   fats?: Prisma.IntNullableFilter<"Recipe"> | number | null
+  carbohydrates?: Prisma.IntNullableFilter<"Recipe"> | number | null
   fiber?: Prisma.IntNullableFilter<"Recipe"> | number | null
   rating?: Prisma.DecimalNullableFilter<"Recipe"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId?: Prisma.StringFilter<"Recipe"> | string
@@ -388,6 +404,7 @@ export type RecipeWhereUniqueInput = Prisma.AtLeast<{
   comments?: Prisma.CommentListRelationFilter
   likes?: Prisma.RecipeLikeListRelationFilter
   RecipeView?: Prisma.RecipeViewListRelationFilter
+  RecipeTag?: Prisma.RecipeTagListRelationFilter
   author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   dishType?: Prisma.XOR<Prisma.DishTypeScalarRelationFilter, Prisma.DishTypeWhereInput>
 }, "id">
@@ -403,6 +420,7 @@ export type RecipeOrderByWithAggregationInput = {
   calories?: Prisma.SortOrderInput | Prisma.SortOrder
   protein?: Prisma.SortOrderInput | Prisma.SortOrder
   fats?: Prisma.SortOrderInput | Prisma.SortOrder
+  carbohydrates?: Prisma.SortOrderInput | Prisma.SortOrder
   fiber?: Prisma.SortOrderInput | Prisma.SortOrder
   rating?: Prisma.SortOrderInput | Prisma.SortOrder
   authorId?: Prisma.SortOrder
@@ -430,6 +448,7 @@ export type RecipeScalarWhereWithAggregatesInput = {
   calories?: Prisma.IntNullableWithAggregatesFilter<"Recipe"> | number | null
   protein?: Prisma.IntNullableWithAggregatesFilter<"Recipe"> | number | null
   fats?: Prisma.IntNullableWithAggregatesFilter<"Recipe"> | number | null
+  carbohydrates?: Prisma.IntNullableWithAggregatesFilter<"Recipe"> | number | null
   fiber?: Prisma.IntNullableWithAggregatesFilter<"Recipe"> | number | null
   rating?: Prisma.DecimalNullableWithAggregatesFilter<"Recipe"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId?: Prisma.StringWithAggregatesFilter<"Recipe"> | string
@@ -449,6 +468,7 @@ export type RecipeCreateInput = {
   calories?: number | null
   protein?: number | null
   fats?: number | null
+  carbohydrates?: number | null
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
@@ -458,6 +478,7 @@ export type RecipeCreateInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutRecipeInput
   likes?: Prisma.RecipeLikeCreateNestedManyWithoutRecipeInput
   RecipeView?: Prisma.RecipeViewCreateNestedManyWithoutRecipeInput
+  RecipeTag?: Prisma.RecipeTagCreateNestedManyWithoutRecipesInput
   author: Prisma.UserCreateNestedOneWithoutRecipeInput
   dishType: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
 }
@@ -473,6 +494,7 @@ export type RecipeUncheckedCreateInput = {
   calories?: number | null
   protein?: number | null
   fats?: number | null
+  carbohydrates?: number | null
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId: string
@@ -484,6 +506,7 @@ export type RecipeUncheckedCreateInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutRecipeInput
   likes?: Prisma.RecipeLikeUncheckedCreateNestedManyWithoutRecipeInput
   RecipeView?: Prisma.RecipeViewUncheckedCreateNestedManyWithoutRecipeInput
+  RecipeTag?: Prisma.RecipeTagUncheckedCreateNestedManyWithoutRecipesInput
 }
 
 export type RecipeUpdateInput = {
@@ -497,6 +520,7 @@ export type RecipeUpdateInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -506,6 +530,7 @@ export type RecipeUpdateInput = {
   comments?: Prisma.CommentUpdateManyWithoutRecipeNestedInput
   likes?: Prisma.RecipeLikeUpdateManyWithoutRecipeNestedInput
   RecipeView?: Prisma.RecipeViewUpdateManyWithoutRecipeNestedInput
+  RecipeTag?: Prisma.RecipeTagUpdateManyWithoutRecipesNestedInput
   author?: Prisma.UserUpdateOneRequiredWithoutRecipeNestedInput
   dishType?: Prisma.DishTypeUpdateOneRequiredWithoutRecipesNestedInput
 }
@@ -521,6 +546,7 @@ export type RecipeUncheckedUpdateInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -532,6 +558,7 @@ export type RecipeUncheckedUpdateInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutRecipeNestedInput
   likes?: Prisma.RecipeLikeUncheckedUpdateManyWithoutRecipeNestedInput
   RecipeView?: Prisma.RecipeViewUncheckedUpdateManyWithoutRecipeNestedInput
+  RecipeTag?: Prisma.RecipeTagUncheckedUpdateManyWithoutRecipesNestedInput
 }
 
 export type RecipeCreateManyInput = {
@@ -545,6 +572,7 @@ export type RecipeCreateManyInput = {
   calories?: number | null
   protein?: number | null
   fats?: number | null
+  carbohydrates?: number | null
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId: string
@@ -564,6 +592,7 @@ export type RecipeUpdateManyMutationInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -581,6 +610,7 @@ export type RecipeUncheckedUpdateManyInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -605,6 +635,7 @@ export type RecipeCountOrderByAggregateInput = {
   calories?: Prisma.SortOrder
   protein?: Prisma.SortOrder
   fats?: Prisma.SortOrder
+  carbohydrates?: Prisma.SortOrder
   fiber?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
@@ -619,6 +650,7 @@ export type RecipeAvgOrderByAggregateInput = {
   calories?: Prisma.SortOrder
   protein?: Prisma.SortOrder
   fats?: Prisma.SortOrder
+  carbohydrates?: Prisma.SortOrder
   fiber?: Prisma.SortOrder
   rating?: Prisma.SortOrder
 }
@@ -634,6 +666,7 @@ export type RecipeMaxOrderByAggregateInput = {
   calories?: Prisma.SortOrder
   protein?: Prisma.SortOrder
   fats?: Prisma.SortOrder
+  carbohydrates?: Prisma.SortOrder
   fiber?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
@@ -653,6 +686,7 @@ export type RecipeMinOrderByAggregateInput = {
   calories?: Prisma.SortOrder
   protein?: Prisma.SortOrder
   fats?: Prisma.SortOrder
+  carbohydrates?: Prisma.SortOrder
   fiber?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
@@ -667,6 +701,7 @@ export type RecipeSumOrderByAggregateInput = {
   calories?: Prisma.SortOrder
   protein?: Prisma.SortOrder
   fats?: Prisma.SortOrder
+  carbohydrates?: Prisma.SortOrder
   fiber?: Prisma.SortOrder
   rating?: Prisma.SortOrder
 }
@@ -813,6 +848,44 @@ export type RecipeUpdateOneRequiredWithoutRecipeIngredientsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.RecipeUpdateToOneWithWhereWithoutRecipeIngredientsInput, Prisma.RecipeUpdateWithoutRecipeIngredientsInput>, Prisma.RecipeUncheckedUpdateWithoutRecipeIngredientsInput>
 }
 
+export type RecipeCreateNestedManyWithoutRecipeTagInput = {
+  create?: Prisma.XOR<Prisma.RecipeCreateWithoutRecipeTagInput, Prisma.RecipeUncheckedCreateWithoutRecipeTagInput> | Prisma.RecipeCreateWithoutRecipeTagInput[] | Prisma.RecipeUncheckedCreateWithoutRecipeTagInput[]
+  connectOrCreate?: Prisma.RecipeCreateOrConnectWithoutRecipeTagInput | Prisma.RecipeCreateOrConnectWithoutRecipeTagInput[]
+  connect?: Prisma.RecipeWhereUniqueInput | Prisma.RecipeWhereUniqueInput[]
+}
+
+export type RecipeUncheckedCreateNestedManyWithoutRecipeTagInput = {
+  create?: Prisma.XOR<Prisma.RecipeCreateWithoutRecipeTagInput, Prisma.RecipeUncheckedCreateWithoutRecipeTagInput> | Prisma.RecipeCreateWithoutRecipeTagInput[] | Prisma.RecipeUncheckedCreateWithoutRecipeTagInput[]
+  connectOrCreate?: Prisma.RecipeCreateOrConnectWithoutRecipeTagInput | Prisma.RecipeCreateOrConnectWithoutRecipeTagInput[]
+  connect?: Prisma.RecipeWhereUniqueInput | Prisma.RecipeWhereUniqueInput[]
+}
+
+export type RecipeUpdateManyWithoutRecipeTagNestedInput = {
+  create?: Prisma.XOR<Prisma.RecipeCreateWithoutRecipeTagInput, Prisma.RecipeUncheckedCreateWithoutRecipeTagInput> | Prisma.RecipeCreateWithoutRecipeTagInput[] | Prisma.RecipeUncheckedCreateWithoutRecipeTagInput[]
+  connectOrCreate?: Prisma.RecipeCreateOrConnectWithoutRecipeTagInput | Prisma.RecipeCreateOrConnectWithoutRecipeTagInput[]
+  upsert?: Prisma.RecipeUpsertWithWhereUniqueWithoutRecipeTagInput | Prisma.RecipeUpsertWithWhereUniqueWithoutRecipeTagInput[]
+  set?: Prisma.RecipeWhereUniqueInput | Prisma.RecipeWhereUniqueInput[]
+  disconnect?: Prisma.RecipeWhereUniqueInput | Prisma.RecipeWhereUniqueInput[]
+  delete?: Prisma.RecipeWhereUniqueInput | Prisma.RecipeWhereUniqueInput[]
+  connect?: Prisma.RecipeWhereUniqueInput | Prisma.RecipeWhereUniqueInput[]
+  update?: Prisma.RecipeUpdateWithWhereUniqueWithoutRecipeTagInput | Prisma.RecipeUpdateWithWhereUniqueWithoutRecipeTagInput[]
+  updateMany?: Prisma.RecipeUpdateManyWithWhereWithoutRecipeTagInput | Prisma.RecipeUpdateManyWithWhereWithoutRecipeTagInput[]
+  deleteMany?: Prisma.RecipeScalarWhereInput | Prisma.RecipeScalarWhereInput[]
+}
+
+export type RecipeUncheckedUpdateManyWithoutRecipeTagNestedInput = {
+  create?: Prisma.XOR<Prisma.RecipeCreateWithoutRecipeTagInput, Prisma.RecipeUncheckedCreateWithoutRecipeTagInput> | Prisma.RecipeCreateWithoutRecipeTagInput[] | Prisma.RecipeUncheckedCreateWithoutRecipeTagInput[]
+  connectOrCreate?: Prisma.RecipeCreateOrConnectWithoutRecipeTagInput | Prisma.RecipeCreateOrConnectWithoutRecipeTagInput[]
+  upsert?: Prisma.RecipeUpsertWithWhereUniqueWithoutRecipeTagInput | Prisma.RecipeUpsertWithWhereUniqueWithoutRecipeTagInput[]
+  set?: Prisma.RecipeWhereUniqueInput | Prisma.RecipeWhereUniqueInput[]
+  disconnect?: Prisma.RecipeWhereUniqueInput | Prisma.RecipeWhereUniqueInput[]
+  delete?: Prisma.RecipeWhereUniqueInput | Prisma.RecipeWhereUniqueInput[]
+  connect?: Prisma.RecipeWhereUniqueInput | Prisma.RecipeWhereUniqueInput[]
+  update?: Prisma.RecipeUpdateWithWhereUniqueWithoutRecipeTagInput | Prisma.RecipeUpdateWithWhereUniqueWithoutRecipeTagInput[]
+  updateMany?: Prisma.RecipeUpdateManyWithWhereWithoutRecipeTagInput | Prisma.RecipeUpdateManyWithWhereWithoutRecipeTagInput[]
+  deleteMany?: Prisma.RecipeScalarWhereInput | Prisma.RecipeScalarWhereInput[]
+}
+
 export type RecipeCreateNestedManyWithoutAuthorInput = {
   create?: Prisma.XOR<Prisma.RecipeCreateWithoutAuthorInput, Prisma.RecipeUncheckedCreateWithoutAuthorInput> | Prisma.RecipeCreateWithoutAuthorInput[] | Prisma.RecipeUncheckedCreateWithoutAuthorInput[]
   connectOrCreate?: Prisma.RecipeCreateOrConnectWithoutAuthorInput | Prisma.RecipeCreateOrConnectWithoutAuthorInput[]
@@ -866,6 +939,7 @@ export type RecipeCreateWithoutLikesInput = {
   calories?: number | null
   protein?: number | null
   fats?: number | null
+  carbohydrates?: number | null
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
@@ -874,6 +948,7 @@ export type RecipeCreateWithoutLikesInput = {
   recipeSteps?: Prisma.RecipeStepCreateNestedManyWithoutRecipeInput
   comments?: Prisma.CommentCreateNestedManyWithoutRecipeInput
   RecipeView?: Prisma.RecipeViewCreateNestedManyWithoutRecipeInput
+  RecipeTag?: Prisma.RecipeTagCreateNestedManyWithoutRecipesInput
   author: Prisma.UserCreateNestedOneWithoutRecipeInput
   dishType: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
 }
@@ -889,6 +964,7 @@ export type RecipeUncheckedCreateWithoutLikesInput = {
   calories?: number | null
   protein?: number | null
   fats?: number | null
+  carbohydrates?: number | null
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId: string
@@ -899,6 +975,7 @@ export type RecipeUncheckedCreateWithoutLikesInput = {
   recipeSteps?: Prisma.RecipeStepUncheckedCreateNestedManyWithoutRecipeInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutRecipeInput
   RecipeView?: Prisma.RecipeViewUncheckedCreateNestedManyWithoutRecipeInput
+  RecipeTag?: Prisma.RecipeTagUncheckedCreateNestedManyWithoutRecipesInput
 }
 
 export type RecipeCreateOrConnectWithoutLikesInput = {
@@ -928,6 +1005,7 @@ export type RecipeUpdateWithoutLikesInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -936,6 +1014,7 @@ export type RecipeUpdateWithoutLikesInput = {
   recipeSteps?: Prisma.RecipeStepUpdateManyWithoutRecipeNestedInput
   comments?: Prisma.CommentUpdateManyWithoutRecipeNestedInput
   RecipeView?: Prisma.RecipeViewUpdateManyWithoutRecipeNestedInput
+  RecipeTag?: Prisma.RecipeTagUpdateManyWithoutRecipesNestedInput
   author?: Prisma.UserUpdateOneRequiredWithoutRecipeNestedInput
   dishType?: Prisma.DishTypeUpdateOneRequiredWithoutRecipesNestedInput
 }
@@ -951,6 +1030,7 @@ export type RecipeUncheckedUpdateWithoutLikesInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -961,6 +1041,7 @@ export type RecipeUncheckedUpdateWithoutLikesInput = {
   recipeSteps?: Prisma.RecipeStepUncheckedUpdateManyWithoutRecipeNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutRecipeNestedInput
   RecipeView?: Prisma.RecipeViewUncheckedUpdateManyWithoutRecipeNestedInput
+  RecipeTag?: Prisma.RecipeTagUncheckedUpdateManyWithoutRecipesNestedInput
 }
 
 export type RecipeCreateWithoutRecipeViewInput = {
@@ -974,6 +1055,7 @@ export type RecipeCreateWithoutRecipeViewInput = {
   calories?: number | null
   protein?: number | null
   fats?: number | null
+  carbohydrates?: number | null
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
@@ -982,6 +1064,7 @@ export type RecipeCreateWithoutRecipeViewInput = {
   recipeSteps?: Prisma.RecipeStepCreateNestedManyWithoutRecipeInput
   comments?: Prisma.CommentCreateNestedManyWithoutRecipeInput
   likes?: Prisma.RecipeLikeCreateNestedManyWithoutRecipeInput
+  RecipeTag?: Prisma.RecipeTagCreateNestedManyWithoutRecipesInput
   author: Prisma.UserCreateNestedOneWithoutRecipeInput
   dishType: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
 }
@@ -997,6 +1080,7 @@ export type RecipeUncheckedCreateWithoutRecipeViewInput = {
   calories?: number | null
   protein?: number | null
   fats?: number | null
+  carbohydrates?: number | null
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId: string
@@ -1007,6 +1091,7 @@ export type RecipeUncheckedCreateWithoutRecipeViewInput = {
   recipeSteps?: Prisma.RecipeStepUncheckedCreateNestedManyWithoutRecipeInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutRecipeInput
   likes?: Prisma.RecipeLikeUncheckedCreateNestedManyWithoutRecipeInput
+  RecipeTag?: Prisma.RecipeTagUncheckedCreateNestedManyWithoutRecipesInput
 }
 
 export type RecipeCreateOrConnectWithoutRecipeViewInput = {
@@ -1036,6 +1121,7 @@ export type RecipeUpdateWithoutRecipeViewInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1044,6 +1130,7 @@ export type RecipeUpdateWithoutRecipeViewInput = {
   recipeSteps?: Prisma.RecipeStepUpdateManyWithoutRecipeNestedInput
   comments?: Prisma.CommentUpdateManyWithoutRecipeNestedInput
   likes?: Prisma.RecipeLikeUpdateManyWithoutRecipeNestedInput
+  RecipeTag?: Prisma.RecipeTagUpdateManyWithoutRecipesNestedInput
   author?: Prisma.UserUpdateOneRequiredWithoutRecipeNestedInput
   dishType?: Prisma.DishTypeUpdateOneRequiredWithoutRecipesNestedInput
 }
@@ -1059,6 +1146,7 @@ export type RecipeUncheckedUpdateWithoutRecipeViewInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1069,6 +1157,7 @@ export type RecipeUncheckedUpdateWithoutRecipeViewInput = {
   recipeSteps?: Prisma.RecipeStepUncheckedUpdateManyWithoutRecipeNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutRecipeNestedInput
   likes?: Prisma.RecipeLikeUncheckedUpdateManyWithoutRecipeNestedInput
+  RecipeTag?: Prisma.RecipeTagUncheckedUpdateManyWithoutRecipesNestedInput
 }
 
 export type RecipeCreateWithoutCommentsInput = {
@@ -1082,6 +1171,7 @@ export type RecipeCreateWithoutCommentsInput = {
   calories?: number | null
   protein?: number | null
   fats?: number | null
+  carbohydrates?: number | null
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
@@ -1090,6 +1180,7 @@ export type RecipeCreateWithoutCommentsInput = {
   recipeSteps?: Prisma.RecipeStepCreateNestedManyWithoutRecipeInput
   likes?: Prisma.RecipeLikeCreateNestedManyWithoutRecipeInput
   RecipeView?: Prisma.RecipeViewCreateNestedManyWithoutRecipeInput
+  RecipeTag?: Prisma.RecipeTagCreateNestedManyWithoutRecipesInput
   author: Prisma.UserCreateNestedOneWithoutRecipeInput
   dishType: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
 }
@@ -1105,6 +1196,7 @@ export type RecipeUncheckedCreateWithoutCommentsInput = {
   calories?: number | null
   protein?: number | null
   fats?: number | null
+  carbohydrates?: number | null
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId: string
@@ -1115,6 +1207,7 @@ export type RecipeUncheckedCreateWithoutCommentsInput = {
   recipeSteps?: Prisma.RecipeStepUncheckedCreateNestedManyWithoutRecipeInput
   likes?: Prisma.RecipeLikeUncheckedCreateNestedManyWithoutRecipeInput
   RecipeView?: Prisma.RecipeViewUncheckedCreateNestedManyWithoutRecipeInput
+  RecipeTag?: Prisma.RecipeTagUncheckedCreateNestedManyWithoutRecipesInput
 }
 
 export type RecipeCreateOrConnectWithoutCommentsInput = {
@@ -1144,6 +1237,7 @@ export type RecipeUpdateWithoutCommentsInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1152,6 +1246,7 @@ export type RecipeUpdateWithoutCommentsInput = {
   recipeSteps?: Prisma.RecipeStepUpdateManyWithoutRecipeNestedInput
   likes?: Prisma.RecipeLikeUpdateManyWithoutRecipeNestedInput
   RecipeView?: Prisma.RecipeViewUpdateManyWithoutRecipeNestedInput
+  RecipeTag?: Prisma.RecipeTagUpdateManyWithoutRecipesNestedInput
   author?: Prisma.UserUpdateOneRequiredWithoutRecipeNestedInput
   dishType?: Prisma.DishTypeUpdateOneRequiredWithoutRecipesNestedInput
 }
@@ -1167,6 +1262,7 @@ export type RecipeUncheckedUpdateWithoutCommentsInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1177,6 +1273,7 @@ export type RecipeUncheckedUpdateWithoutCommentsInput = {
   recipeSteps?: Prisma.RecipeStepUncheckedUpdateManyWithoutRecipeNestedInput
   likes?: Prisma.RecipeLikeUncheckedUpdateManyWithoutRecipeNestedInput
   RecipeView?: Prisma.RecipeViewUncheckedUpdateManyWithoutRecipeNestedInput
+  RecipeTag?: Prisma.RecipeTagUncheckedUpdateManyWithoutRecipesNestedInput
 }
 
 export type RecipeCreateWithoutDishTypeInput = {
@@ -1190,6 +1287,7 @@ export type RecipeCreateWithoutDishTypeInput = {
   calories?: number | null
   protein?: number | null
   fats?: number | null
+  carbohydrates?: number | null
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
@@ -1199,6 +1297,7 @@ export type RecipeCreateWithoutDishTypeInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutRecipeInput
   likes?: Prisma.RecipeLikeCreateNestedManyWithoutRecipeInput
   RecipeView?: Prisma.RecipeViewCreateNestedManyWithoutRecipeInput
+  RecipeTag?: Prisma.RecipeTagCreateNestedManyWithoutRecipesInput
   author: Prisma.UserCreateNestedOneWithoutRecipeInput
 }
 
@@ -1213,6 +1312,7 @@ export type RecipeUncheckedCreateWithoutDishTypeInput = {
   calories?: number | null
   protein?: number | null
   fats?: number | null
+  carbohydrates?: number | null
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId: string
@@ -1223,6 +1323,7 @@ export type RecipeUncheckedCreateWithoutDishTypeInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutRecipeInput
   likes?: Prisma.RecipeLikeUncheckedCreateNestedManyWithoutRecipeInput
   RecipeView?: Prisma.RecipeViewUncheckedCreateNestedManyWithoutRecipeInput
+  RecipeTag?: Prisma.RecipeTagUncheckedCreateNestedManyWithoutRecipesInput
 }
 
 export type RecipeCreateOrConnectWithoutDishTypeInput = {
@@ -1265,6 +1366,7 @@ export type RecipeScalarWhereInput = {
   calories?: Prisma.IntNullableFilter<"Recipe"> | number | null
   protein?: Prisma.IntNullableFilter<"Recipe"> | number | null
   fats?: Prisma.IntNullableFilter<"Recipe"> | number | null
+  carbohydrates?: Prisma.IntNullableFilter<"Recipe"> | number | null
   fiber?: Prisma.IntNullableFilter<"Recipe"> | number | null
   rating?: Prisma.DecimalNullableFilter<"Recipe"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId?: Prisma.StringFilter<"Recipe"> | string
@@ -1284,6 +1386,7 @@ export type RecipeCreateWithoutRecipeStepsInput = {
   calories?: number | null
   protein?: number | null
   fats?: number | null
+  carbohydrates?: number | null
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
@@ -1292,6 +1395,7 @@ export type RecipeCreateWithoutRecipeStepsInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutRecipeInput
   likes?: Prisma.RecipeLikeCreateNestedManyWithoutRecipeInput
   RecipeView?: Prisma.RecipeViewCreateNestedManyWithoutRecipeInput
+  RecipeTag?: Prisma.RecipeTagCreateNestedManyWithoutRecipesInput
   author: Prisma.UserCreateNestedOneWithoutRecipeInput
   dishType: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
 }
@@ -1307,6 +1411,7 @@ export type RecipeUncheckedCreateWithoutRecipeStepsInput = {
   calories?: number | null
   protein?: number | null
   fats?: number | null
+  carbohydrates?: number | null
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId: string
@@ -1317,6 +1422,7 @@ export type RecipeUncheckedCreateWithoutRecipeStepsInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutRecipeInput
   likes?: Prisma.RecipeLikeUncheckedCreateNestedManyWithoutRecipeInput
   RecipeView?: Prisma.RecipeViewUncheckedCreateNestedManyWithoutRecipeInput
+  RecipeTag?: Prisma.RecipeTagUncheckedCreateNestedManyWithoutRecipesInput
 }
 
 export type RecipeCreateOrConnectWithoutRecipeStepsInput = {
@@ -1346,6 +1452,7 @@ export type RecipeUpdateWithoutRecipeStepsInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1354,6 +1461,7 @@ export type RecipeUpdateWithoutRecipeStepsInput = {
   comments?: Prisma.CommentUpdateManyWithoutRecipeNestedInput
   likes?: Prisma.RecipeLikeUpdateManyWithoutRecipeNestedInput
   RecipeView?: Prisma.RecipeViewUpdateManyWithoutRecipeNestedInput
+  RecipeTag?: Prisma.RecipeTagUpdateManyWithoutRecipesNestedInput
   author?: Prisma.UserUpdateOneRequiredWithoutRecipeNestedInput
   dishType?: Prisma.DishTypeUpdateOneRequiredWithoutRecipesNestedInput
 }
@@ -1369,6 +1477,7 @@ export type RecipeUncheckedUpdateWithoutRecipeStepsInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1379,6 +1488,7 @@ export type RecipeUncheckedUpdateWithoutRecipeStepsInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutRecipeNestedInput
   likes?: Prisma.RecipeLikeUncheckedUpdateManyWithoutRecipeNestedInput
   RecipeView?: Prisma.RecipeViewUncheckedUpdateManyWithoutRecipeNestedInput
+  RecipeTag?: Prisma.RecipeTagUncheckedUpdateManyWithoutRecipesNestedInput
 }
 
 export type RecipeCreateWithoutRecipeIngredientsInput = {
@@ -1392,6 +1502,7 @@ export type RecipeCreateWithoutRecipeIngredientsInput = {
   calories?: number | null
   protein?: number | null
   fats?: number | null
+  carbohydrates?: number | null
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
@@ -1400,6 +1511,7 @@ export type RecipeCreateWithoutRecipeIngredientsInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutRecipeInput
   likes?: Prisma.RecipeLikeCreateNestedManyWithoutRecipeInput
   RecipeView?: Prisma.RecipeViewCreateNestedManyWithoutRecipeInput
+  RecipeTag?: Prisma.RecipeTagCreateNestedManyWithoutRecipesInput
   author: Prisma.UserCreateNestedOneWithoutRecipeInput
   dishType: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
 }
@@ -1415,6 +1527,7 @@ export type RecipeUncheckedCreateWithoutRecipeIngredientsInput = {
   calories?: number | null
   protein?: number | null
   fats?: number | null
+  carbohydrates?: number | null
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId: string
@@ -1425,6 +1538,7 @@ export type RecipeUncheckedCreateWithoutRecipeIngredientsInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutRecipeInput
   likes?: Prisma.RecipeLikeUncheckedCreateNestedManyWithoutRecipeInput
   RecipeView?: Prisma.RecipeViewUncheckedCreateNestedManyWithoutRecipeInput
+  RecipeTag?: Prisma.RecipeTagUncheckedCreateNestedManyWithoutRecipesInput
 }
 
 export type RecipeCreateOrConnectWithoutRecipeIngredientsInput = {
@@ -1454,6 +1568,7 @@ export type RecipeUpdateWithoutRecipeIngredientsInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1462,6 +1577,7 @@ export type RecipeUpdateWithoutRecipeIngredientsInput = {
   comments?: Prisma.CommentUpdateManyWithoutRecipeNestedInput
   likes?: Prisma.RecipeLikeUpdateManyWithoutRecipeNestedInput
   RecipeView?: Prisma.RecipeViewUpdateManyWithoutRecipeNestedInput
+  RecipeTag?: Prisma.RecipeTagUpdateManyWithoutRecipesNestedInput
   author?: Prisma.UserUpdateOneRequiredWithoutRecipeNestedInput
   dishType?: Prisma.DishTypeUpdateOneRequiredWithoutRecipesNestedInput
 }
@@ -1477,6 +1593,7 @@ export type RecipeUncheckedUpdateWithoutRecipeIngredientsInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1487,6 +1604,78 @@ export type RecipeUncheckedUpdateWithoutRecipeIngredientsInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutRecipeNestedInput
   likes?: Prisma.RecipeLikeUncheckedUpdateManyWithoutRecipeNestedInput
   RecipeView?: Prisma.RecipeViewUncheckedUpdateManyWithoutRecipeNestedInput
+  RecipeTag?: Prisma.RecipeTagUncheckedUpdateManyWithoutRecipesNestedInput
+}
+
+export type RecipeCreateWithoutRecipeTagInput = {
+  id?: string
+  title: string
+  description: string
+  cuisineType: string
+  difficulty: $Enums.Difficulty
+  prepTime: number
+  cookTime: number
+  calories?: number | null
+  protein?: number | null
+  fats?: number | null
+  carbohydrates?: number | null
+  fiber?: number | null
+  rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  recipeIngredients?: Prisma.RecipeIngredientCreateNestedManyWithoutRecipeInput
+  recipeSteps?: Prisma.RecipeStepCreateNestedManyWithoutRecipeInput
+  comments?: Prisma.CommentCreateNestedManyWithoutRecipeInput
+  likes?: Prisma.RecipeLikeCreateNestedManyWithoutRecipeInput
+  RecipeView?: Prisma.RecipeViewCreateNestedManyWithoutRecipeInput
+  author: Prisma.UserCreateNestedOneWithoutRecipeInput
+  dishType: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
+}
+
+export type RecipeUncheckedCreateWithoutRecipeTagInput = {
+  id?: string
+  title: string
+  description: string
+  cuisineType: string
+  difficulty: $Enums.Difficulty
+  prepTime: number
+  cookTime: number
+  calories?: number | null
+  protein?: number | null
+  fats?: number | null
+  carbohydrates?: number | null
+  fiber?: number | null
+  rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  authorId: string
+  dishTypeId: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  recipeIngredients?: Prisma.RecipeIngredientUncheckedCreateNestedManyWithoutRecipeInput
+  recipeSteps?: Prisma.RecipeStepUncheckedCreateNestedManyWithoutRecipeInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutRecipeInput
+  likes?: Prisma.RecipeLikeUncheckedCreateNestedManyWithoutRecipeInput
+  RecipeView?: Prisma.RecipeViewUncheckedCreateNestedManyWithoutRecipeInput
+}
+
+export type RecipeCreateOrConnectWithoutRecipeTagInput = {
+  where: Prisma.RecipeWhereUniqueInput
+  create: Prisma.XOR<Prisma.RecipeCreateWithoutRecipeTagInput, Prisma.RecipeUncheckedCreateWithoutRecipeTagInput>
+}
+
+export type RecipeUpsertWithWhereUniqueWithoutRecipeTagInput = {
+  where: Prisma.RecipeWhereUniqueInput
+  update: Prisma.XOR<Prisma.RecipeUpdateWithoutRecipeTagInput, Prisma.RecipeUncheckedUpdateWithoutRecipeTagInput>
+  create: Prisma.XOR<Prisma.RecipeCreateWithoutRecipeTagInput, Prisma.RecipeUncheckedCreateWithoutRecipeTagInput>
+}
+
+export type RecipeUpdateWithWhereUniqueWithoutRecipeTagInput = {
+  where: Prisma.RecipeWhereUniqueInput
+  data: Prisma.XOR<Prisma.RecipeUpdateWithoutRecipeTagInput, Prisma.RecipeUncheckedUpdateWithoutRecipeTagInput>
+}
+
+export type RecipeUpdateManyWithWhereWithoutRecipeTagInput = {
+  where: Prisma.RecipeScalarWhereInput
+  data: Prisma.XOR<Prisma.RecipeUpdateManyMutationInput, Prisma.RecipeUncheckedUpdateManyWithoutRecipeTagInput>
 }
 
 export type RecipeCreateWithoutAuthorInput = {
@@ -1500,6 +1689,7 @@ export type RecipeCreateWithoutAuthorInput = {
   calories?: number | null
   protein?: number | null
   fats?: number | null
+  carbohydrates?: number | null
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
@@ -1509,6 +1699,7 @@ export type RecipeCreateWithoutAuthorInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutRecipeInput
   likes?: Prisma.RecipeLikeCreateNestedManyWithoutRecipeInput
   RecipeView?: Prisma.RecipeViewCreateNestedManyWithoutRecipeInput
+  RecipeTag?: Prisma.RecipeTagCreateNestedManyWithoutRecipesInput
   dishType: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
 }
 
@@ -1523,6 +1714,7 @@ export type RecipeUncheckedCreateWithoutAuthorInput = {
   calories?: number | null
   protein?: number | null
   fats?: number | null
+  carbohydrates?: number | null
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dishTypeId: string
@@ -1533,6 +1725,7 @@ export type RecipeUncheckedCreateWithoutAuthorInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutRecipeInput
   likes?: Prisma.RecipeLikeUncheckedCreateNestedManyWithoutRecipeInput
   RecipeView?: Prisma.RecipeViewUncheckedCreateNestedManyWithoutRecipeInput
+  RecipeTag?: Prisma.RecipeTagUncheckedCreateNestedManyWithoutRecipesInput
 }
 
 export type RecipeCreateOrConnectWithoutAuthorInput = {
@@ -1572,6 +1765,7 @@ export type RecipeCreateManyDishTypeInput = {
   calories?: number | null
   protein?: number | null
   fats?: number | null
+  carbohydrates?: number | null
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId: string
@@ -1590,6 +1784,7 @@ export type RecipeUpdateWithoutDishTypeInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1599,6 +1794,7 @@ export type RecipeUpdateWithoutDishTypeInput = {
   comments?: Prisma.CommentUpdateManyWithoutRecipeNestedInput
   likes?: Prisma.RecipeLikeUpdateManyWithoutRecipeNestedInput
   RecipeView?: Prisma.RecipeViewUpdateManyWithoutRecipeNestedInput
+  RecipeTag?: Prisma.RecipeTagUpdateManyWithoutRecipesNestedInput
   author?: Prisma.UserUpdateOneRequiredWithoutRecipeNestedInput
 }
 
@@ -1613,6 +1809,7 @@ export type RecipeUncheckedUpdateWithoutDishTypeInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1623,6 +1820,7 @@ export type RecipeUncheckedUpdateWithoutDishTypeInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutRecipeNestedInput
   likes?: Prisma.RecipeLikeUncheckedUpdateManyWithoutRecipeNestedInput
   RecipeView?: Prisma.RecipeViewUncheckedUpdateManyWithoutRecipeNestedInput
+  RecipeTag?: Prisma.RecipeTagUncheckedUpdateManyWithoutRecipesNestedInput
 }
 
 export type RecipeUncheckedUpdateManyWithoutDishTypeInput = {
@@ -1636,9 +1834,80 @@ export type RecipeUncheckedUpdateManyWithoutDishTypeInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type RecipeUpdateWithoutRecipeTagInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  cookTime?: Prisma.IntFieldUpdateOperationsInput | number
+  calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  recipeIngredients?: Prisma.RecipeIngredientUpdateManyWithoutRecipeNestedInput
+  recipeSteps?: Prisma.RecipeStepUpdateManyWithoutRecipeNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutRecipeNestedInput
+  likes?: Prisma.RecipeLikeUpdateManyWithoutRecipeNestedInput
+  RecipeView?: Prisma.RecipeViewUpdateManyWithoutRecipeNestedInput
+  author?: Prisma.UserUpdateOneRequiredWithoutRecipeNestedInput
+  dishType?: Prisma.DishTypeUpdateOneRequiredWithoutRecipesNestedInput
+}
+
+export type RecipeUncheckedUpdateWithoutRecipeTagInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  cookTime?: Prisma.IntFieldUpdateOperationsInput | number
+  calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  authorId?: Prisma.StringFieldUpdateOperationsInput | string
+  dishTypeId?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  recipeIngredients?: Prisma.RecipeIngredientUncheckedUpdateManyWithoutRecipeNestedInput
+  recipeSteps?: Prisma.RecipeStepUncheckedUpdateManyWithoutRecipeNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutRecipeNestedInput
+  likes?: Prisma.RecipeLikeUncheckedUpdateManyWithoutRecipeNestedInput
+  RecipeView?: Prisma.RecipeViewUncheckedUpdateManyWithoutRecipeNestedInput
+}
+
+export type RecipeUncheckedUpdateManyWithoutRecipeTagInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
+  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  cookTime?: Prisma.IntFieldUpdateOperationsInput | number
+  calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  authorId?: Prisma.StringFieldUpdateOperationsInput | string
+  dishTypeId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -1654,6 +1923,7 @@ export type RecipeCreateManyAuthorInput = {
   calories?: number | null
   protein?: number | null
   fats?: number | null
+  carbohydrates?: number | null
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dishTypeId: string
@@ -1672,6 +1942,7 @@ export type RecipeUpdateWithoutAuthorInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1681,6 +1952,7 @@ export type RecipeUpdateWithoutAuthorInput = {
   comments?: Prisma.CommentUpdateManyWithoutRecipeNestedInput
   likes?: Prisma.RecipeLikeUpdateManyWithoutRecipeNestedInput
   RecipeView?: Prisma.RecipeViewUpdateManyWithoutRecipeNestedInput
+  RecipeTag?: Prisma.RecipeTagUpdateManyWithoutRecipesNestedInput
   dishType?: Prisma.DishTypeUpdateOneRequiredWithoutRecipesNestedInput
 }
 
@@ -1695,6 +1967,7 @@ export type RecipeUncheckedUpdateWithoutAuthorInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dishTypeId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1705,6 +1978,7 @@ export type RecipeUncheckedUpdateWithoutAuthorInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutRecipeNestedInput
   likes?: Prisma.RecipeLikeUncheckedUpdateManyWithoutRecipeNestedInput
   RecipeView?: Prisma.RecipeViewUncheckedUpdateManyWithoutRecipeNestedInput
+  RecipeTag?: Prisma.RecipeTagUncheckedUpdateManyWithoutRecipesNestedInput
 }
 
 export type RecipeUncheckedUpdateManyWithoutAuthorInput = {
@@ -1718,6 +1992,7 @@ export type RecipeUncheckedUpdateManyWithoutAuthorInput = {
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fats?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  carbohydrates?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dishTypeId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1736,6 +2011,7 @@ export type RecipeCountOutputType = {
   comments: number
   likes: number
   RecipeView: number
+  RecipeTag: number
 }
 
 export type RecipeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1744,6 +2020,7 @@ export type RecipeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions
   comments?: boolean | RecipeCountOutputTypeCountCommentsArgs
   likes?: boolean | RecipeCountOutputTypeCountLikesArgs
   RecipeView?: boolean | RecipeCountOutputTypeCountRecipeViewArgs
+  RecipeTag?: boolean | RecipeCountOutputTypeCountRecipeTagArgs
 }
 
 /**
@@ -1791,6 +2068,13 @@ export type RecipeCountOutputTypeCountRecipeViewArgs<ExtArgs extends runtime.Typ
   where?: Prisma.RecipeViewWhereInput
 }
 
+/**
+ * RecipeCountOutputType without action
+ */
+export type RecipeCountOutputTypeCountRecipeTagArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RecipeTagWhereInput
+}
+
 
 export type RecipeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1803,6 +2087,7 @@ export type RecipeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   calories?: boolean
   protein?: boolean
   fats?: boolean
+  carbohydrates?: boolean
   fiber?: boolean
   rating?: boolean
   authorId?: boolean
@@ -1814,6 +2099,7 @@ export type RecipeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   comments?: boolean | Prisma.Recipe$commentsArgs<ExtArgs>
   likes?: boolean | Prisma.Recipe$likesArgs<ExtArgs>
   RecipeView?: boolean | Prisma.Recipe$RecipeViewArgs<ExtArgs>
+  RecipeTag?: boolean | Prisma.Recipe$RecipeTagArgs<ExtArgs>
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   dishType?: boolean | Prisma.DishTypeDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.RecipeCountOutputTypeDefaultArgs<ExtArgs>
@@ -1830,6 +2116,7 @@ export type RecipeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   calories?: boolean
   protein?: boolean
   fats?: boolean
+  carbohydrates?: boolean
   fiber?: boolean
   rating?: boolean
   authorId?: boolean
@@ -1851,6 +2138,7 @@ export type RecipeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   calories?: boolean
   protein?: boolean
   fats?: boolean
+  carbohydrates?: boolean
   fiber?: boolean
   rating?: boolean
   authorId?: boolean
@@ -1872,6 +2160,7 @@ export type RecipeSelectScalar = {
   calories?: boolean
   protein?: boolean
   fats?: boolean
+  carbohydrates?: boolean
   fiber?: boolean
   rating?: boolean
   authorId?: boolean
@@ -1880,13 +2169,14 @@ export type RecipeSelectScalar = {
   updatedAt?: boolean
 }
 
-export type RecipeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "cuisineType" | "difficulty" | "prepTime" | "cookTime" | "calories" | "protein" | "fats" | "fiber" | "rating" | "authorId" | "dishTypeId" | "createdAt" | "updatedAt", ExtArgs["result"]["recipe"]>
+export type RecipeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "cuisineType" | "difficulty" | "prepTime" | "cookTime" | "calories" | "protein" | "fats" | "carbohydrates" | "fiber" | "rating" | "authorId" | "dishTypeId" | "createdAt" | "updatedAt", ExtArgs["result"]["recipe"]>
 export type RecipeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   recipeIngredients?: boolean | Prisma.Recipe$recipeIngredientsArgs<ExtArgs>
   recipeSteps?: boolean | Prisma.Recipe$recipeStepsArgs<ExtArgs>
   comments?: boolean | Prisma.Recipe$commentsArgs<ExtArgs>
   likes?: boolean | Prisma.Recipe$likesArgs<ExtArgs>
   RecipeView?: boolean | Prisma.Recipe$RecipeViewArgs<ExtArgs>
+  RecipeTag?: boolean | Prisma.Recipe$RecipeTagArgs<ExtArgs>
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   dishType?: boolean | Prisma.DishTypeDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.RecipeCountOutputTypeDefaultArgs<ExtArgs>
@@ -1908,6 +2198,7 @@ export type $RecipePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     comments: Prisma.$CommentPayload<ExtArgs>[]
     likes: Prisma.$RecipeLikePayload<ExtArgs>[]
     RecipeView: Prisma.$RecipeViewPayload<ExtArgs>[]
+    RecipeTag: Prisma.$RecipeTagPayload<ExtArgs>[]
     author: Prisma.$UserPayload<ExtArgs>
     dishType: Prisma.$DishTypePayload<ExtArgs>
   }
@@ -1922,6 +2213,7 @@ export type $RecipePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     calories: number | null
     protein: number | null
     fats: number | null
+    carbohydrates: number | null
     fiber: number | null
     rating: runtime.Decimal | null
     authorId: string
@@ -2327,6 +2619,7 @@ export interface Prisma__RecipeClient<T, Null = never, ExtArgs extends runtime.T
   comments<T extends Prisma.Recipe$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Recipe$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   likes<T extends Prisma.Recipe$likesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Recipe$likesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecipeLikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   RecipeView<T extends Prisma.Recipe$RecipeViewArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Recipe$RecipeViewArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecipeViewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  RecipeTag<T extends Prisma.Recipe$RecipeTagArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Recipe$RecipeTagArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecipeTagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   author<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   dishType<T extends Prisma.DishTypeDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DishTypeDefaultArgs<ExtArgs>>): Prisma.Prisma__DishTypeClient<runtime.Types.Result.GetResult<Prisma.$DishTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
@@ -2368,6 +2661,7 @@ export interface RecipeFieldRefs {
   readonly calories: Prisma.FieldRef<"Recipe", 'Int'>
   readonly protein: Prisma.FieldRef<"Recipe", 'Int'>
   readonly fats: Prisma.FieldRef<"Recipe", 'Int'>
+  readonly carbohydrates: Prisma.FieldRef<"Recipe", 'Int'>
   readonly fiber: Prisma.FieldRef<"Recipe", 'Int'>
   readonly rating: Prisma.FieldRef<"Recipe", 'Decimal'>
   readonly authorId: Prisma.FieldRef<"Recipe", 'String'>
@@ -2887,6 +3181,30 @@ export type Recipe$RecipeViewArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.RecipeViewScalarFieldEnum | Prisma.RecipeViewScalarFieldEnum[]
+}
+
+/**
+ * Recipe.RecipeTag
+ */
+export type Recipe$RecipeTagArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RecipeTag
+   */
+  select?: Prisma.RecipeTagSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RecipeTag
+   */
+  omit?: Prisma.RecipeTagOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RecipeTagInclude<ExtArgs> | null
+  where?: Prisma.RecipeTagWhereInput
+  orderBy?: Prisma.RecipeTagOrderByWithRelationInput | Prisma.RecipeTagOrderByWithRelationInput[]
+  cursor?: Prisma.RecipeTagWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RecipeTagScalarFieldEnum | Prisma.RecipeTagScalarFieldEnum[]
 }
 
 /**

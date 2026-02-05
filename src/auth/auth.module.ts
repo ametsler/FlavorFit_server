@@ -4,7 +4,6 @@ import { AuthResolver } from './auth.resolver'
 import { JwtModule } from '@nestjs/jwt'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { getJwtConfig } from 'src/config/jwt.config'
-import { UsersService } from 'src/users/users.service'
 import { UsersModule } from 'src/users/users.module'
 import { JwtStrategy } from 'src/auth/strategy/strategy'
 import { PassportModule } from '@nestjs/passport'
@@ -19,6 +18,6 @@ import { PassportModule } from '@nestjs/passport'
 		}),
 		UsersModule
 	],
-	providers: [JwtStrategy, AuthService, AuthResolver, UsersService]
+	providers: [JwtStrategy, AuthService, AuthResolver]
 })
 export class AuthModule {}

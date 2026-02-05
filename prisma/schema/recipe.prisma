@@ -1,23 +1,25 @@
 model Recipe {
   id String @id @default(cuid())
 
-  title       String
-  description String
-  cuisineType String     @map("cuisine_type")
-  difficulty  Difficulty
-  prepTime    Int        @map("prep_time")
-  cookTime    Int        @map("cook_time")
-  calories    Int?
-  protein     Int?
-  fats        Int?
-  fiber       Int?
-  rating      Decimal?
+  title         String
+  description   String
+  cuisineType   String     @map("cuisine_type")
+  difficulty    Difficulty
+  prepTime      Int        @map("prep_time")
+  cookTime      Int        @map("cook_time")
+  calories      Int?
+  protein       Int?
+  fats          Int?
+  carbohydrates Int?
+  fiber         Int?
+  rating        Decimal?
 
   recipeIngredients RecipeIngredient[]
   recipeSteps       RecipeStep[]
   comments          Comment[]
   likes             RecipeLike[]
   RecipeView        RecipeView[]
+  RecipeTag         RecipeTag[]
 
   author     User     @relation(fields: [authorId], references: [id])
   authorId   String   @map("author_id")
@@ -95,6 +97,19 @@ model Ingredient {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("ingredients")
+}
+
+model RecipeTag {
+  id String @id @default(cuid())
+
+  name String @unique
+
+  recipes Recipe[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("recipe_tags")
 }
 
 enum Unit {
