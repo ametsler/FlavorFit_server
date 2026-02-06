@@ -14,7 +14,8 @@ import { APP_PIPE } from '@nestjs/core'
 import { StepModule } from './recipes/step/step.module';
 import { CommentsModule } from './comments/comments.module';
 import { OrdersModule } from './orders/orders.module';
-import { DeliveriesModule } from './deliveries/deliveries.module';
+import { DeliveriesModule } from './deliveries/deliveries.module'
+import '../prisma/prisma-enum-registration'
 
 @Module({
 	imports: [

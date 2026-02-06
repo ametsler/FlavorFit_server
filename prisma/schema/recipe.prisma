@@ -12,14 +12,14 @@ model Recipe {
   fats          Int?
   carbohydrates Int?
   fiber         Int?
-  rating        Decimal?
+  rating        Decimal?   @db.Decimal(3, 2)
 
   recipeIngredients RecipeIngredient[]
   recipeSteps       RecipeStep[]
   comments          Comment[]
   likes             RecipeLike[]
   RecipeView        RecipeView[]
-  RecipeTag         RecipeTag[]
+  RecipeTag         RecipeToRecipeTag[]
 
   author     User     @relation(fields: [authorId], references: [id])
   authorId   String   @map("author_id")
@@ -66,7 +66,7 @@ model RecipeStep {
 model RecipeIngredient {
   id String @id @default(cuid())
 
-  quantity Decimal
+  quantity Decimal @db.Decimal(8, 3)
 
   OrderItem OrderItem[]
 
@@ -85,10 +85,10 @@ model RecipeIngredient {
 model Ingredient {
   id String @id @default(cuid())
 
-  iconUrl String  @map("icon_url")
+  iconUrl String?  @map("icon_url")
   name    String
   unit    Unit
-  price   Decimal
+  price   Decimal? @db.Decimal(10, 2)
 
   recipes    RecipeIngredient[]
   orderItems OrderItem[]
@@ -96,6 +96,7 @@ model Ingredient {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
+  @@unique([name, unit])
   @@map("ingredients")
 }
 
@@ -104,12 +105,24 @@ model RecipeTag {
 
   name String @unique
 
-  recipes Recipe[]
+  recipes RecipeToRecipeTag[]
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("recipe_tags")
+}
+
+model RecipeToRecipeTag {
+  recipes     Recipe    @relation(fields: [recipesId], references: [id])
+  recipesId   String    @map("recipe_id")
+  recipeTag   RecipeTag @relation(fields: [recipeTagId], references: [id])
+  recipeTagId String    @map("recipe_tag_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@id([recipesId, recipeTagId])
+  @@map("recipe_to_recipe_tag")
 }
 
 enum Unit {

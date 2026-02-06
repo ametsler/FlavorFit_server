@@ -174,7 +174,7 @@ export type RecipeTagWhereInput = {
   name?: Prisma.StringFilter<"RecipeTag"> | string
   createdAt?: Prisma.DateTimeFilter<"RecipeTag"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"RecipeTag"> | Date | string
-  recipes?: Prisma.RecipeListRelationFilter
+  recipes?: Prisma.RecipeToRecipeTagListRelationFilter
 }
 
 export type RecipeTagOrderByWithRelationInput = {
@@ -182,7 +182,7 @@ export type RecipeTagOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-  recipes?: Prisma.RecipeOrderByRelationAggregateInput
+  recipes?: Prisma.RecipeToRecipeTagOrderByRelationAggregateInput
 }
 
 export type RecipeTagWhereUniqueInput = Prisma.AtLeast<{
@@ -193,7 +193,7 @@ export type RecipeTagWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.RecipeTagWhereInput | Prisma.RecipeTagWhereInput[]
   createdAt?: Prisma.DateTimeFilter<"RecipeTag"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"RecipeTag"> | Date | string
-  recipes?: Prisma.RecipeListRelationFilter
+  recipes?: Prisma.RecipeToRecipeTagListRelationFilter
 }, "id" | "name">
 
 export type RecipeTagOrderByWithAggregationInput = {
@@ -221,7 +221,7 @@ export type RecipeTagCreateInput = {
   name: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  recipes?: Prisma.RecipeCreateNestedManyWithoutRecipeTagInput
+  recipes?: Prisma.RecipeToRecipeTagCreateNestedManyWithoutRecipeTagInput
 }
 
 export type RecipeTagUncheckedCreateInput = {
@@ -229,7 +229,7 @@ export type RecipeTagUncheckedCreateInput = {
   name: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  recipes?: Prisma.RecipeUncheckedCreateNestedManyWithoutRecipeTagInput
+  recipes?: Prisma.RecipeToRecipeTagUncheckedCreateNestedManyWithoutRecipeTagInput
 }
 
 export type RecipeTagUpdateInput = {
@@ -237,7 +237,7 @@ export type RecipeTagUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  recipes?: Prisma.RecipeUpdateManyWithoutRecipeTagNestedInput
+  recipes?: Prisma.RecipeToRecipeTagUpdateManyWithoutRecipeTagNestedInput
 }
 
 export type RecipeTagUncheckedUpdateInput = {
@@ -245,7 +245,7 @@ export type RecipeTagUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  recipes?: Prisma.RecipeUncheckedUpdateManyWithoutRecipeTagNestedInput
+  recipes?: Prisma.RecipeToRecipeTagUncheckedUpdateManyWithoutRecipeTagNestedInput
 }
 
 export type RecipeTagCreateManyInput = {
@@ -269,16 +269,6 @@ export type RecipeTagUncheckedUpdateManyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type RecipeTagListRelationFilter = {
-  every?: Prisma.RecipeTagWhereInput
-  some?: Prisma.RecipeTagWhereInput
-  none?: Prisma.RecipeTagWhereInput
-}
-
-export type RecipeTagOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
-}
-
 export type RecipeTagCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
@@ -300,42 +290,23 @@ export type RecipeTagMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type RecipeTagCreateNestedManyWithoutRecipesInput = {
-  create?: Prisma.XOR<Prisma.RecipeTagCreateWithoutRecipesInput, Prisma.RecipeTagUncheckedCreateWithoutRecipesInput> | Prisma.RecipeTagCreateWithoutRecipesInput[] | Prisma.RecipeTagUncheckedCreateWithoutRecipesInput[]
-  connectOrCreate?: Prisma.RecipeTagCreateOrConnectWithoutRecipesInput | Prisma.RecipeTagCreateOrConnectWithoutRecipesInput[]
-  connect?: Prisma.RecipeTagWhereUniqueInput | Prisma.RecipeTagWhereUniqueInput[]
+export type RecipeTagScalarRelationFilter = {
+  is?: Prisma.RecipeTagWhereInput
+  isNot?: Prisma.RecipeTagWhereInput
 }
 
-export type RecipeTagUncheckedCreateNestedManyWithoutRecipesInput = {
-  create?: Prisma.XOR<Prisma.RecipeTagCreateWithoutRecipesInput, Prisma.RecipeTagUncheckedCreateWithoutRecipesInput> | Prisma.RecipeTagCreateWithoutRecipesInput[] | Prisma.RecipeTagUncheckedCreateWithoutRecipesInput[]
-  connectOrCreate?: Prisma.RecipeTagCreateOrConnectWithoutRecipesInput | Prisma.RecipeTagCreateOrConnectWithoutRecipesInput[]
-  connect?: Prisma.RecipeTagWhereUniqueInput | Prisma.RecipeTagWhereUniqueInput[]
+export type RecipeTagCreateNestedOneWithoutRecipesInput = {
+  create?: Prisma.XOR<Prisma.RecipeTagCreateWithoutRecipesInput, Prisma.RecipeTagUncheckedCreateWithoutRecipesInput>
+  connectOrCreate?: Prisma.RecipeTagCreateOrConnectWithoutRecipesInput
+  connect?: Prisma.RecipeTagWhereUniqueInput
 }
 
-export type RecipeTagUpdateManyWithoutRecipesNestedInput = {
-  create?: Prisma.XOR<Prisma.RecipeTagCreateWithoutRecipesInput, Prisma.RecipeTagUncheckedCreateWithoutRecipesInput> | Prisma.RecipeTagCreateWithoutRecipesInput[] | Prisma.RecipeTagUncheckedCreateWithoutRecipesInput[]
-  connectOrCreate?: Prisma.RecipeTagCreateOrConnectWithoutRecipesInput | Prisma.RecipeTagCreateOrConnectWithoutRecipesInput[]
-  upsert?: Prisma.RecipeTagUpsertWithWhereUniqueWithoutRecipesInput | Prisma.RecipeTagUpsertWithWhereUniqueWithoutRecipesInput[]
-  set?: Prisma.RecipeTagWhereUniqueInput | Prisma.RecipeTagWhereUniqueInput[]
-  disconnect?: Prisma.RecipeTagWhereUniqueInput | Prisma.RecipeTagWhereUniqueInput[]
-  delete?: Prisma.RecipeTagWhereUniqueInput | Prisma.RecipeTagWhereUniqueInput[]
-  connect?: Prisma.RecipeTagWhereUniqueInput | Prisma.RecipeTagWhereUniqueInput[]
-  update?: Prisma.RecipeTagUpdateWithWhereUniqueWithoutRecipesInput | Prisma.RecipeTagUpdateWithWhereUniqueWithoutRecipesInput[]
-  updateMany?: Prisma.RecipeTagUpdateManyWithWhereWithoutRecipesInput | Prisma.RecipeTagUpdateManyWithWhereWithoutRecipesInput[]
-  deleteMany?: Prisma.RecipeTagScalarWhereInput | Prisma.RecipeTagScalarWhereInput[]
-}
-
-export type RecipeTagUncheckedUpdateManyWithoutRecipesNestedInput = {
-  create?: Prisma.XOR<Prisma.RecipeTagCreateWithoutRecipesInput, Prisma.RecipeTagUncheckedCreateWithoutRecipesInput> | Prisma.RecipeTagCreateWithoutRecipesInput[] | Prisma.RecipeTagUncheckedCreateWithoutRecipesInput[]
-  connectOrCreate?: Prisma.RecipeTagCreateOrConnectWithoutRecipesInput | Prisma.RecipeTagCreateOrConnectWithoutRecipesInput[]
-  upsert?: Prisma.RecipeTagUpsertWithWhereUniqueWithoutRecipesInput | Prisma.RecipeTagUpsertWithWhereUniqueWithoutRecipesInput[]
-  set?: Prisma.RecipeTagWhereUniqueInput | Prisma.RecipeTagWhereUniqueInput[]
-  disconnect?: Prisma.RecipeTagWhereUniqueInput | Prisma.RecipeTagWhereUniqueInput[]
-  delete?: Prisma.RecipeTagWhereUniqueInput | Prisma.RecipeTagWhereUniqueInput[]
-  connect?: Prisma.RecipeTagWhereUniqueInput | Prisma.RecipeTagWhereUniqueInput[]
-  update?: Prisma.RecipeTagUpdateWithWhereUniqueWithoutRecipesInput | Prisma.RecipeTagUpdateWithWhereUniqueWithoutRecipesInput[]
-  updateMany?: Prisma.RecipeTagUpdateManyWithWhereWithoutRecipesInput | Prisma.RecipeTagUpdateManyWithWhereWithoutRecipesInput[]
-  deleteMany?: Prisma.RecipeTagScalarWhereInput | Prisma.RecipeTagScalarWhereInput[]
+export type RecipeTagUpdateOneRequiredWithoutRecipesNestedInput = {
+  create?: Prisma.XOR<Prisma.RecipeTagCreateWithoutRecipesInput, Prisma.RecipeTagUncheckedCreateWithoutRecipesInput>
+  connectOrCreate?: Prisma.RecipeTagCreateOrConnectWithoutRecipesInput
+  upsert?: Prisma.RecipeTagUpsertWithoutRecipesInput
+  connect?: Prisma.RecipeTagWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.RecipeTagUpdateToOneWithWhereWithoutRecipesInput, Prisma.RecipeTagUpdateWithoutRecipesInput>, Prisma.RecipeTagUncheckedUpdateWithoutRecipesInput>
 }
 
 export type RecipeTagCreateWithoutRecipesInput = {
@@ -357,30 +328,15 @@ export type RecipeTagCreateOrConnectWithoutRecipesInput = {
   create: Prisma.XOR<Prisma.RecipeTagCreateWithoutRecipesInput, Prisma.RecipeTagUncheckedCreateWithoutRecipesInput>
 }
 
-export type RecipeTagUpsertWithWhereUniqueWithoutRecipesInput = {
-  where: Prisma.RecipeTagWhereUniqueInput
+export type RecipeTagUpsertWithoutRecipesInput = {
   update: Prisma.XOR<Prisma.RecipeTagUpdateWithoutRecipesInput, Prisma.RecipeTagUncheckedUpdateWithoutRecipesInput>
   create: Prisma.XOR<Prisma.RecipeTagCreateWithoutRecipesInput, Prisma.RecipeTagUncheckedCreateWithoutRecipesInput>
+  where?: Prisma.RecipeTagWhereInput
 }
 
-export type RecipeTagUpdateWithWhereUniqueWithoutRecipesInput = {
-  where: Prisma.RecipeTagWhereUniqueInput
+export type RecipeTagUpdateToOneWithWhereWithoutRecipesInput = {
+  where?: Prisma.RecipeTagWhereInput
   data: Prisma.XOR<Prisma.RecipeTagUpdateWithoutRecipesInput, Prisma.RecipeTagUncheckedUpdateWithoutRecipesInput>
-}
-
-export type RecipeTagUpdateManyWithWhereWithoutRecipesInput = {
-  where: Prisma.RecipeTagScalarWhereInput
-  data: Prisma.XOR<Prisma.RecipeTagUpdateManyMutationInput, Prisma.RecipeTagUncheckedUpdateManyWithoutRecipesInput>
-}
-
-export type RecipeTagScalarWhereInput = {
-  AND?: Prisma.RecipeTagScalarWhereInput | Prisma.RecipeTagScalarWhereInput[]
-  OR?: Prisma.RecipeTagScalarWhereInput[]
-  NOT?: Prisma.RecipeTagScalarWhereInput | Prisma.RecipeTagScalarWhereInput[]
-  id?: Prisma.StringFilter<"RecipeTag"> | string
-  name?: Prisma.StringFilter<"RecipeTag"> | string
-  createdAt?: Prisma.DateTimeFilter<"RecipeTag"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"RecipeTag"> | Date | string
 }
 
 export type RecipeTagUpdateWithoutRecipesInput = {
@@ -391,13 +347,6 @@ export type RecipeTagUpdateWithoutRecipesInput = {
 }
 
 export type RecipeTagUncheckedUpdateWithoutRecipesInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type RecipeTagUncheckedUpdateManyWithoutRecipesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -431,7 +380,7 @@ export type RecipeTagCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ex
  * RecipeTagCountOutputType without action
  */
 export type RecipeTagCountOutputTypeCountRecipesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.RecipeWhereInput
+  where?: Prisma.RecipeToRecipeTagWhereInput
 }
 
 
@@ -476,7 +425,7 @@ export type RecipeTagIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
 export type $RecipeTagPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "RecipeTag"
   objects: {
-    recipes: Prisma.$RecipePayload<ExtArgs>[]
+    recipes: Prisma.$RecipeToRecipeTagPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -877,7 +826,7 @@ readonly fields: RecipeTagFieldRefs;
  */
 export interface Prisma__RecipeTagClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  recipes<T extends Prisma.RecipeTag$recipesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RecipeTag$recipesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecipePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  recipes<T extends Prisma.RecipeTag$recipesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RecipeTag$recipesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecipeToRecipeTagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1303,23 +1252,23 @@ export type RecipeTagDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
  */
 export type RecipeTag$recipesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Recipe
+   * Select specific fields to fetch from the RecipeToRecipeTag
    */
-  select?: Prisma.RecipeSelect<ExtArgs> | null
+  select?: Prisma.RecipeToRecipeTagSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Recipe
+   * Omit specific fields from the RecipeToRecipeTag
    */
-  omit?: Prisma.RecipeOmit<ExtArgs> | null
+  omit?: Prisma.RecipeToRecipeTagOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.RecipeInclude<ExtArgs> | null
-  where?: Prisma.RecipeWhereInput
-  orderBy?: Prisma.RecipeOrderByWithRelationInput | Prisma.RecipeOrderByWithRelationInput[]
-  cursor?: Prisma.RecipeWhereUniqueInput
+  include?: Prisma.RecipeToRecipeTagInclude<ExtArgs> | null
+  where?: Prisma.RecipeToRecipeTagWhereInput
+  orderBy?: Prisma.RecipeToRecipeTagOrderByWithRelationInput | Prisma.RecipeToRecipeTagOrderByWithRelationInput[]
+  cursor?: Prisma.RecipeToRecipeTagWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.RecipeScalarFieldEnum | Prisma.RecipeScalarFieldEnum[]
+  distinct?: Prisma.RecipeToRecipeTagScalarFieldEnum | Prisma.RecipeToRecipeTagScalarFieldEnum[]
 }
 
 /**

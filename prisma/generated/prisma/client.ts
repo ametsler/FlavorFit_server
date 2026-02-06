@@ -103,6 +103,11 @@ export type Ingredient = Prisma.IngredientModel
  */
 export type RecipeTag = Prisma.RecipeTagModel
 /**
+ * Model RecipeToRecipeTag
+ * 
+ */
+export type RecipeToRecipeTag = Prisma.RecipeToRecipeTagModel
+/**
  * Model User
  * 
  */

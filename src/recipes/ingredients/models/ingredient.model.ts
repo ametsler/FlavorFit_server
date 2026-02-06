@@ -6,8 +6,8 @@ export class IngredientModel {
 	@Field(() => ID, { nullable: false })
 	id!: string
 
-	@Field(() => String, { nullable: false })
-	iconUrl!: string
+	@Field(() => String, { nullable: true })
+	iconUrl!: string | null
 
 	@Field(() => String, { nullable: false })
 	name!: string
@@ -15,8 +15,8 @@ export class IngredientModel {
 	@Field(() => Unit, { nullable: false })
 	unit!: `${Unit}`
 
-	@Field(() => String, { nullable: false })
-	price!: number
+	@Field(() => Number, { nullable: true })
+	price!: number | null
 
 	@Field(() => Date, { nullable: false })
 	createdAt!: Date

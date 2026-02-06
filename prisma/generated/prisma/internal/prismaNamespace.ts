@@ -397,6 +397,7 @@ export const ModelName = {
   RecipeIngredient: 'RecipeIngredient',
   Ingredient: 'Ingredient',
   RecipeTag: 'RecipeTag',
+  RecipeToRecipeTag: 'RecipeToRecipeTag',
   User: 'User',
   Profile: 'Profile',
   BodyMeasurement: 'BodyMeasurement'
@@ -415,7 +416,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "delivery" | "order" | "orderItem" | "recipeLike" | "recipeView" | "comment" | "commentLike" | "recipe" | "dishType" | "recipeStep" | "recipeIngredient" | "ingredient" | "recipeTag" | "user" | "profile" | "bodyMeasurement"
+    modelProps: "delivery" | "order" | "orderItem" | "recipeLike" | "recipeView" | "comment" | "commentLike" | "recipe" | "dishType" | "recipeStep" | "recipeIngredient" | "ingredient" | "recipeTag" | "recipeToRecipeTag" | "user" | "profile" | "bodyMeasurement"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1381,6 +1382,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    RecipeToRecipeTag: {
+      payload: Prisma.$RecipeToRecipeTagPayload<ExtArgs>
+      fields: Prisma.RecipeToRecipeTagFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RecipeToRecipeTagFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecipeToRecipeTagPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RecipeToRecipeTagFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecipeToRecipeTagPayload>
+        }
+        findFirst: {
+          args: Prisma.RecipeToRecipeTagFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecipeToRecipeTagPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RecipeToRecipeTagFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecipeToRecipeTagPayload>
+        }
+        findMany: {
+          args: Prisma.RecipeToRecipeTagFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecipeToRecipeTagPayload>[]
+        }
+        create: {
+          args: Prisma.RecipeToRecipeTagCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecipeToRecipeTagPayload>
+        }
+        createMany: {
+          args: Prisma.RecipeToRecipeTagCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RecipeToRecipeTagCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecipeToRecipeTagPayload>[]
+        }
+        delete: {
+          args: Prisma.RecipeToRecipeTagDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecipeToRecipeTagPayload>
+        }
+        update: {
+          args: Prisma.RecipeToRecipeTagUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecipeToRecipeTagPayload>
+        }
+        deleteMany: {
+          args: Prisma.RecipeToRecipeTagDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RecipeToRecipeTagUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RecipeToRecipeTagUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecipeToRecipeTagPayload>[]
+        }
+        upsert: {
+          args: Prisma.RecipeToRecipeTagUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecipeToRecipeTagPayload>
+        }
+        aggregate: {
+          args: Prisma.RecipeToRecipeTagAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRecipeToRecipeTag>
+        }
+        groupBy: {
+          args: Prisma.RecipeToRecipeTagGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RecipeToRecipeTagGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RecipeToRecipeTagCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RecipeToRecipeTagCountAggregateOutputType> | number
+        }
+      }
+    }
     User: {
       payload: Prisma.$UserPayload<ExtArgs>
       fields: Prisma.UserFieldRefs
@@ -1807,6 +1882,15 @@ export const RecipeTagScalarFieldEnum = {
 export type RecipeTagScalarFieldEnum = (typeof RecipeTagScalarFieldEnum)[keyof typeof RecipeTagScalarFieldEnum]
 
 
+export const RecipeToRecipeTagScalarFieldEnum = {
+  recipesId: 'recipesId',
+  recipeTagId: 'recipeTagId',
+  createdAt: 'createdAt'
+} as const
+
+export type RecipeToRecipeTagScalarFieldEnum = (typeof RecipeToRecipeTagScalarFieldEnum)[keyof typeof RecipeToRecipeTagScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
@@ -2174,6 +2258,7 @@ export type GlobalOmitConfig = {
   recipeIngredient?: Prisma.RecipeIngredientOmit
   ingredient?: Prisma.IngredientOmit
   recipeTag?: Prisma.RecipeTagOmit
+  recipeToRecipeTag?: Prisma.RecipeToRecipeTagOmit
   user?: Prisma.UserOmit
   profile?: Prisma.ProfileOmit
   bodyMeasurement?: Prisma.BodyMeasurementOmit

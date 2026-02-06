@@ -25,7 +25,7 @@ export class UsersResolver {
 		return this.usersService.updateProfile(id, input)
 	}
 
-	@Query(() => UserModel, { name: 'users' })
+	@Query(() => [UserModel], { name: 'users' })
 	@Auth(Role.ADMIN)
 	async getUsers() {
 		return this.usersService.findAll()

@@ -85,36 +85,3 @@ export const NutritionGoal = {
 } as const
 
 export type NutritionGoal = (typeof NutritionGoal)[keyof typeof NutritionGoal]
-
-//ToDo переместить в другое место
-registerEnumType(DeliveryStatus, {
-	name: 'DeliveryStatus'
-})
-
-registerEnumType(OrderStatus, {
-	name: 'OrderStatus'
-})
-
-registerEnumType(Unit, {
-	name: 'Unit'
-})
-
-registerEnumType(Difficulty, {
-	name: 'Difficulty'
-})
-
-registerEnumType(Role, {
-	name: 'Role'
-})
-
-registerEnumType(Gender, {
-	name: 'Gender'
-})
-
-registerEnumType(ActivityLevel, {
-	name: 'ActivityLevel'
-})
-
-registerEnumType(NutritionGoal, {
-	name: 'NutritionGoal'
-})

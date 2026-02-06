@@ -16,6 +16,10 @@ export class UsersService {
 		return this.prisma.user.findUnique({
 			where: {
 				id
+			},
+			include: {
+				bodyMeasurement: true,
+				profile: true
 			}
 		})
 	}
