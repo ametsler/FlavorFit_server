@@ -14,6 +14,6 @@ export class CreateStepInput {
 	@Field(() => String, { nullable: true })
 	imgUrl!: string | null
 
-	@Field(() => String, { nullable: false })
-	recipeId!: string
+	@Field(() => String, { nullable: true })
+	recipeId!: string | null
 }

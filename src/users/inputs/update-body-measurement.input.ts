@@ -1,6 +1,10 @@
 import { Field, InputType, Int } from '@nestjs/graphql'
-import { ActivityLevel, NutritionGoal } from 'prisma/generated/prisma/enums'
-import { IsOptional, IsPositive } from 'class-validator'
+import {
+	ActivityLevel,
+	Gender,
+	NutritionGoal
+} from 'prisma/generated/prisma/enums'
+import { IsEnum, IsOptional, IsPositive } from 'class-validator'
 
 @InputType()
 export class UpdateBodyMeasurementInput {
@@ -41,9 +45,11 @@ export class UpdateBodyMeasurementInput {
 
 	@Field(() => ActivityLevel, { nullable: true })
 	@IsOptional()
+	@IsEnum(ActivityLevel)
 	activityLevel!: `${ActivityLevel}` | null
 
 	@Field(() => NutritionGoal, { nullable: true })
 	@IsOptional()
+	@IsEnum(ActivityLevel)
 	nutritionGoal!: `${NutritionGoal}` | null
 }

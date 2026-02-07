@@ -1,25 +1,30 @@
 import { Injectable } from '@nestjs/common';
 import { CreateDishInput } from './inputs/create-dish.input';
+import { PrismaService } from 'src/prisma/prisma.service'
 
 @Injectable()
 export class DishService {
-	create(createDishInput: CreateDishInput) {
-		return 'This action adds a new dish'
+	constructor(private readonly prisma: PrismaService) {}
+	create(data: CreateDishInput) {
+		return this.prisma.dishType.create({
+			data
+		})
 	}
 
 	findAll() {
-		return `This action returns all dish`
+		return this.prisma.dishType.findMany()
 	}
 
-	findOne(id: number) {
-		return `This action returns a #${id} dish`
+	update(id: string, data: CreateDishInput) {
+		return this.prisma.dishType.update({
+			where: { id },
+			data
+		})
 	}
 
-	update(id: string, updateDishInput: CreateDishInput) {
-		return `This action updates a #${id} dish`
-	}
-
-	remove(id: number) {
-		return `This action removes a #${id} dish`
+	remove(id: string) {
+		return this.prisma.dishType.delete({
+			where: { id }
+		})
 	}
 }

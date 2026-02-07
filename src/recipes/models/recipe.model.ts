@@ -12,6 +12,7 @@ import { IngredientModel } from 'src/recipes/ingredients/models/ingredient.model
 import { UserModel } from 'src/users/models/user.model'
 import { RecipeTagModel } from 'src/recipes/tag/models/recipe-tag.model'
 import { CommentModel } from 'src/comments/models/comment.model'
+import { RecipeIngredientModel } from 'src/recipes/models/recipe-ingredient.model'
 
 @ObjectType()
 export class RecipeModel {
@@ -23,6 +24,9 @@ export class RecipeModel {
 
 	@Field(() => String, { nullable: false })
 	description!: string
+
+	@Field(() => String, { nullable: false })
+	slug!: string
 
 	@Field(() => String, { nullable: false })
 	cuisineType!: string
@@ -66,11 +70,11 @@ export class RecipeModel {
 	@Field(() => Date, { nullable: false })
 	updatedAt!: Date
 
-	@Field(() => [IngredientModel], { nullable: true })
-	ingredients?: Array<IngredientModel>
+	@Field(() => [RecipeIngredientModel], { nullable: true })
+	ingredients?: Array<RecipeIngredientModel>
 
 	@Field(() => [RecipeStepModel], { nullable: true })
-	recipeSteps?: Array<RecipeStepModel>
+	steps?: Array<RecipeStepModel>
 
 	@Field(() => [CommentModel], { nullable: true })
 	comments?: Array<CommentModel>
@@ -79,14 +83,14 @@ export class RecipeModel {
 	likes?: Array<RecipeLikeModel>
 
 	@Field(() => [RecipeViewModel], { nullable: true })
-	RecipeView?: Array<RecipeViewModel>
+	views?: Array<RecipeViewModel>
 
 	@Field(() => [RecipeTagModel], { nullable: true })
-	RecipeTag?: Array<RecipeTagModel>
+	tags?: Array<RecipeTagModel>
 
 	@Field(() => UserModel, { nullable: false })
 	author?: UserModel
 
-	@Field(() => DishModel, { nullable: false })
+	@Field(() => DishModel, { nullable: true })
 	dishType?: DishModel
 }

@@ -9,8 +9,6 @@
 * 🟢 You can import this file directly.
 */
 
-import { registerEnumType } from '@nestjs/graphql'
-
 export const DeliveryStatus = {
   PREPARING: 'PREPARING',
   DELIVERY: 'DELIVERY',

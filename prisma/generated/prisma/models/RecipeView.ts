@@ -236,7 +236,7 @@ export type RecipeViewCreateInput = {
   id?: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  recipe: Prisma.RecipeCreateNestedOneWithoutRecipeViewInput
+  recipe: Prisma.RecipeCreateNestedOneWithoutViewsInput
   user: Prisma.UserCreateNestedOneWithoutRecipeViewInput
 }
 
@@ -252,7 +252,7 @@ export type RecipeViewUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  recipe?: Prisma.RecipeUpdateOneRequiredWithoutRecipeViewNestedInput
+  recipe?: Prisma.RecipeUpdateOneRequiredWithoutViewsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutRecipeViewNestedInput
 }
 
@@ -464,7 +464,7 @@ export type RecipeViewCreateWithoutUserInput = {
   id?: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  recipe: Prisma.RecipeCreateNestedOneWithoutRecipeViewInput
+  recipe: Prisma.RecipeCreateNestedOneWithoutViewsInput
 }
 
 export type RecipeViewUncheckedCreateWithoutUserInput = {
@@ -539,7 +539,7 @@ export type RecipeViewUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  recipe?: Prisma.RecipeUpdateOneRequiredWithoutRecipeViewNestedInput
+  recipe?: Prisma.RecipeUpdateOneRequiredWithoutViewsNestedInput
 }
 
 export type RecipeViewUncheckedUpdateWithoutUserInput = {

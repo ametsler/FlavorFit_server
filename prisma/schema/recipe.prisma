@@ -13,13 +13,14 @@ model Recipe {
   carbohydrates Int?
   fiber         Int?
   rating        Decimal?   @db.Decimal(3, 2)
+  slug          String     @unique
 
-  recipeIngredients RecipeIngredient[]
-  recipeSteps       RecipeStep[]
-  comments          Comment[]
-  likes             RecipeLike[]
-  RecipeView        RecipeView[]
-  RecipeTag         RecipeToRecipeTag[]
+  ingredients RecipeIngredient[]
+  steps       RecipeStep[]
+  comments    Comment[]
+  likes       RecipeLike[]
+  views       RecipeView[]
+  tags        RecipeToRecipeTag[]
 
   author     User     @relation(fields: [authorId], references: [id])
   authorId   String   @map("author_id")

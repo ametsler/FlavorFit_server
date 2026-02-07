@@ -308,7 +308,7 @@ export type RecipeStepCreateInput = {
   imgUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  recipe: Prisma.RecipeCreateNestedOneWithoutRecipeStepsInput
+  recipe: Prisma.RecipeCreateNestedOneWithoutStepsInput
 }
 
 export type RecipeStepUncheckedCreateInput = {
@@ -330,7 +330,7 @@ export type RecipeStepUpdateInput = {
   imgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  recipe?: Prisma.RecipeUpdateOneRequiredWithoutRecipeStepsNestedInput
+  recipe?: Prisma.RecipeUpdateOneRequiredWithoutStepsNestedInput
 }
 
 export type RecipeStepUncheckedUpdateInput = {

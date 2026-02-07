@@ -1813,6 +1813,7 @@ export const RecipeScalarFieldEnum = {
   carbohydrates: 'carbohydrates',
   fiber: 'fiber',
   rating: 'rating',
+  slug: 'slug',
   authorId: 'authorId',
   dishTypeId: 'dishTypeId',
   createdAt: 'createdAt',

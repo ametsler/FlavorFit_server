@@ -210,7 +210,7 @@ export type RecipeToRecipeTagScalarWhereWithAggregatesInput = {
 
 export type RecipeToRecipeTagCreateInput = {
   createdAt?: Date | string
-  recipes: Prisma.RecipeCreateNestedOneWithoutRecipeTagInput
+  recipes: Prisma.RecipeCreateNestedOneWithoutTagsInput
   recipeTag: Prisma.RecipeTagCreateNestedOneWithoutRecipesInput
 }
 
@@ -222,7 +222,7 @@ export type RecipeToRecipeTagUncheckedCreateInput = {
 
 export type RecipeToRecipeTagUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  recipes?: Prisma.RecipeUpdateOneRequiredWithoutRecipeTagNestedInput
+  recipes?: Prisma.RecipeUpdateOneRequiredWithoutTagsNestedInput
   recipeTag?: Prisma.RecipeTagUpdateOneRequiredWithoutRecipesNestedInput
 }
 
@@ -412,7 +412,7 @@ export type RecipeToRecipeTagScalarWhereInput = {
 
 export type RecipeToRecipeTagCreateWithoutRecipeTagInput = {
   createdAt?: Date | string
-  recipes: Prisma.RecipeCreateNestedOneWithoutRecipeTagInput
+  recipes: Prisma.RecipeCreateNestedOneWithoutTagsInput
 }
 
 export type RecipeToRecipeTagUncheckedCreateWithoutRecipeTagInput = {
@@ -473,7 +473,7 @@ export type RecipeToRecipeTagCreateManyRecipeTagInput = {
 
 export type RecipeToRecipeTagUpdateWithoutRecipeTagInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  recipes?: Prisma.RecipeUpdateOneRequiredWithoutRecipeTagNestedInput
+  recipes?: Prisma.RecipeUpdateOneRequiredWithoutTagsNestedInput
 }
 
 export type RecipeToRecipeTagUncheckedUpdateWithoutRecipeTagInput = {
