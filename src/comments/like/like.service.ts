@@ -1,34 +1,38 @@
 import { Injectable } from '@nestjs/common'
-import { CreateLikeInput } from './inputs/create-like.input'
 import { PrismaService } from 'src/prisma/prisma.service'
 
 @Injectable()
 export class LikeService {
 	constructor(private readonly prisma: PrismaService) {}
-	create(userId: string, data: CreateLikeInput) {
-		return this.prisma.commentLike.create({
-			data: {
-				userId: userId,
-				commentId: data.commentId
+	async toggle(userId: string, commentId: string) {
+		const data = {
+			commentId,
+			userId
+		}
+
+		const like = await this.prisma.commentLike.findUnique({
+			where: {
+				commentId_userId: data
 			}
 		})
+
+		if (like) {
+			return this.prisma.commentLike.delete({
+				where: {
+					commentId_userId: data
+				}
+			})
+		} else {
+			return this.prisma.commentLike.create({
+				data
+			})
+		}
 	}
 
-	findCount(data: CreateLikeInput) {
+	findCount(commentId: string) {
 		return this.prisma.commentLike.count({
 			where: {
-				commentId: data.commentId
-			}
-		})
-	}
-
-	remove(userId: string, data: CreateLikeInput) {
-		return this.prisma.commentLike.delete({
-			where: {
-				commentId_userId: {
-					commentId: data.commentId,
-					userId: userId
-				}
+				commentId
 			}
 		})
 	}

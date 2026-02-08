@@ -34,35 +34,52 @@ export class AdminRecipesService {
 		return recipe
 	}
 
-	create(
+	async create(
 		authorId: string,
 		{ tags, steps, recipeIngredients, ...data }: CreateRecipeInput
 	) {
-		return this.prisma.recipe.create({
+		const recipe = await this.prisma.recipe.create({
 			data: {
 				...data,
 				authorId,
-				// ...(tags && {
-				// 	tags: {
-				// 		createOrConnect: tags?.map(tag => ({ name: tag }))
-				// 	}
-				// }),
 				...(steps && {
 					steps: {
-						create: steps?.map(step => ({ ...step }))
+						create: steps.map(step => ({ ...step }))
 					}
 				}),
 				...(recipeIngredients && {
 					ingredients: {
 						create: recipeIngredients.map(ri => ({
 							quantity: ri.quantity,
-							// recipeId: ri.recipeId,
 							ingredientId: ri.ingredientId
 						}))
 					}
 				})
 			}
 		})
+
+		//ToDo refactoring
+		if (tags && tags.length > 0) {
+			await this.prisma.recipeTag.createMany({
+				data: tags.map(tag => ({ name: tag }))
+			})
+
+			const tagsSaved = await this.prisma.recipeTag.findMany({
+				where: {
+					name: {
+						in: tags
+					}
+				}
+			})
+			await this.prisma.recipeToRecipeTag.createMany({
+				data: tagsSaved.map(tag => ({
+					recipeId: recipe.id,
+					recipeTagId: tag.id
+				}))
+			})
+		}
+
+		return recipe
 	}
 
 	update(
@@ -73,21 +90,15 @@ export class AdminRecipesService {
 			where: { id },
 			data: {
 				...data,
-				// ...(tags && {
-				// 	tags: {
-				// 		createOrConnect: tags?.map(tag => ({ name: tag }))
-				// 	}
-				// }),
 				...(steps && {
 					steps: {
-						create: steps?.map(step => ({ ...step }))
+						create: steps.map(step => ({ ...step }))
 					}
 				}),
 				...(recipeIngredients && {
 					ingredients: {
 						create: recipeIngredients.map(ri => ({
 							quantity: ri.quantity,
-							// recipeId: ri.recipeId,
 							ingredientId: ri.ingredientId
 						}))
 					}

@@ -114,14 +114,14 @@ model RecipeTag {
 }
 
 model RecipeToRecipeTag {
-  recipes     Recipe    @relation(fields: [recipesId], references: [id])
-  recipesId   String    @map("recipe_id")
+  recipes     Recipe    @relation(fields: [recipeId], references: [id])
+  recipeId    String    @map("recipe_id")
   recipeTag   RecipeTag @relation(fields: [recipeTagId], references: [id])
   recipeTagId String    @map("recipe_tag_id")
 
   createdAt DateTime @default(now()) @map("created_at")
 
-  @@id([recipesId, recipeTagId])
+  @@id([recipeId, recipeTagId])
   @@map("recipe_to_recipe_tag")
 }
 

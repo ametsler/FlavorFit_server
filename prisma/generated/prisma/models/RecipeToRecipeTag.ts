@@ -25,19 +25,19 @@ export type AggregateRecipeToRecipeTag = {
 }
 
 export type RecipeToRecipeTagMinAggregateOutputType = {
-  recipesId: string | null
+  recipeId: string | null
   recipeTagId: string | null
   createdAt: Date | null
 }
 
 export type RecipeToRecipeTagMaxAggregateOutputType = {
-  recipesId: string | null
+  recipeId: string | null
   recipeTagId: string | null
   createdAt: Date | null
 }
 
 export type RecipeToRecipeTagCountAggregateOutputType = {
-  recipesId: number
+  recipeId: number
   recipeTagId: number
   createdAt: number
   _all: number
@@ -45,19 +45,19 @@ export type RecipeToRecipeTagCountAggregateOutputType = {
 
 
 export type RecipeToRecipeTagMinAggregateInputType = {
-  recipesId?: true
+  recipeId?: true
   recipeTagId?: true
   createdAt?: true
 }
 
 export type RecipeToRecipeTagMaxAggregateInputType = {
-  recipesId?: true
+  recipeId?: true
   recipeTagId?: true
   createdAt?: true
 }
 
 export type RecipeToRecipeTagCountAggregateInputType = {
-  recipesId?: true
+  recipeId?: true
   recipeTagId?: true
   createdAt?: true
   _all?: true
@@ -136,7 +136,7 @@ export type RecipeToRecipeTagGroupByArgs<ExtArgs extends runtime.Types.Extension
 }
 
 export type RecipeToRecipeTagGroupByOutputType = {
-  recipesId: string
+  recipeId: string
   recipeTagId: string
   createdAt: Date
   _count: RecipeToRecipeTagCountAggregateOutputType | null
@@ -163,7 +163,7 @@ export type RecipeToRecipeTagWhereInput = {
   AND?: Prisma.RecipeToRecipeTagWhereInput | Prisma.RecipeToRecipeTagWhereInput[]
   OR?: Prisma.RecipeToRecipeTagWhereInput[]
   NOT?: Prisma.RecipeToRecipeTagWhereInput | Prisma.RecipeToRecipeTagWhereInput[]
-  recipesId?: Prisma.StringFilter<"RecipeToRecipeTag"> | string
+  recipeId?: Prisma.StringFilter<"RecipeToRecipeTag"> | string
   recipeTagId?: Prisma.StringFilter<"RecipeToRecipeTag"> | string
   createdAt?: Prisma.DateTimeFilter<"RecipeToRecipeTag"> | Date | string
   recipes?: Prisma.XOR<Prisma.RecipeScalarRelationFilter, Prisma.RecipeWhereInput>
@@ -171,7 +171,7 @@ export type RecipeToRecipeTagWhereInput = {
 }
 
 export type RecipeToRecipeTagOrderByWithRelationInput = {
-  recipesId?: Prisma.SortOrder
+  recipeId?: Prisma.SortOrder
   recipeTagId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   recipes?: Prisma.RecipeOrderByWithRelationInput
@@ -179,19 +179,19 @@ export type RecipeToRecipeTagOrderByWithRelationInput = {
 }
 
 export type RecipeToRecipeTagWhereUniqueInput = Prisma.AtLeast<{
-  recipesId_recipeTagId?: Prisma.RecipeToRecipeTagRecipesIdRecipeTagIdCompoundUniqueInput
+  recipeId_recipeTagId?: Prisma.RecipeToRecipeTagRecipeIdRecipeTagIdCompoundUniqueInput
   AND?: Prisma.RecipeToRecipeTagWhereInput | Prisma.RecipeToRecipeTagWhereInput[]
   OR?: Prisma.RecipeToRecipeTagWhereInput[]
   NOT?: Prisma.RecipeToRecipeTagWhereInput | Prisma.RecipeToRecipeTagWhereInput[]
-  recipesId?: Prisma.StringFilter<"RecipeToRecipeTag"> | string
+  recipeId?: Prisma.StringFilter<"RecipeToRecipeTag"> | string
   recipeTagId?: Prisma.StringFilter<"RecipeToRecipeTag"> | string
   createdAt?: Prisma.DateTimeFilter<"RecipeToRecipeTag"> | Date | string
   recipes?: Prisma.XOR<Prisma.RecipeScalarRelationFilter, Prisma.RecipeWhereInput>
   recipeTag?: Prisma.XOR<Prisma.RecipeTagScalarRelationFilter, Prisma.RecipeTagWhereInput>
-}, "recipesId_recipeTagId">
+}, "recipeId_recipeTagId">
 
 export type RecipeToRecipeTagOrderByWithAggregationInput = {
-  recipesId?: Prisma.SortOrder
+  recipeId?: Prisma.SortOrder
   recipeTagId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.RecipeToRecipeTagCountOrderByAggregateInput
@@ -203,7 +203,7 @@ export type RecipeToRecipeTagScalarWhereWithAggregatesInput = {
   AND?: Prisma.RecipeToRecipeTagScalarWhereWithAggregatesInput | Prisma.RecipeToRecipeTagScalarWhereWithAggregatesInput[]
   OR?: Prisma.RecipeToRecipeTagScalarWhereWithAggregatesInput[]
   NOT?: Prisma.RecipeToRecipeTagScalarWhereWithAggregatesInput | Prisma.RecipeToRecipeTagScalarWhereWithAggregatesInput[]
-  recipesId?: Prisma.StringWithAggregatesFilter<"RecipeToRecipeTag"> | string
+  recipeId?: Prisma.StringWithAggregatesFilter<"RecipeToRecipeTag"> | string
   recipeTagId?: Prisma.StringWithAggregatesFilter<"RecipeToRecipeTag"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"RecipeToRecipeTag"> | Date | string
 }
@@ -215,7 +215,7 @@ export type RecipeToRecipeTagCreateInput = {
 }
 
 export type RecipeToRecipeTagUncheckedCreateInput = {
-  recipesId: string
+  recipeId: string
   recipeTagId: string
   createdAt?: Date | string
 }
@@ -227,13 +227,13 @@ export type RecipeToRecipeTagUpdateInput = {
 }
 
 export type RecipeToRecipeTagUncheckedUpdateInput = {
-  recipesId?: Prisma.StringFieldUpdateOperationsInput | string
+  recipeId?: Prisma.StringFieldUpdateOperationsInput | string
   recipeTagId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type RecipeToRecipeTagCreateManyInput = {
-  recipesId: string
+  recipeId: string
   recipeTagId: string
   createdAt?: Date | string
 }
@@ -243,7 +243,7 @@ export type RecipeToRecipeTagUpdateManyMutationInput = {
 }
 
 export type RecipeToRecipeTagUncheckedUpdateManyInput = {
-  recipesId?: Prisma.StringFieldUpdateOperationsInput | string
+  recipeId?: Prisma.StringFieldUpdateOperationsInput | string
   recipeTagId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -258,25 +258,25 @@ export type RecipeToRecipeTagOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type RecipeToRecipeTagRecipesIdRecipeTagIdCompoundUniqueInput = {
-  recipesId: string
+export type RecipeToRecipeTagRecipeIdRecipeTagIdCompoundUniqueInput = {
+  recipeId: string
   recipeTagId: string
 }
 
 export type RecipeToRecipeTagCountOrderByAggregateInput = {
-  recipesId?: Prisma.SortOrder
+  recipeId?: Prisma.SortOrder
   recipeTagId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
 export type RecipeToRecipeTagMaxOrderByAggregateInput = {
-  recipesId?: Prisma.SortOrder
+  recipeId?: Prisma.SortOrder
   recipeTagId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
 export type RecipeToRecipeTagMinOrderByAggregateInput = {
-  recipesId?: Prisma.SortOrder
+  recipeId?: Prisma.SortOrder
   recipeTagId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
@@ -405,7 +405,7 @@ export type RecipeToRecipeTagScalarWhereInput = {
   AND?: Prisma.RecipeToRecipeTagScalarWhereInput | Prisma.RecipeToRecipeTagScalarWhereInput[]
   OR?: Prisma.RecipeToRecipeTagScalarWhereInput[]
   NOT?: Prisma.RecipeToRecipeTagScalarWhereInput | Prisma.RecipeToRecipeTagScalarWhereInput[]
-  recipesId?: Prisma.StringFilter<"RecipeToRecipeTag"> | string
+  recipeId?: Prisma.StringFilter<"RecipeToRecipeTag"> | string
   recipeTagId?: Prisma.StringFilter<"RecipeToRecipeTag"> | string
   createdAt?: Prisma.DateTimeFilter<"RecipeToRecipeTag"> | Date | string
 }
@@ -416,7 +416,7 @@ export type RecipeToRecipeTagCreateWithoutRecipeTagInput = {
 }
 
 export type RecipeToRecipeTagUncheckedCreateWithoutRecipeTagInput = {
-  recipesId: string
+  recipeId: string
   createdAt?: Date | string
 }
 
@@ -467,7 +467,7 @@ export type RecipeToRecipeTagUncheckedUpdateManyWithoutRecipesInput = {
 }
 
 export type RecipeToRecipeTagCreateManyRecipeTagInput = {
-  recipesId: string
+  recipeId: string
   createdAt?: Date | string
 }
 
@@ -477,19 +477,19 @@ export type RecipeToRecipeTagUpdateWithoutRecipeTagInput = {
 }
 
 export type RecipeToRecipeTagUncheckedUpdateWithoutRecipeTagInput = {
-  recipesId?: Prisma.StringFieldUpdateOperationsInput | string
+  recipeId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type RecipeToRecipeTagUncheckedUpdateManyWithoutRecipeTagInput = {
-  recipesId?: Prisma.StringFieldUpdateOperationsInput | string
+  recipeId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
 
 export type RecipeToRecipeTagSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  recipesId?: boolean
+  recipeId?: boolean
   recipeTagId?: boolean
   createdAt?: boolean
   recipes?: boolean | Prisma.RecipeDefaultArgs<ExtArgs>
@@ -497,7 +497,7 @@ export type RecipeToRecipeTagSelect<ExtArgs extends runtime.Types.Extensions.Int
 }, ExtArgs["result"]["recipeToRecipeTag"]>
 
 export type RecipeToRecipeTagSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  recipesId?: boolean
+  recipeId?: boolean
   recipeTagId?: boolean
   createdAt?: boolean
   recipes?: boolean | Prisma.RecipeDefaultArgs<ExtArgs>
@@ -505,7 +505,7 @@ export type RecipeToRecipeTagSelectCreateManyAndReturn<ExtArgs extends runtime.T
 }, ExtArgs["result"]["recipeToRecipeTag"]>
 
 export type RecipeToRecipeTagSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  recipesId?: boolean
+  recipeId?: boolean
   recipeTagId?: boolean
   createdAt?: boolean
   recipes?: boolean | Prisma.RecipeDefaultArgs<ExtArgs>
@@ -513,12 +513,12 @@ export type RecipeToRecipeTagSelectUpdateManyAndReturn<ExtArgs extends runtime.T
 }, ExtArgs["result"]["recipeToRecipeTag"]>
 
 export type RecipeToRecipeTagSelectScalar = {
-  recipesId?: boolean
+  recipeId?: boolean
   recipeTagId?: boolean
   createdAt?: boolean
 }
 
-export type RecipeToRecipeTagOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"recipesId" | "recipeTagId" | "createdAt", ExtArgs["result"]["recipeToRecipeTag"]>
+export type RecipeToRecipeTagOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"recipeId" | "recipeTagId" | "createdAt", ExtArgs["result"]["recipeToRecipeTag"]>
 export type RecipeToRecipeTagInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   recipes?: boolean | Prisma.RecipeDefaultArgs<ExtArgs>
   recipeTag?: boolean | Prisma.RecipeTagDefaultArgs<ExtArgs>
@@ -539,7 +539,7 @@ export type $RecipeToRecipeTagPayload<ExtArgs extends runtime.Types.Extensions.I
     recipeTag: Prisma.$RecipeTagPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    recipesId: string
+    recipeId: string
     recipeTagId: string
     createdAt: Date
   }, ExtArgs["result"]["recipeToRecipeTag"]>
@@ -625,8 +625,8 @@ export interface RecipeToRecipeTagDelegate<ExtArgs extends runtime.Types.Extensi
    * // Get first 10 RecipeToRecipeTags
    * const recipeToRecipeTags = await prisma.recipeToRecipeTag.findMany({ take: 10 })
    * 
-   * // Only select the `recipesId`
-   * const recipeToRecipeTagWithRecipesIdOnly = await prisma.recipeToRecipeTag.findMany({ select: { recipesId: true } })
+   * // Only select the `recipeId`
+   * const recipeToRecipeTagWithRecipeIdOnly = await prisma.recipeToRecipeTag.findMany({ select: { recipeId: true } })
    * 
    */
   findMany<T extends RecipeToRecipeTagFindManyArgs>(args?: Prisma.SelectSubset<T, RecipeToRecipeTagFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecipeToRecipeTagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -670,9 +670,9 @@ export interface RecipeToRecipeTagDelegate<ExtArgs extends runtime.Types.Extensi
    *   ]
    * })
    * 
-   * // Create many RecipeToRecipeTags and only return the `recipesId`
-   * const recipeToRecipeTagWithRecipesIdOnly = await prisma.recipeToRecipeTag.createManyAndReturn({
-   *   select: { recipesId: true },
+   * // Create many RecipeToRecipeTags and only return the `recipeId`
+   * const recipeToRecipeTagWithRecipeIdOnly = await prisma.recipeToRecipeTag.createManyAndReturn({
+   *   select: { recipeId: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -761,9 +761,9 @@ export interface RecipeToRecipeTagDelegate<ExtArgs extends runtime.Types.Extensi
    *   ]
    * })
    * 
-   * // Update zero or more RecipeToRecipeTags and only return the `recipesId`
-   * const recipeToRecipeTagWithRecipesIdOnly = await prisma.recipeToRecipeTag.updateManyAndReturn({
-   *   select: { recipesId: true },
+   * // Update zero or more RecipeToRecipeTags and only return the `recipeId`
+   * const recipeToRecipeTagWithRecipeIdOnly = await prisma.recipeToRecipeTag.updateManyAndReturn({
+   *   select: { recipeId: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -967,7 +967,7 @@ export interface Prisma__RecipeToRecipeTagClient<T, Null = never, ExtArgs extend
  * Fields of the RecipeToRecipeTag model
  */
 export interface RecipeToRecipeTagFieldRefs {
-  readonly recipesId: Prisma.FieldRef<"RecipeToRecipeTag", 'String'>
+  readonly recipeId: Prisma.FieldRef<"RecipeToRecipeTag", 'String'>
   readonly recipeTagId: Prisma.FieldRef<"RecipeToRecipeTag", 'String'>
   readonly createdAt: Prisma.FieldRef<"RecipeToRecipeTag", 'DateTime'>
 }

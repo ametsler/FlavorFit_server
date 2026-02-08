@@ -1,7 +1,7 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
-import { OrdersService } from './orders.service';
-import { OrderModel } from './models/order.model';
-import { CreateOrderInput } from './inputs/create-order.input';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
+import { OrdersService } from './orders.service'
+import { OrderModel } from './models/order.model'
+import { CreateOrderInput } from './inputs/create-order.input'
 import { Auth } from 'src/auth/decorators/auth.decorator'
 import { CurrentUser } from 'src/auth/decorators/current-user.decorator'
 

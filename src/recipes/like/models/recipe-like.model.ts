@@ -19,9 +19,9 @@ export class RecipeLikeModel {
 	@Field(() => Date, { nullable: false })
 	updatedAt!: Date
 
-	@Field(() => RecipeModel, { nullable: false })
+	@Field(() => RecipeModel, { nullable: true })
 	recipe?: RecipeModel
 
-	@Field(() => UserModel, { nullable: false })
+	@Field(() => UserModel, { nullable: true })
 	user?: UserModel
 }

@@ -18,6 +18,9 @@ export class CommentsService {
 		return this.prisma.comment.findMany({
 			where: {
 				recipeId
+			},
+			orderBy: {
+				createdAt: 'desc'
 			}
 		})
 	}

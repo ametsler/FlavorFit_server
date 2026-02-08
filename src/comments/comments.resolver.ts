@@ -19,7 +19,7 @@ export class CommentsResolver {
 		return this.commentsService.create(authorId, input)
 	}
 
-	@Query(() => [CommentModel], { name: 'comments' })
+	@Query(() => [CommentModel])
 	@Auth()
 	findAllComments(@Args('recipeId') recipeId: string) {
 		return this.commentsService.findAll(recipeId)

@@ -1,31 +1,26 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { LikeService } from './like.service';
-import { CreateRecipeLikeInput } from './inputs/create-recipe-like.input';
 import { CurrentUser } from 'src/auth/decorators/current-user.decorator'
 import { RecipeLikeModel } from 'src/recipes/like/models/recipe-like.model'
+import { Auth } from 'src/auth/decorators/auth.decorator'
 
 @Resolver(() => RecipeLikeModel)
 export class LikeResolver {
 	constructor(private readonly likeService: LikeService) {}
 
-	@Mutation(() => RecipeLikeModel)
-	createRecipeLike(
+	@Mutation(() => Boolean)
+	@Auth()
+	async toggleRecipeLike(
 		@CurrentUser('id') userId: string,
-		@Args('input') input: CreateRecipeLikeInput
+		@Args('recipeId') recipeId: string
 	) {
-		return this.likeService.create(userId, input)
+		await this.likeService.toggle(userId, recipeId)
+		return true
 	}
 
-	@Query(() => [RecipeLikeModel])
-	findRecipeLikeCount(@Args('input') input: CreateRecipeLikeInput) {
-		return this.likeService.findCount(input)
-	}
-
-	@Mutation(() => RecipeLikeModel)
-	removeRecipeLike(
-		@CurrentUser('id') userId: string,
-		@Args('input') input: CreateRecipeLikeInput
-	) {
-		return this.likeService.remove(userId, input)
+	@Query(() => Number)
+	@Auth()
+	findRecipeLikeCount(@Args('recipeId') recipeId: string) {
+		return this.likeService.findCount(recipeId)
 	}
 }

@@ -253,7 +253,7 @@ export type RecipeTagScalarFieldEnum = (typeof RecipeTagScalarFieldEnum)[keyof t
 
 
 export const RecipeToRecipeTagScalarFieldEnum = {
-  recipesId: 'recipesId',
+  recipeId: 'recipeId',
   recipeTagId: 'recipeTagId',
   createdAt: 'createdAt'
 } as const
