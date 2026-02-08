@@ -1,7 +1,7 @@
 import { Field, InputType } from '@nestjs/graphql'
 import { UpdateProfileInput } from 'src/users/inputs/update-profile.input'
 import { UpdateBodyMeasurementInput } from 'src/users/inputs/update-body-measurement.input'
-import { Gender, Role } from 'prisma/generated/prisma/enums'
+import { Role } from 'prisma/generated/prisma/enums'
 import { IsEnum, IsOptional, ValidateNested } from 'class-validator'
 import { Type } from 'class-transformer'
 

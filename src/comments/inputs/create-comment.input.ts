@@ -4,4 +4,7 @@ import { Field, InputType } from '@nestjs/graphql'
 export class CreateCommentInput {
 	@Field(() => String, { nullable: false })
 	content!: string
+
+	@Field(() => String, { nullable: false })
+	recipeId!: string
 }

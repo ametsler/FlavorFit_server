@@ -1,25 +1,23 @@
 import { Injectable } from '@nestjs/common'
 import { CreateDeliveryInput } from './inputs/create-delivery.input'
+import { PrismaService } from 'src/prisma/prisma.service'
+import { DeliveryStatus } from 'prisma/generated/prisma/enums'
 
 @Injectable()
 export class DeliveriesService {
-	create(date: CreateDeliveryInput) {
-		return 'This action adds a new delivery'
+	constructor(private readonly prisma: PrismaService) {}
+	create(data: CreateDeliveryInput) {
+		return this.prisma.delivery.create({
+			data
+		})
 	}
 
-	findAll() {
-		return `This action returns all deliveries`
-	}
-
-	findOne(id: number) {
-		return `This action returns a #${id} delivery`
-	}
-
-	update(id: string, date: CreateDeliveryInput) {
-		return `This action updates a #${id} delivery`
-	}
-
-	remove(id: number) {
-		return `This action removes a #${id} delivery`
+	updateStatus(id: string, status: DeliveryStatus) {
+		return this.prisma.delivery.update({
+			where: { id },
+			data: {
+				status
+			}
+		})
 	}
 }

@@ -1,7 +1,7 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql'
 import { RecipeModel } from '../models/recipe.model'
 import { IngredientModel } from '../ingredients/models/ingredient.model'
-import { OrderItemModel } from 'src/orders/item/models/item.model'
+import { OrderItemModel } from 'src/orders/models/item.model'
 
 @ObjectType()
 export class RecipeIngredientModel {

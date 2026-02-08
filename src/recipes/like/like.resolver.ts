@@ -9,20 +9,20 @@ export class LikeResolver {
 	constructor(private readonly likeService: LikeService) {}
 
 	@Mutation(() => RecipeLikeModel)
-	createLike(
+	createRecipeLike(
 		@CurrentUser('id') userId: string,
 		@Args('input') input: CreateRecipeLikeInput
 	) {
 		return this.likeService.create(userId, input)
 	}
 
-	@Query(() => [RecipeLikeModel], { name: 'like' })
-	findCount(@Args('input') input: CreateRecipeLikeInput) {
+	@Query(() => [RecipeLikeModel])
+	findRecipeLikeCount(@Args('input') input: CreateRecipeLikeInput) {
 		return this.likeService.findCount(input)
 	}
 
 	@Mutation(() => RecipeLikeModel)
-	removeLike(
+	removeRecipeLike(
 		@CurrentUser('id') userId: string,
 		@Args('input') input: CreateRecipeLikeInput
 	) {

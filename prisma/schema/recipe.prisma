@@ -86,13 +86,12 @@ model RecipeIngredient {
 model Ingredient {
   id String @id @default(cuid())
 
-  iconUrl String?  @map("icon_url")
+  iconUrl String? @map("icon_url")
   name    String
   unit    Unit
-  price   Decimal? @db.Decimal(10, 2)
+  price   Decimal @db.Decimal(10, 2)
 
-  recipes    RecipeIngredient[]
-  orderItems OrderItem[]
+  recipes RecipeIngredient[]
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")

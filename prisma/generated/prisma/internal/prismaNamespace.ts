@@ -1731,8 +1731,9 @@ export type DeliveryScalarFieldEnum = (typeof DeliveryScalarFieldEnum)[keyof typ
 
 export const OrderScalarFieldEnum = {
   id: 'id',
-  orderId: 'orderId',
+  number: 'number',
   status: 'status',
+  amount: 'amount',
   userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -1746,7 +1747,6 @@ export const OrderItemScalarFieldEnum = {
   quantity: 'quantity',
   recipeIngredientId: 'recipeIngredientId',
   orderId: 'orderId',
-  ingredientId: 'ingredientId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -2027,6 +2027,20 @@ export type ListEnumOrderStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$
 
 
 /**
+ * Reference to a field of type 'Decimal'
+ */
+export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+/**
+ * Reference to a field of type 'Decimal[]'
+ */
+export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
+    
+
+
+/**
  * Reference to a field of type 'Int'
  */
 export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -2051,20 +2065,6 @@ export type EnumDifficultyFieldRefInput<$PrismaModel> = FieldRefInputType<$Prism
  * Reference to a field of type 'Difficulty[]'
  */
 export type ListEnumDifficultyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Difficulty[]'>
-    
-
-
-/**
- * Reference to a field of type 'Decimal'
- */
-export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
-    
-
-
-/**
- * Reference to a field of type 'Decimal[]'
- */
-export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
     
 
 

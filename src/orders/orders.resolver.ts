@@ -2,36 +2,37 @@ import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { OrdersService } from './orders.service';
 import { OrderModel } from './models/order.model';
 import { CreateOrderInput } from './inputs/create-order.input';
+import { Auth } from 'src/auth/decorators/auth.decorator'
+import { CurrentUser } from 'src/auth/decorators/current-user.decorator'
 
 @Resolver(() => OrderModel)
 export class OrdersResolver {
 	constructor(private readonly ordersService: OrdersService) {}
 
 	@Mutation(() => OrderModel)
-	createOrder(@Args('input') input: CreateOrderInput) {
-		return this.ordersService.create(input)
+	@Auth()
+	createOrder(
+		@CurrentUser('id') userId: string,
+		@Args('input') input: CreateOrderInput
+	) {
+		return this.ordersService.create(userId, input)
 	}
 
 	@Query(() => [OrderModel], { name: 'orders' })
-	findAll() {
-		return this.ordersService.findAll()
+	@Auth()
+	findAll(@CurrentUser('id') userId: string) {
+		return this.ordersService.findAll(userId)
 	}
 
 	@Query(() => OrderModel, { name: 'order' })
-	findOne(@Args('id', { type: () => Int }) id: number) {
-		return this.ordersService.findOne(id)
+	@Auth()
+	findOne(@CurrentUser('id') userId: string, @Args('id') id: string) {
+		return this.ordersService.findOne(userId, id)
 	}
 
 	@Mutation(() => OrderModel)
-	updateOrder(
-		@Args('id') id: string,
-		@Args('input') input: CreateOrderInput
-	) {
-		return this.ordersService.update(id, input)
-	}
-
-	@Mutation(() => OrderModel)
-	removeOrder(@Args('id', { type: () => Int }) id: number) {
-		return this.ordersService.remove(id)
+	@Auth()
+	removeOrder(@CurrentUser('id') userId: string, @Args('id') id: string) {
+		return this.ordersService.remove(userId, id)
 	}
 }

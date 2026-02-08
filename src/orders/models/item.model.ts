@@ -1,6 +1,6 @@
 import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
 import { OrderModel } from 'src/orders/models/order.model'
-import { IngredientModel } from 'src/recipes/ingredients/models/ingredient.model'
+import { RecipeIngredientModel } from 'src/recipes/models/recipe-ingredient.model'
 
 @ObjectType()
 export class OrderItemModel {
@@ -8,7 +8,7 @@ export class OrderItemModel {
 	id!: string
 
 	@Field(() => Int, { defaultValue: 1, nullable: true })
-	quantity!: number | null
+	quantity!: number
 
 	@Field(() => String, { nullable: false })
 	recipeIngredientId!: string
@@ -16,17 +16,14 @@ export class OrderItemModel {
 	@Field(() => String, { nullable: false })
 	orderId!: string
 
-	@Field(() => String, { nullable: true })
-	ingredientId!: string | null
-
 	@Field(() => Date, { nullable: false })
 	createdAt!: Date
 
 	@Field(() => Date, { nullable: false })
 	updatedAt!: Date
 
-	@Field(() => IngredientModel, { nullable: false })
-	ingredient?: IngredientModel | null
+	@Field(() => RecipeIngredientModel, { nullable: false })
+	recipeIngredient?: RecipeIngredientModel
 
 	@Field(() => OrderModel, { nullable: false })
 	order?: OrderModel

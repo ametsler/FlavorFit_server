@@ -1,8 +1,16 @@
-import { Field, Float, ID, InputType, Int } from '@nestjs/graphql'
+import { Field, Float, InputType, Int } from '@nestjs/graphql'
 import { Difficulty } from 'prisma/generated/prisma/enums'
-import { ArrayNotEmpty, IsEnum, IsNotEmpty, IsOptional, IsPositive } from 'class-validator'
+import {
+	ArrayNotEmpty,
+	IsEnum,
+	IsNotEmpty,
+	IsOptional,
+	IsPositive,
+	ValidateNested
+} from 'class-validator'
 import { CreateStepInput } from 'src/recipes/step/inputs/create-step.input'
 import { CreateRecipeIngredientInput } from 'src/recipes/inputs/create-recipe-Ingredient'
+import { Type } from 'class-transformer'
 
 @InputType()
 export class CreateRecipeInput {
@@ -74,9 +82,13 @@ export class CreateRecipeInput {
 
 	@Field(() => [CreateStepInput], { nullable: true })
 	@ArrayNotEmpty()
-	steps?: CreateStepInput[]
+	@ValidateNested()
+	@Type(() => CreateStepInput)
+	steps?: Array<CreateStepInput>
 
 	@Field(() => [CreateRecipeIngredientInput], { nullable: true })
 	@ArrayNotEmpty()
-	recipeIngredients?: CreateRecipeIngredientInput[]
+	@ValidateNested()
+	@Type(() => CreateRecipeIngredientInput)
+	recipeIngredients?: Array<CreateRecipeIngredientInput>
 }

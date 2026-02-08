@@ -20,8 +20,8 @@ export class IngredientCreateInput {
 	@IsNotEmpty()
 	unit!: `${Unit}`
 
-	@Field(() => Number, { nullable: true })
+	@Field(() => Number, { nullable: false })
 	@IsPositive()
 	@IsOptional()
-	price!: number | null
+	price!: number
 }

@@ -100,8 +100,9 @@ export type DeliveryScalarFieldEnum = (typeof DeliveryScalarFieldEnum)[keyof typ
 
 export const OrderScalarFieldEnum = {
   id: 'id',
-  orderId: 'orderId',
+  number: 'number',
   status: 'status',
+  amount: 'amount',
   userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -115,7 +116,6 @@ export const OrderItemScalarFieldEnum = {
   quantity: 'quantity',
   recipeIngredientId: 'recipeIngredientId',
   orderId: 'orderId',
-  ingredientId: 'ingredientId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

@@ -16,7 +16,7 @@ export class IngredientModel {
 	unit!: `${Unit}`
 
 	@Field(() => Number, { nullable: true })
-	price!: number | null
+	price!: number
 
 	@Field(() => Date, { nullable: false })
 	createdAt!: Date

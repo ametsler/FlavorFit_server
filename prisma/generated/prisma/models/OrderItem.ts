@@ -39,7 +39,6 @@ export type OrderItemMinAggregateOutputType = {
   quantity: number | null
   recipeIngredientId: string | null
   orderId: string | null
-  ingredientId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -49,7 +48,6 @@ export type OrderItemMaxAggregateOutputType = {
   quantity: number | null
   recipeIngredientId: string | null
   orderId: string | null
-  ingredientId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -59,7 +57,6 @@ export type OrderItemCountAggregateOutputType = {
   quantity: number
   recipeIngredientId: number
   orderId: number
-  ingredientId: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -79,7 +76,6 @@ export type OrderItemMinAggregateInputType = {
   quantity?: true
   recipeIngredientId?: true
   orderId?: true
-  ingredientId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -89,7 +85,6 @@ export type OrderItemMaxAggregateInputType = {
   quantity?: true
   recipeIngredientId?: true
   orderId?: true
-  ingredientId?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -99,7 +94,6 @@ export type OrderItemCountAggregateInputType = {
   quantity?: true
   recipeIngredientId?: true
   orderId?: true
-  ingredientId?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -196,7 +190,6 @@ export type OrderItemGroupByOutputType = {
   quantity: number | null
   recipeIngredientId: string
   orderId: string
-  ingredientId: string | null
   createdAt: Date
   updatedAt: Date
   _count: OrderItemCountAggregateOutputType | null
@@ -229,12 +222,10 @@ export type OrderItemWhereInput = {
   quantity?: Prisma.IntNullableFilter<"OrderItem"> | number | null
   recipeIngredientId?: Prisma.StringFilter<"OrderItem"> | string
   orderId?: Prisma.StringFilter<"OrderItem"> | string
-  ingredientId?: Prisma.StringNullableFilter<"OrderItem"> | string | null
   createdAt?: Prisma.DateTimeFilter<"OrderItem"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"OrderItem"> | Date | string
   recipeIngredient?: Prisma.XOR<Prisma.RecipeIngredientScalarRelationFilter, Prisma.RecipeIngredientWhereInput>
   order?: Prisma.XOR<Prisma.OrderScalarRelationFilter, Prisma.OrderWhereInput>
-  ingredient?: Prisma.XOR<Prisma.IngredientNullableScalarRelationFilter, Prisma.IngredientWhereInput> | null
 }
 
 export type OrderItemOrderByWithRelationInput = {
@@ -242,12 +233,10 @@ export type OrderItemOrderByWithRelationInput = {
   quantity?: Prisma.SortOrderInput | Prisma.SortOrder
   recipeIngredientId?: Prisma.SortOrder
   orderId?: Prisma.SortOrder
-  ingredientId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   recipeIngredient?: Prisma.RecipeIngredientOrderByWithRelationInput
   order?: Prisma.OrderOrderByWithRelationInput
-  ingredient?: Prisma.IngredientOrderByWithRelationInput
 }
 
 export type OrderItemWhereUniqueInput = Prisma.AtLeast<{
@@ -258,12 +247,10 @@ export type OrderItemWhereUniqueInput = Prisma.AtLeast<{
   quantity?: Prisma.IntNullableFilter<"OrderItem"> | number | null
   recipeIngredientId?: Prisma.StringFilter<"OrderItem"> | string
   orderId?: Prisma.StringFilter<"OrderItem"> | string
-  ingredientId?: Prisma.StringNullableFilter<"OrderItem"> | string | null
   createdAt?: Prisma.DateTimeFilter<"OrderItem"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"OrderItem"> | Date | string
   recipeIngredient?: Prisma.XOR<Prisma.RecipeIngredientScalarRelationFilter, Prisma.RecipeIngredientWhereInput>
   order?: Prisma.XOR<Prisma.OrderScalarRelationFilter, Prisma.OrderWhereInput>
-  ingredient?: Prisma.XOR<Prisma.IngredientNullableScalarRelationFilter, Prisma.IngredientWhereInput> | null
 }, "id">
 
 export type OrderItemOrderByWithAggregationInput = {
@@ -271,7 +258,6 @@ export type OrderItemOrderByWithAggregationInput = {
   quantity?: Prisma.SortOrderInput | Prisma.SortOrder
   recipeIngredientId?: Prisma.SortOrder
   orderId?: Prisma.SortOrder
-  ingredientId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.OrderItemCountOrderByAggregateInput
@@ -289,7 +275,6 @@ export type OrderItemScalarWhereWithAggregatesInput = {
   quantity?: Prisma.IntNullableWithAggregatesFilter<"OrderItem"> | number | null
   recipeIngredientId?: Prisma.StringWithAggregatesFilter<"OrderItem"> | string
   orderId?: Prisma.StringWithAggregatesFilter<"OrderItem"> | string
-  ingredientId?: Prisma.StringNullableWithAggregatesFilter<"OrderItem"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"OrderItem"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"OrderItem"> | Date | string
 }
@@ -300,8 +285,7 @@ export type OrderItemCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   recipeIngredient: Prisma.RecipeIngredientCreateNestedOneWithoutOrderItemInput
-  order: Prisma.OrderCreateNestedOneWithoutOrderItemsInput
-  ingredient?: Prisma.IngredientCreateNestedOneWithoutOrderItemsInput
+  order: Prisma.OrderCreateNestedOneWithoutItemsInput
 }
 
 export type OrderItemUncheckedCreateInput = {
@@ -309,7 +293,6 @@ export type OrderItemUncheckedCreateInput = {
   quantity?: number | null
   recipeIngredientId: string
   orderId: string
-  ingredientId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -320,8 +303,7 @@ export type OrderItemUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   recipeIngredient?: Prisma.RecipeIngredientUpdateOneRequiredWithoutOrderItemNestedInput
-  order?: Prisma.OrderUpdateOneRequiredWithoutOrderItemsNestedInput
-  ingredient?: Prisma.IngredientUpdateOneWithoutOrderItemsNestedInput
+  order?: Prisma.OrderUpdateOneRequiredWithoutItemsNestedInput
 }
 
 export type OrderItemUncheckedUpdateInput = {
@@ -329,7 +311,6 @@ export type OrderItemUncheckedUpdateInput = {
   quantity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   recipeIngredientId?: Prisma.StringFieldUpdateOperationsInput | string
   orderId?: Prisma.StringFieldUpdateOperationsInput | string
-  ingredientId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -339,7 +320,6 @@ export type OrderItemCreateManyInput = {
   quantity?: number | null
   recipeIngredientId: string
   orderId: string
-  ingredientId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -356,7 +336,6 @@ export type OrderItemUncheckedUpdateManyInput = {
   quantity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   recipeIngredientId?: Prisma.StringFieldUpdateOperationsInput | string
   orderId?: Prisma.StringFieldUpdateOperationsInput | string
-  ingredientId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -376,7 +355,6 @@ export type OrderItemCountOrderByAggregateInput = {
   quantity?: Prisma.SortOrder
   recipeIngredientId?: Prisma.SortOrder
   orderId?: Prisma.SortOrder
-  ingredientId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -390,7 +368,6 @@ export type OrderItemMaxOrderByAggregateInput = {
   quantity?: Prisma.SortOrder
   recipeIngredientId?: Prisma.SortOrder
   orderId?: Prisma.SortOrder
-  ingredientId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -400,7 +377,6 @@ export type OrderItemMinOrderByAggregateInput = {
   quantity?: Prisma.SortOrder
   recipeIngredientId?: Prisma.SortOrder
   orderId?: Prisma.SortOrder
-  ingredientId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -459,10 +435,6 @@ export type NullableIntFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type OrderItemCreateNestedManyWithoutRecipeIngredientInput = {
   create?: Prisma.XOR<Prisma.OrderItemCreateWithoutRecipeIngredientInput, Prisma.OrderItemUncheckedCreateWithoutRecipeIngredientInput> | Prisma.OrderItemCreateWithoutRecipeIngredientInput[] | Prisma.OrderItemUncheckedCreateWithoutRecipeIngredientInput[]
   connectOrCreate?: Prisma.OrderItemCreateOrConnectWithoutRecipeIngredientInput | Prisma.OrderItemCreateOrConnectWithoutRecipeIngredientInput[]
@@ -505,62 +477,18 @@ export type OrderItemUncheckedUpdateManyWithoutRecipeIngredientNestedInput = {
   deleteMany?: Prisma.OrderItemScalarWhereInput | Prisma.OrderItemScalarWhereInput[]
 }
 
-export type OrderItemCreateNestedManyWithoutIngredientInput = {
-  create?: Prisma.XOR<Prisma.OrderItemCreateWithoutIngredientInput, Prisma.OrderItemUncheckedCreateWithoutIngredientInput> | Prisma.OrderItemCreateWithoutIngredientInput[] | Prisma.OrderItemUncheckedCreateWithoutIngredientInput[]
-  connectOrCreate?: Prisma.OrderItemCreateOrConnectWithoutIngredientInput | Prisma.OrderItemCreateOrConnectWithoutIngredientInput[]
-  createMany?: Prisma.OrderItemCreateManyIngredientInputEnvelope
-  connect?: Prisma.OrderItemWhereUniqueInput | Prisma.OrderItemWhereUniqueInput[]
-}
-
-export type OrderItemUncheckedCreateNestedManyWithoutIngredientInput = {
-  create?: Prisma.XOR<Prisma.OrderItemCreateWithoutIngredientInput, Prisma.OrderItemUncheckedCreateWithoutIngredientInput> | Prisma.OrderItemCreateWithoutIngredientInput[] | Prisma.OrderItemUncheckedCreateWithoutIngredientInput[]
-  connectOrCreate?: Prisma.OrderItemCreateOrConnectWithoutIngredientInput | Prisma.OrderItemCreateOrConnectWithoutIngredientInput[]
-  createMany?: Prisma.OrderItemCreateManyIngredientInputEnvelope
-  connect?: Prisma.OrderItemWhereUniqueInput | Prisma.OrderItemWhereUniqueInput[]
-}
-
-export type OrderItemUpdateManyWithoutIngredientNestedInput = {
-  create?: Prisma.XOR<Prisma.OrderItemCreateWithoutIngredientInput, Prisma.OrderItemUncheckedCreateWithoutIngredientInput> | Prisma.OrderItemCreateWithoutIngredientInput[] | Prisma.OrderItemUncheckedCreateWithoutIngredientInput[]
-  connectOrCreate?: Prisma.OrderItemCreateOrConnectWithoutIngredientInput | Prisma.OrderItemCreateOrConnectWithoutIngredientInput[]
-  upsert?: Prisma.OrderItemUpsertWithWhereUniqueWithoutIngredientInput | Prisma.OrderItemUpsertWithWhereUniqueWithoutIngredientInput[]
-  createMany?: Prisma.OrderItemCreateManyIngredientInputEnvelope
-  set?: Prisma.OrderItemWhereUniqueInput | Prisma.OrderItemWhereUniqueInput[]
-  disconnect?: Prisma.OrderItemWhereUniqueInput | Prisma.OrderItemWhereUniqueInput[]
-  delete?: Prisma.OrderItemWhereUniqueInput | Prisma.OrderItemWhereUniqueInput[]
-  connect?: Prisma.OrderItemWhereUniqueInput | Prisma.OrderItemWhereUniqueInput[]
-  update?: Prisma.OrderItemUpdateWithWhereUniqueWithoutIngredientInput | Prisma.OrderItemUpdateWithWhereUniqueWithoutIngredientInput[]
-  updateMany?: Prisma.OrderItemUpdateManyWithWhereWithoutIngredientInput | Prisma.OrderItemUpdateManyWithWhereWithoutIngredientInput[]
-  deleteMany?: Prisma.OrderItemScalarWhereInput | Prisma.OrderItemScalarWhereInput[]
-}
-
-export type OrderItemUncheckedUpdateManyWithoutIngredientNestedInput = {
-  create?: Prisma.XOR<Prisma.OrderItemCreateWithoutIngredientInput, Prisma.OrderItemUncheckedCreateWithoutIngredientInput> | Prisma.OrderItemCreateWithoutIngredientInput[] | Prisma.OrderItemUncheckedCreateWithoutIngredientInput[]
-  connectOrCreate?: Prisma.OrderItemCreateOrConnectWithoutIngredientInput | Prisma.OrderItemCreateOrConnectWithoutIngredientInput[]
-  upsert?: Prisma.OrderItemUpsertWithWhereUniqueWithoutIngredientInput | Prisma.OrderItemUpsertWithWhereUniqueWithoutIngredientInput[]
-  createMany?: Prisma.OrderItemCreateManyIngredientInputEnvelope
-  set?: Prisma.OrderItemWhereUniqueInput | Prisma.OrderItemWhereUniqueInput[]
-  disconnect?: Prisma.OrderItemWhereUniqueInput | Prisma.OrderItemWhereUniqueInput[]
-  delete?: Prisma.OrderItemWhereUniqueInput | Prisma.OrderItemWhereUniqueInput[]
-  connect?: Prisma.OrderItemWhereUniqueInput | Prisma.OrderItemWhereUniqueInput[]
-  update?: Prisma.OrderItemUpdateWithWhereUniqueWithoutIngredientInput | Prisma.OrderItemUpdateWithWhereUniqueWithoutIngredientInput[]
-  updateMany?: Prisma.OrderItemUpdateManyWithWhereWithoutIngredientInput | Prisma.OrderItemUpdateManyWithWhereWithoutIngredientInput[]
-  deleteMany?: Prisma.OrderItemScalarWhereInput | Prisma.OrderItemScalarWhereInput[]
-}
-
 export type OrderItemCreateWithoutOrderInput = {
   id?: string
   quantity?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
   recipeIngredient: Prisma.RecipeIngredientCreateNestedOneWithoutOrderItemInput
-  ingredient?: Prisma.IngredientCreateNestedOneWithoutOrderItemsInput
 }
 
 export type OrderItemUncheckedCreateWithoutOrderInput = {
   id?: string
   quantity?: number | null
   recipeIngredientId: string
-  ingredientId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -599,7 +527,6 @@ export type OrderItemScalarWhereInput = {
   quantity?: Prisma.IntNullableFilter<"OrderItem"> | number | null
   recipeIngredientId?: Prisma.StringFilter<"OrderItem"> | string
   orderId?: Prisma.StringFilter<"OrderItem"> | string
-  ingredientId?: Prisma.StringNullableFilter<"OrderItem"> | string | null
   createdAt?: Prisma.DateTimeFilter<"OrderItem"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"OrderItem"> | Date | string
 }
@@ -609,15 +536,13 @@ export type OrderItemCreateWithoutRecipeIngredientInput = {
   quantity?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  order: Prisma.OrderCreateNestedOneWithoutOrderItemsInput
-  ingredient?: Prisma.IngredientCreateNestedOneWithoutOrderItemsInput
+  order: Prisma.OrderCreateNestedOneWithoutItemsInput
 }
 
 export type OrderItemUncheckedCreateWithoutRecipeIngredientInput = {
   id?: string
   quantity?: number | null
   orderId: string
-  ingredientId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -648,55 +573,10 @@ export type OrderItemUpdateManyWithWhereWithoutRecipeIngredientInput = {
   data: Prisma.XOR<Prisma.OrderItemUpdateManyMutationInput, Prisma.OrderItemUncheckedUpdateManyWithoutRecipeIngredientInput>
 }
 
-export type OrderItemCreateWithoutIngredientInput = {
-  id?: string
-  quantity?: number | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  recipeIngredient: Prisma.RecipeIngredientCreateNestedOneWithoutOrderItemInput
-  order: Prisma.OrderCreateNestedOneWithoutOrderItemsInput
-}
-
-export type OrderItemUncheckedCreateWithoutIngredientInput = {
-  id?: string
-  quantity?: number | null
-  recipeIngredientId: string
-  orderId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-}
-
-export type OrderItemCreateOrConnectWithoutIngredientInput = {
-  where: Prisma.OrderItemWhereUniqueInput
-  create: Prisma.XOR<Prisma.OrderItemCreateWithoutIngredientInput, Prisma.OrderItemUncheckedCreateWithoutIngredientInput>
-}
-
-export type OrderItemCreateManyIngredientInputEnvelope = {
-  data: Prisma.OrderItemCreateManyIngredientInput | Prisma.OrderItemCreateManyIngredientInput[]
-  skipDuplicates?: boolean
-}
-
-export type OrderItemUpsertWithWhereUniqueWithoutIngredientInput = {
-  where: Prisma.OrderItemWhereUniqueInput
-  update: Prisma.XOR<Prisma.OrderItemUpdateWithoutIngredientInput, Prisma.OrderItemUncheckedUpdateWithoutIngredientInput>
-  create: Prisma.XOR<Prisma.OrderItemCreateWithoutIngredientInput, Prisma.OrderItemUncheckedCreateWithoutIngredientInput>
-}
-
-export type OrderItemUpdateWithWhereUniqueWithoutIngredientInput = {
-  where: Prisma.OrderItemWhereUniqueInput
-  data: Prisma.XOR<Prisma.OrderItemUpdateWithoutIngredientInput, Prisma.OrderItemUncheckedUpdateWithoutIngredientInput>
-}
-
-export type OrderItemUpdateManyWithWhereWithoutIngredientInput = {
-  where: Prisma.OrderItemScalarWhereInput
-  data: Prisma.XOR<Prisma.OrderItemUpdateManyMutationInput, Prisma.OrderItemUncheckedUpdateManyWithoutIngredientInput>
-}
-
 export type OrderItemCreateManyOrderInput = {
   id?: string
   quantity?: number | null
   recipeIngredientId: string
-  ingredientId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -707,14 +587,12 @@ export type OrderItemUpdateWithoutOrderInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   recipeIngredient?: Prisma.RecipeIngredientUpdateOneRequiredWithoutOrderItemNestedInput
-  ingredient?: Prisma.IngredientUpdateOneWithoutOrderItemsNestedInput
 }
 
 export type OrderItemUncheckedUpdateWithoutOrderInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   recipeIngredientId?: Prisma.StringFieldUpdateOperationsInput | string
-  ingredientId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -723,7 +601,6 @@ export type OrderItemUncheckedUpdateManyWithoutOrderInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   recipeIngredientId?: Prisma.StringFieldUpdateOperationsInput | string
-  ingredientId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -732,7 +609,6 @@ export type OrderItemCreateManyRecipeIngredientInput = {
   id?: string
   quantity?: number | null
   orderId: string
-  ingredientId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -742,15 +618,13 @@ export type OrderItemUpdateWithoutRecipeIngredientInput = {
   quantity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  order?: Prisma.OrderUpdateOneRequiredWithoutOrderItemsNestedInput
-  ingredient?: Prisma.IngredientUpdateOneWithoutOrderItemsNestedInput
+  order?: Prisma.OrderUpdateOneRequiredWithoutItemsNestedInput
 }
 
 export type OrderItemUncheckedUpdateWithoutRecipeIngredientInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   orderId?: Prisma.StringFieldUpdateOperationsInput | string
-  ingredientId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -758,43 +632,6 @@ export type OrderItemUncheckedUpdateWithoutRecipeIngredientInput = {
 export type OrderItemUncheckedUpdateManyWithoutRecipeIngredientInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   quantity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  orderId?: Prisma.StringFieldUpdateOperationsInput | string
-  ingredientId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type OrderItemCreateManyIngredientInput = {
-  id?: string
-  quantity?: number | null
-  recipeIngredientId: string
-  orderId: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-}
-
-export type OrderItemUpdateWithoutIngredientInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  quantity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  recipeIngredient?: Prisma.RecipeIngredientUpdateOneRequiredWithoutOrderItemNestedInput
-  order?: Prisma.OrderUpdateOneRequiredWithoutOrderItemsNestedInput
-}
-
-export type OrderItemUncheckedUpdateWithoutIngredientInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  quantity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  recipeIngredientId?: Prisma.StringFieldUpdateOperationsInput | string
-  orderId?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type OrderItemUncheckedUpdateManyWithoutIngredientInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  quantity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  recipeIngredientId?: Prisma.StringFieldUpdateOperationsInput | string
   orderId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -807,12 +644,10 @@ export type OrderItemSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   quantity?: boolean
   recipeIngredientId?: boolean
   orderId?: boolean
-  ingredientId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   recipeIngredient?: boolean | Prisma.RecipeIngredientDefaultArgs<ExtArgs>
   order?: boolean | Prisma.OrderDefaultArgs<ExtArgs>
-  ingredient?: boolean | Prisma.OrderItem$ingredientArgs<ExtArgs>
 }, ExtArgs["result"]["orderItem"]>
 
 export type OrderItemSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -820,12 +655,10 @@ export type OrderItemSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   quantity?: boolean
   recipeIngredientId?: boolean
   orderId?: boolean
-  ingredientId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   recipeIngredient?: boolean | Prisma.RecipeIngredientDefaultArgs<ExtArgs>
   order?: boolean | Prisma.OrderDefaultArgs<ExtArgs>
-  ingredient?: boolean | Prisma.OrderItem$ingredientArgs<ExtArgs>
 }, ExtArgs["result"]["orderItem"]>
 
 export type OrderItemSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -833,12 +666,10 @@ export type OrderItemSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   quantity?: boolean
   recipeIngredientId?: boolean
   orderId?: boolean
-  ingredientId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   recipeIngredient?: boolean | Prisma.RecipeIngredientDefaultArgs<ExtArgs>
   order?: boolean | Prisma.OrderDefaultArgs<ExtArgs>
-  ingredient?: boolean | Prisma.OrderItem$ingredientArgs<ExtArgs>
 }, ExtArgs["result"]["orderItem"]>
 
 export type OrderItemSelectScalar = {
@@ -846,26 +677,22 @@ export type OrderItemSelectScalar = {
   quantity?: boolean
   recipeIngredientId?: boolean
   orderId?: boolean
-  ingredientId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type OrderItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "quantity" | "recipeIngredientId" | "orderId" | "ingredientId" | "createdAt" | "updatedAt", ExtArgs["result"]["orderItem"]>
+export type OrderItemOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "quantity" | "recipeIngredientId" | "orderId" | "createdAt" | "updatedAt", ExtArgs["result"]["orderItem"]>
 export type OrderItemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   recipeIngredient?: boolean | Prisma.RecipeIngredientDefaultArgs<ExtArgs>
   order?: boolean | Prisma.OrderDefaultArgs<ExtArgs>
-  ingredient?: boolean | Prisma.OrderItem$ingredientArgs<ExtArgs>
 }
 export type OrderItemIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   recipeIngredient?: boolean | Prisma.RecipeIngredientDefaultArgs<ExtArgs>
   order?: boolean | Prisma.OrderDefaultArgs<ExtArgs>
-  ingredient?: boolean | Prisma.OrderItem$ingredientArgs<ExtArgs>
 }
 export type OrderItemIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   recipeIngredient?: boolean | Prisma.RecipeIngredientDefaultArgs<ExtArgs>
   order?: boolean | Prisma.OrderDefaultArgs<ExtArgs>
-  ingredient?: boolean | Prisma.OrderItem$ingredientArgs<ExtArgs>
 }
 
 export type $OrderItemPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -873,14 +700,12 @@ export type $OrderItemPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   objects: {
     recipeIngredient: Prisma.$RecipeIngredientPayload<ExtArgs>
     order: Prisma.$OrderPayload<ExtArgs>
-    ingredient: Prisma.$IngredientPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     quantity: number | null
     recipeIngredientId: string
     orderId: string
-    ingredientId: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["orderItem"]>
@@ -1279,7 +1104,6 @@ export interface Prisma__OrderItemClient<T, Null = never, ExtArgs extends runtim
   readonly [Symbol.toStringTag]: "PrismaPromise"
   recipeIngredient<T extends Prisma.RecipeIngredientDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RecipeIngredientDefaultArgs<ExtArgs>>): Prisma.Prisma__RecipeIngredientClient<runtime.Types.Result.GetResult<Prisma.$RecipeIngredientPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   order<T extends Prisma.OrderDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OrderDefaultArgs<ExtArgs>>): Prisma.Prisma__OrderClient<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  ingredient<T extends Prisma.OrderItem$ingredientArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OrderItem$ingredientArgs<ExtArgs>>): Prisma.Prisma__IngredientClient<runtime.Types.Result.GetResult<Prisma.$IngredientPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1313,7 +1137,6 @@ export interface OrderItemFieldRefs {
   readonly quantity: Prisma.FieldRef<"OrderItem", 'Int'>
   readonly recipeIngredientId: Prisma.FieldRef<"OrderItem", 'String'>
   readonly orderId: Prisma.FieldRef<"OrderItem", 'String'>
-  readonly ingredientId: Prisma.FieldRef<"OrderItem", 'String'>
   readonly createdAt: Prisma.FieldRef<"OrderItem", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"OrderItem", 'DateTime'>
 }
@@ -1709,25 +1532,6 @@ export type OrderItemDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Limit how many OrderItems to delete.
    */
   limit?: number
-}
-
-/**
- * OrderItem.ingredient
- */
-export type OrderItem$ingredientArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Ingredient
-   */
-  select?: Prisma.IngredientSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Ingredient
-   */
-  omit?: Prisma.IngredientOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.IngredientInclude<ExtArgs> | null
-  where?: Prisma.IngredientWhereInput
 }
 
 /**
