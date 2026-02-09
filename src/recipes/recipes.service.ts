@@ -1,22 +1,59 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { PrismaService } from 'src/prisma/prisma.service'
+import { RecipeFilterInput } from 'src/recipes/inputs/recipe-filter.input'
+import type * as Prisma from 'prisma/generated/prisma/internal/prismaNamespace'
 
 @Injectable()
 export class RecipesService {
 	constructor(private readonly prisma: PrismaService) {}
 
-	getAll(
-		skip: number = 0,
-		take: number = 10,
-		sortBy: string = 'createdAt',
-		sortOrder: 'asc' | 'desc' = 'desc'
-	) {
+	getAll(filter?: RecipeFilterInput) {
+		const whereConditions: Prisma.RecipeWhereInput = {}
+
+		if (filter?.category) {
+			whereConditions.dishType = {
+				title: { contains: filter.category, mode: 'insensitive' }
+			}
+		}
+
+		if (filter?.searchTerm) {
+			whereConditions.OR = [
+				{ title: { contains: filter.searchTerm, mode: 'insensitive' } },
+				{ description: { contains: filter.searchTerm, mode: 'insensitive' } },
+				{
+					ingredients: {
+						some: {
+							ingredient: {
+								name: { contains: filter.searchTerm, mode: 'insensitive' }
+							}
+						}
+					}
+				}
+			]
+		}
+
+		let orderBy:
+			| Prisma.RecipeOrderByWithRelationInput
+			| Prisma.RecipeOrderByWithRelationInput[] = { createdAt: 'desc' }
+		if (filter?.sortBy) {
+			switch (filter.sortBy) {
+				case 'date':
+					orderBy = { createdAt: filter.sortOrder }
+					break
+				case 'recommended':
+					orderBy = { likes: { _count: filter.sortOrder } }
+					break
+				case 'popularity':
+					orderBy = { views: { _count: filter.sortOrder } }
+					break
+			}
+		}
+
 		return this.prisma.recipe.findMany({
-			skip,
-			take,
-			orderBy: {
-				[sortBy]: sortOrder
-			},
+			skip: filter?.skip || 0,
+			take: filter?.take || 10,
+			where: whereConditions,
+			orderBy,
 			include: {
 				author: true,
 				dishType: true,
@@ -25,7 +62,9 @@ export class RecipesService {
 					include: {
 						ingredient: true
 					}
-				}
+				},
+				likes: true,
+				views: true
 			}
 		})
 	}
@@ -47,18 +86,6 @@ export class RecipesService {
 
 		if (!recipe) {
 			throw new NotFoundException(`Recipe with id ${slug} not found`)
-		}
-
-		return recipe
-	}
-
-	async getById(id: string) {
-		const recipe = await this.prisma.recipe.findUnique({
-			where: { id }
-		})
-
-		if (!recipe) {
-			throw new NotFoundException(`Recipe with id ${id} not found`)
 		}
 
 		return recipe

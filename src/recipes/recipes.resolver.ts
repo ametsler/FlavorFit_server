@@ -6,6 +6,7 @@ import { AdminRecipesService } from 'src/recipes/admin-recipes.service'
 import { RecipeModel } from 'src/recipes/models/recipe.model'
 import { CreateRecipeInput } from 'src/recipes/inputs/create-recipe'
 import { CurrentUser } from 'src/auth/decorators/current-user.decorator'
+import { RecipeFilterInput } from 'src/recipes/inputs/recipe-filter.input'
 
 @Resolver()
 export class RecipesResolver {
@@ -58,10 +59,9 @@ export class RecipesResolver {
 	@Query(() => [RecipeModel], { name: 'recipesPageable' })
 	@Auth()
 	getRecipesPageable(
-		@Args('skip') skip: number,
-		@Args('take') take: number
+		@Args('filter', { nullable: true }) filter?: RecipeFilterInput
 	) {
-		return this.recipesService.getAll(skip, take)
+		return this.recipesService.getAll(filter)
 	}
 
 	@Query(() => RecipeModel, { name: 'recipeBySlug' })

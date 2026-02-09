@@ -1,5 +1,5 @@
 import { Field, InputType, Int } from '@nestjs/graphql'
-import { IsPositive } from 'class-validator'
+import { IsNotEmpty, IsPositive } from 'class-validator'
 
 @InputType()
 export class CreateItemInput {
@@ -8,6 +8,6 @@ export class CreateItemInput {
 	quantity!: number
 
 	@Field(() => String, { nullable: false })
-	@IsPositive()
+	@IsNotEmpty()
 	recipeIngredientId!: string
 }
