@@ -24,7 +24,17 @@ export class AdminRecipesService {
 
 	async getById(id: string) {
 		const recipe = await this.prisma.recipe.findUnique({
-			where: { id }
+			where: { id },
+			include: {
+				author: true,
+				dishType: true,
+				steps: true,
+				ingredients: {
+					include: {
+						ingredient: true
+					}
+				}
+			}
 		})
 
 		if (!recipe) {
@@ -60,9 +70,24 @@ export class AdminRecipesService {
 
 		//ToDo refactoring
 		if (tags && tags.length > 0) {
-			await this.prisma.recipeTag.createMany({
-				data: tags.map(tag => ({ name: tag }))
-			})
+      const existingTags = await this.prisma.recipeTag.findMany({
+				where: {
+					name: {
+						in: tags
+					}
+				},
+				select: {
+					name: true
+				}
+			});
+			const existingTagNames = existingTags.map(tag => tag.name);
+			const newTagNames = tags.filter(tag => !existingTagNames.includes(tag));
+
+			if (newTagNames.length > 0) {
+				await this.prisma.recipeTag.createMany({
+					data: newTagNames.map(name => ({ name }))
+				});
+			}
 
 			const tagsSaved = await this.prisma.recipeTag.findMany({
 				where: {
@@ -79,7 +104,7 @@ export class AdminRecipesService {
 			})
 		}
 
-		return recipe
+		return this.getById(recipe.id)
 	}
 
 	update(
