@@ -16,7 +16,7 @@ async function bootstrap() {
 	app.disable('x-powered-by')
 
 	app.enableCors({
-		origin: [process.env.HOST || 'http://localhost:4200'],
+		origin: [process.env.HOST || 'http://localhost:3000'],
 		credentials: true,
 		allowedHeaders: ['Content-Type', 'Authorization']
 	})

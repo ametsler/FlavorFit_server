@@ -22,7 +22,8 @@ export class AuthService {
 		private usersService: UsersService
 	) {}
 
-	REFRESH_TOKEN_NAME = 'refreshToken'
+	readonly ACCESS_TOKEN_NAME = 'accessToken' as const
+	readonly REFRESH_TOKEN_NAME = 'refreshToken' as const
 
 	async register(input: AuthInput) {
 		try {
@@ -117,21 +118,45 @@ export class AuthService {
 		}
 	}
 
+	toggleAccessTokenCookie(response: Response, token: string | null) {
+		this.toggleAuthTokenCookie(
+			response,
+			this.ACCESS_TOKEN_NAME,
+			token,
+			new Date(
+				Date.now() +
+					this.configService.getOrThrow('EXPIRE_MINUTES_ACCESS_TOKEN') *
+						60 *
+						1000
+			)
+		)
+	}
+
 	toggleRefreshTokenCookie(response: Response, token: string | null) {
+		this.toggleAuthTokenCookie(
+			response,
+			this.REFRESH_TOKEN_NAME,
+			token,
+			new Date(Date.now() +
+				this.configService.getOrThrow('EXPIRE_DAY_REFRESH_TOKEN') *
+					24 *
+					60 *
+					60 *
+					1000
+		))
+	}
+
+	private toggleAuthTokenCookie(
+		response: Response,
+		name: AuthService['REFRESH_TOKEN_NAME'] | AuthService['ACCESS_TOKEN_NAME'],
+		token: string | null,
+		expires: Date
+	) {
 		const isRemoveCookie = !token
 
-		const expiresIn = isRemoveCookie
-			? new Date(0)
-			: new Date(
-					Date.now() +
-						this.configService.getOrThrow('EXPIRE_DAY_REFRESH_TOKEN') *
-							24 *
-							60 *
-							60 *
-							1000
-				)
+		const expiresIn = isRemoveCookie ? new Date(0) : expires
 
-		response.cookie(this.REFRESH_TOKEN_NAME, token, {
+		response.cookie(name, token, {
 			httpOnly: true,
 			domain: this.configService.getOrThrow('DOMAIN'),
 			expires: expiresIn,
