@@ -16,6 +16,9 @@ import { CommentsModule } from './comments/comments.module';
 import { OrdersModule } from './orders/orders.module';
 import { DeliveriesModule } from './deliveries/deliveries.module'
 import '../prisma/prisma-enum-registration'
+import { TurnstileModule } from 'nest-cloudflare-turnstile'
+import { getTurnstileConfig } from 'src/config/turnstile.config'
+import { EmailModule } from './email/email.module';
 
 @Module({
 	imports: [
@@ -26,6 +29,11 @@ import '../prisma/prisma-enum-registration'
 			useFactory: getGraphQLConfig,
 			inject: [ConfigService]
 		}),
+		TurnstileModule.forRootAsync({
+			imports: [ConfigModule],
+			useFactory: getTurnstileConfig,
+			inject: [ConfigService]
+		}),
 		AuthModule,
 		UsersModule,
 		IngredientsModule,
@@ -34,7 +42,8 @@ import '../prisma/prisma-enum-registration'
 		PrismaModule,
 		StepModule,
 		CommentsModule,
-		DeliveriesModule
+		DeliveriesModule,
+		EmailModule
 	],
 	controllers: [AppController],
 	providers: [

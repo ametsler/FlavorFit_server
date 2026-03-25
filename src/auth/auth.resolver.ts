@@ -4,23 +4,27 @@ import { AuthInput } from 'src/auth/auth.input'
 import { AuthResponse } from 'src/auth/auth.interface'
 import type { IGqlContext } from 'src/app.interface'
 import { BadRequestException } from '@nestjs/common'
+import { VerifyCaptcha } from 'src/auth/decorators/captcha.decorator'
 
 @Resolver()
 export class AuthResolver {
 	constructor(private authService: AuthService) {}
 
 	@Mutation(() => AuthResponse)
+	@VerifyCaptcha()
 	async register(
 		@Args('data') input: AuthInput,
 		@Context() { res }: IGqlContext
 	) {
-		const { refreshToken, accessToken, ...response } = await this.authService.register(input)
+		const { refreshToken, accessToken, ...response } =
+			await this.authService.register(input)
 		this.authService.toggleAccessTokenCookie(res, accessToken)
 		this.authService.toggleRefreshTokenCookie(res, refreshToken)
 		return response
 	}
 
 	@Mutation(() => AuthResponse)
+	@VerifyCaptcha()
 	async login(@Args('data') input: AuthInput, @Context() { res }: IGqlContext) {
 		const { refreshToken, accessToken, ...response } =
 			await this.authService.login(input)
