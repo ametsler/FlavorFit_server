@@ -6,12 +6,14 @@ import {
 import { PrismaService } from 'src/prisma/prisma.service'
 import { ConfigService } from '@nestjs/config'
 import { JwtService } from '@nestjs/jwt'
-import { AuthInput } from 'src/auth/auth.input'
+import { AuthInput } from 'src/auth/inputs/auth.input'
 import { hash, verify } from 'argon2'
 import { TAuthTokenData } from 'src/auth/auth.interface'
 import { UsersService } from 'src/users/users.service'
 import { Response } from 'express'
 import { isDev } from 'src/utils/is-dev.utils'
+import { generateToken } from 'src/utils/generate-token.util'
+import { EmailService } from 'src/email/email.service'
 
 @Injectable()
 export class AuthService {
@@ -19,7 +21,8 @@ export class AuthService {
 		private prisma: PrismaService,
 		private configService: ConfigService,
 		private jwtService: JwtService,
-		private usersService: UsersService
+		private usersService: UsersService,
+		private emailService: EmailService
 	) {}
 
 	readonly ACCESS_TOKEN_NAME = 'accessToken' as const
@@ -40,10 +43,14 @@ export class AuthService {
 				throw new BadRequestException('User already exists with: ' + email)
 			}
 
+			const emailVerificationToken = generateToken()
+
 			const user = await this.prisma.user.create({
 				data: {
 					email: email,
-					password: await hash(input.password)
+					password: await hash(input.password),
+					emailVerificationToken,
+					emailVerificationTokenExpiresAt: new Date(Date.now() + 60 * 60 * 1000)
 				}
 			})
 
@@ -51,6 +58,10 @@ export class AuthService {
 				id: user.id,
 				role: user.role
 			})
+
+			const verificationUrl = `${this.configService.get<string>('HOST')}/verify-email/${email}/${emailVerificationToken}`
+
+			await this.emailService.sendVerification(email, '', verificationUrl)
 
 			return { user, ...tokens }
 		} catch (error) {
@@ -137,13 +148,15 @@ export class AuthService {
 			response,
 			this.REFRESH_TOKEN_NAME,
 			token,
-			new Date(Date.now() +
-				this.configService.getOrThrow('EXPIRE_DAY_REFRESH_TOKEN') *
-					24 *
-					60 *
-					60 *
-					1000
-		))
+			new Date(
+				Date.now() +
+					this.configService.getOrThrow('EXPIRE_DAY_REFRESH_TOKEN') *
+						24 *
+						60 *
+						60 *
+						1000
+			)
+		)
 	}
 
 	private toggleAuthTokenCookie(
