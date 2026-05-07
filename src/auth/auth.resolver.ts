@@ -6,7 +6,7 @@ import type { IGqlContext } from 'src/app.interface'
 import { BadRequestException } from '@nestjs/common'
 import { VerifyCaptcha } from 'src/auth/decorators/captcha.decorator'
 import { AuthAccountService } from 'src/auth/auth-account.service'
-import { ResetPasswordRequestInput } from 'src/auth/inputs/reset-password-request.input'
+import { RequestPasswordResetInput } from 'src/auth/inputs/request-password-reset.input'
 import { ResetPasswordInput } from 'src/auth/inputs/reset-password.input'
 
 @Resolver()
@@ -40,9 +40,7 @@ export class AuthResolver {
 	}
 
 	@Mutation(() => Boolean)
-	@VerifyCaptcha()
 	async verifyEmail(
-		@Args('email') email: string,
 		@Args('token') input: string
 	) {
 		return await this.authAccountService.verifyEmail(input)
@@ -50,14 +48,17 @@ export class AuthResolver {
 
 	@Mutation(() => Boolean)
 	@VerifyCaptcha()
-	async RequestPasswordReset(@Args('data') input: ResetPasswordRequestInput) {
+	async requestPasswordReset(@Args('data') input: RequestPasswordResetInput) {
 		return await this.authAccountService.requestPasswordReset(input.email)
 	}
 
 	@Mutation(() => Boolean)
 	@VerifyCaptcha()
 	async resetPassword(@Args('data') input: ResetPasswordInput) {
-		return await this.authAccountService.resetPassword(input.token, input.newPassword)
+		return await this.authAccountService.resetPassword(
+			input.token,
+			input.newPassword
+		)
 	}
 
 	@Query(() => AuthResponse)

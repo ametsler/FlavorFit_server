@@ -28,6 +28,9 @@ export class UserModel {
 	@Field(() => Date, { nullable: false })
 	updatedAt!: Date
 
+	@Field(() => Boolean, { nullable: false })
+	isEmailVerified!: boolean
+
 	@Field(() => ProfileModel, { nullable: true })
 	profile?: ProfileModel | null
 

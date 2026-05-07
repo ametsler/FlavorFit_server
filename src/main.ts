@@ -18,7 +18,7 @@ async function bootstrap() {
 	app.enableCors({
 		origin: [process.env.HOST || 'http://localhost:3000'],
 		credentials: true,
-		allowedHeaders: ['Content-Type', 'Authorization']
+		allowedHeaders: ['Content-Type', 'Authorization', 'cf-turnstile-token']
 	})
 
 	await app.listen(process.env.PORT ?? 4200)
