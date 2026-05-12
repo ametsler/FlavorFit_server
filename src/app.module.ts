@@ -19,6 +19,7 @@ import '../prisma/prisma-enum-registration'
 import { TurnstileModule } from 'nest-cloudflare-turnstile'
 import { getTurnstileConfig } from 'src/config/turnstile.config'
 import { EmailModule } from './email/email.module';
+import { MediaUploadModule } from './media-upload/media-upload.module';
 
 @Module({
 	imports: [
@@ -43,7 +44,8 @@ import { EmailModule } from './email/email.module';
 		StepModule,
 		CommentsModule,
 		DeliveriesModule,
-		EmailModule
+		EmailModule,
+		MediaUploadModule
 	],
 	controllers: [AppController],
 	providers: [
