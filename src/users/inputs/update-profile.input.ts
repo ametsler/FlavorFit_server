@@ -10,9 +10,10 @@ import {
 
 @InputType()
 export class UpdateProfileInput {
-	@Field(() => String, { nullable: false })
+	@Field(() => String, { nullable: true })
+	@IsOptional()
 	@IsNotEmpty()
-	fullName!: string
+	fullName!: string | null
 
 	@Field(() => Gender, { nullable: true })
 	@IsOptional()
@@ -30,7 +31,7 @@ export class UpdateProfileInput {
 
 	@Field(() => String, { nullable: true })
 	@IsOptional()
-	@IsUrl()
+	@IsNotEmpty()
 	photo!: string | null
 
 	@Field(() => String, { nullable: true })

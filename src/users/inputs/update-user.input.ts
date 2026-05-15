@@ -20,6 +20,10 @@ export class UpdateUserInput {
 	@IsEnum(Role)
 	role!: `${Role}`
 
+	@Field(() => Boolean, { nullable: false })
+	@IsOptional()
+	isEmailVerified?: boolean
+
 	@Field(() => UpdateProfileInput, { nullable: true })
 	@IsOptional()
 	@ValidateNested()
