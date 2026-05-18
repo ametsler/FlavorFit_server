@@ -4,7 +4,6 @@ dist
 .gitignore
 .env
 bun.lockb
-package-lock.json
 yarn.lock
 README.md
 Dockerfile
