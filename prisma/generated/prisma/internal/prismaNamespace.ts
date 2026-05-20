@@ -1803,6 +1803,7 @@ export const RecipeScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
+  image: 'image',
   cuisineType: 'cuisineType',
   difficulty: 'difficulty',
   prepTime: 'prepTime',
@@ -1814,6 +1815,9 @@ export const RecipeScalarFieldEnum = {
   fiber: 'fiber',
   rating: 'rating',
   slug: 'slug',
+  sourceUrl: 'sourceUrl',
+  yield: 'yield',
+  authorName: 'authorName',
   authorId: 'authorId',
   dishTypeId: 'dishTypeId',
   createdAt: 'createdAt',
@@ -1840,6 +1844,7 @@ export const RecipeStepScalarFieldEnum = {
   title: 'title',
   description: 'description',
   imgUrl: 'imgUrl',
+  url: 'url',
   recipeId: 'recipeId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -1850,6 +1855,7 @@ export type RecipeStepScalarFieldEnum = (typeof RecipeStepScalarFieldEnum)[keyof
 
 export const RecipeIngredientScalarFieldEnum = {
   id: 'id',
+  unit: 'unit',
   quantity: 'quantity',
   recipeId: 'recipeId',
   ingredientId: 'ingredientId',
@@ -1862,9 +1868,8 @@ export type RecipeIngredientScalarFieldEnum = (typeof RecipeIngredientScalarFiel
 
 export const IngredientScalarFieldEnum = {
   id: 'id',
-  iconUrl: 'iconUrl',
+  image: 'image',
   name: 'name',
-  unit: 'unit',
   price: 'price',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

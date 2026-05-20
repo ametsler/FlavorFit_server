@@ -30,11 +30,33 @@ export type OrderStatus = (typeof OrderStatus)[keyof typeof OrderStatus]
 
 export const Unit = {
   GRAM: 'GRAM',
+  KILOGRAM: 'KILOGRAM',
   MILLILITER: 'MILLILITER',
+  LITER: 'LITER',
   PIECE: 'PIECE',
+  CLOVE: 'CLOVE',
+  PINCH: 'PINCH',
+  BUNCH: 'BUNCH',
+  TWIG: 'TWIG',
+  LEAF: 'LEAF',
+  ROOT: 'ROOT',
+  TUBER: 'TUBER',
+  HEAD: 'HEAD',
+  SLICE: 'SLICE',
+  POD: 'POD',
+  CAN: 'CAN',
+  PACK: 'PACK',
+  BAR: 'BAR',
+  CUBE: 'CUBE',
   TEASPOON: 'TEASPOON',
   TABLESPOON: 'TABLESPOON',
-  CLOVES: 'CLOVES'
+  DESSERTSPOON: 'DESSERTSPOON',
+  GLASS: 'GLASS',
+  DROP: 'DROP',
+  BY_TASTE: 'BY_TASTE',
+  TO_DESIRED_CONSISTENCY: 'TO_DESIRED_CONSISTENCY',
+  OPTIONAL: 'OPTIONAL',
+  AS_NEEDED: 'AS_NEEDED'
 } as const
 
 export type Unit = (typeof Unit)[keyof typeof Unit]

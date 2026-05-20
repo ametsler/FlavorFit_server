@@ -3,9 +3,10 @@ model Recipe {
 
   title         String
   description   String
-  cuisineType   String     @map("cuisine_type")
-  difficulty    Difficulty
-  prepTime      Int        @map("prep_time")
+  image         String?
+  cuisineType   String?    @map("cuisine_type")
+  difficulty    Difficulty @default(MEDIUM)
+  prepTime      Int?       @map("prep_time")
   cookTime      Int        @map("cook_time")
   calories      Int?
   protein       Int?
@@ -14,6 +15,9 @@ model Recipe {
   fiber         Int?
   rating        Decimal?   @db.Decimal(3, 2)
   slug          String     @unique
+  sourceUrl     String?    @map("source_url")
+  yield         Int?
+  authorName    String?    @map("author_name")
 
   ingredients RecipeIngredient[]
   steps       RecipeStep[]
@@ -22,10 +26,10 @@ model Recipe {
   views       RecipeView[]
   tags        RecipeToRecipeTag[]
 
-  author     User     @relation(fields: [authorId], references: [id])
-  authorId   String   @map("author_id")
-  dishType   DishType @relation(fields: [dishTypeId], references: [id])
-  dishTypeId String   @map("dish_type_id")
+  author     User      @relation(fields: [authorId], references: [id])
+  authorId   String    @map("author_id")
+  dishType   DishType? @relation(fields: [dishTypeId], references: [id])
+  dishTypeId String?   @map("dish_type_id")
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -37,7 +41,7 @@ model DishType {
   id String @id @default(cuid())
 
   order Int
-  title String
+  title String?
 
   recipes Recipe[]
 
@@ -54,6 +58,7 @@ model RecipeStep {
   title       String
   description String
   imgUrl      String? @map("img_url")
+  url         String?
 
   recipe   Recipe @relation(fields: [recipeId], references: [id])
   recipeId String @map("recipe_id")
@@ -67,7 +72,8 @@ model RecipeStep {
 model RecipeIngredient {
   id String @id @default(cuid())
 
-  quantity Decimal @db.Decimal(8, 3)
+  unit     Unit
+  quantity Decimal? @db.Decimal(8, 3)
 
   OrderItem OrderItem[]
 
@@ -86,17 +92,15 @@ model RecipeIngredient {
 model Ingredient {
   id String @id @default(cuid())
 
-  iconUrl String? @map("icon_url")
-  name    String
-  unit    Unit
-  price   Decimal @db.Decimal(10, 2)
+  image String?
+  name  String   @unique
+  price Decimal? @db.Decimal(10, 2)
 
   recipes RecipeIngredient[]
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  @@unique([name, unit])
   @@map("ingredients")
 }
 
@@ -126,12 +130,43 @@ model RecipeToRecipeTag {
 }
 
 enum Unit {
-  GRAM
-  MILLILITER
-  PIECE
-  TEASPOON
-  TABLESPOON
-  CLOVES
+  // Метрические единицы (Вес)
+  GRAM // г, грамм, граммы, гр
+  KILOGRAM // кг, килограмм, килограмма
+
+  // Метрические единицы (Объем)
+  MILLILITER // мл, миллилитр, миллилитра
+  LITER // л, литр, литра
+
+  // Штучные и порционные меры
+  PIECE // шт, штука, штуки, штук
+  CLOVE // зубчик, зубчика, зубчиков (для чеснока)
+  PINCH // щепотка, щепотки, на кончике ножа
+  BUNCH // пучок, пучка, пучков (для зелени)
+  TWIG // веточка, веточки, веточек (для зелени, томатов)
+  LEAF // лист, листик, лавровый лист
+  ROOT // корень, коренья (имбирь, хрен)
+  TUBER // клубень (картофель)
+  HEAD // кочан, головка (капуста, чеснок, лук)
+  SLICE // долька, ломтик, кусочек
+  POD // стручок (перец, горох)
+  CAN // банка, баночка
+  PACK // пачка, упаковка, пакет
+  BAR // плитка (шоколад)
+  CUBE // кубик (бульонный, лед)
+
+  // Обиходные/Кухонные меры объема
+  TEASPOON // ч. л., чайная ложка
+  TABLESPOON // ст. л., столовая ложка
+  DESSERTSPOON // дес. л., десертная ложка
+  GLASS // стакан, стакана, фужер, чашка
+  DROP // капля, капли, капель
+
+  // Специфические / Абстрактные меры
+  BY_TASTE // по вкусу
+  TO_DESIRED_CONSISTENCY // до нужной консистенции / сколько уйдет (например, для муки)
+  OPTIONAL // по желанию, опционально
+  AS_NEEDED // по необходимости / сколько потребуется
 }
 
 enum Difficulty {

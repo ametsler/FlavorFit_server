@@ -1,44 +1,21 @@
-# Этап 1: Сборка приложения и генерация Prisma (Объединенный deps + builder)
-FROM oven/bun:1.3.11-slim AS builder
+FROM node:22 AS build
 WORKDIR /usr/src/app
-
-# Устанавливаем Node.js 22 LTS и OpenSSL один раз
-RUN apt-get update && apt-get install -y curl openssl && \
-    curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
-    apt-get install -y nodejs && \
-    rm -rf /var/lib/apt/lists/*
-
-# Сначала копируем только файлы зависимостей для кэширования слоев Docker
-COPY package.json bun.lock ./
-RUN bun install
-
-# Копируем остальной исходный код
+COPY package.json .
+#COPY package-lock.json .
+RUN npm install
 COPY . .
+RUN npx prisma generate
+RUN npm run build
 
-# Генерируем клиент Prisma и собираем NestJS в dist/
-#RUN npx prisma generate
-RUN bun run build
-
-# Этап 2: Финальный минимальный продакшн-образ
-FROM oven/bun:1.3.11-slim AS runner
+FROM node:22-slim
+RUN apt update && apt install libssl-dev dumb-init -y --no-install-recommends
 WORKDIR /usr/src/app
-
-RUN apt-get update && apt-get install -y curl openssl && \
-    curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
-    apt-get install -y nodejs && \
-    rm -rf /var/lib/apt/lists/*
-
-ENV NODE_ENV=production
-
-COPY --from=builder /usr/src/app/node_modules ./node_modules
-COPY --from=builder /usr/src/app/dist ./dist
-COPY --from=builder /usr/src/app/package.json ./package.json
-COPY --from=builder /usr/src/app/entrypoint.sh ./entrypoint.sh
-COPY --from=builder /usr/src/app/prisma ./prisma
-COPY --from=builder /usr/src/app/prisma.config.ts ./prisma.config.ts
-
-RUN chmod +x ./entrypoint.sh
+COPY --chown=node:node --from=build /usr/src/app/dist ./dist
+COPY --chown=node:node --from=build /usr/src/app/package.json .
+COPY --chown=node:node --from=build /usr/src/app/package-lock.json .
+COPY --chown=node:node --from=build /usr/src/app/prisma.config.ts ./prisma.config.ts
+COPY --chown=node:node --from=build /usr/src/app/prisma ./prisma
+RUN npm install --omit=dev
 
 EXPOSE 4200
-
-ENTRYPOINT ["./entrypoint.sh"]
+CMD ["dumb-init", "npm", "run", "start:migrate:prod"]

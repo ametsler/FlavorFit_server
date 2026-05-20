@@ -18,6 +18,9 @@ export class RecipeStepModel {
 	@Field(() => String, { nullable: true })
 	imgUrl!: string | null
 
+	@Field(() => String, { nullable: true })
+	url!: string | null
+
 	@Field(() => String, { nullable: false })
 	recipeId!: string
 

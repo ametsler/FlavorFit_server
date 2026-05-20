@@ -24,17 +24,20 @@ export class RecipeModel {
 	@Field(() => String, { nullable: false })
 	description!: string
 
+	@Field(() => String, { nullable: true })
+	image!: string | null
+
 	@Field(() => String, { nullable: false })
 	slug!: string
 
-	@Field(() => String, { nullable: false })
+	@Field(() => String, { nullable: true })
 	cuisineType!: string
 
 	@Field(() => Difficulty, { nullable: false })
 	difficulty!: `${Difficulty}`
 
-	@Field(() => Int, { nullable: false })
-	prepTime!: number
+	@Field(() => Int, { nullable: true })
+	prepTime!: number | null
 
 	@Field(() => Int, { nullable: false })
 	cookTime!: number
@@ -57,11 +60,20 @@ export class RecipeModel {
 	@Field(() => Float, { nullable: true })
 	rating!: number | null
 
+	@Field(() => String, { nullable: true })
+	sourceUrl!: string | null
+
+	@Field(() => Int, { nullable: true })
+	yield!: number | null
+
+	@Field(() => String, { nullable: true })
+	authorName!: string | null
+
 	@Field(() => String, { nullable: false })
 	authorId!: string
 
-	@Field(() => String, { nullable: false })
-	dishTypeId!: string
+	@Field(() => String, { nullable: true })
+	dishTypeId!: string | null
 
 	@Field(() => Date, { nullable: false })
 	createdAt!: Date
@@ -91,5 +103,5 @@ export class RecipeModel {
 	author?: UserModel
 
 	@Field(() => DishModel, { nullable: true })
-	dishType?: DishModel
+	dishType?: DishModel | null
 }

@@ -182,7 +182,7 @@ export type DishTypeGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 export type DishTypeGroupByOutputType = {
   id: string
   order: number
-  title: string
+  title: string | null
   createdAt: Date
   updatedAt: Date
   _count: DishTypeCountAggregateOutputType | null
@@ -213,7 +213,7 @@ export type DishTypeWhereInput = {
   NOT?: Prisma.DishTypeWhereInput | Prisma.DishTypeWhereInput[]
   id?: Prisma.StringFilter<"DishType"> | string
   order?: Prisma.IntFilter<"DishType"> | number
-  title?: Prisma.StringFilter<"DishType"> | string
+  title?: Prisma.StringNullableFilter<"DishType"> | string | null
   createdAt?: Prisma.DateTimeFilter<"DishType"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"DishType"> | Date | string
   recipes?: Prisma.RecipeListRelationFilter
@@ -222,7 +222,7 @@ export type DishTypeWhereInput = {
 export type DishTypeOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   order?: Prisma.SortOrder
-  title?: Prisma.SortOrder
+  title?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   recipes?: Prisma.RecipeOrderByRelationAggregateInput
@@ -234,7 +234,7 @@ export type DishTypeWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.DishTypeWhereInput[]
   NOT?: Prisma.DishTypeWhereInput | Prisma.DishTypeWhereInput[]
   order?: Prisma.IntFilter<"DishType"> | number
-  title?: Prisma.StringFilter<"DishType"> | string
+  title?: Prisma.StringNullableFilter<"DishType"> | string | null
   createdAt?: Prisma.DateTimeFilter<"DishType"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"DishType"> | Date | string
   recipes?: Prisma.RecipeListRelationFilter
@@ -243,7 +243,7 @@ export type DishTypeWhereUniqueInput = Prisma.AtLeast<{
 export type DishTypeOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   order?: Prisma.SortOrder
-  title?: Prisma.SortOrder
+  title?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.DishTypeCountOrderByAggregateInput
@@ -259,7 +259,7 @@ export type DishTypeScalarWhereWithAggregatesInput = {
   NOT?: Prisma.DishTypeScalarWhereWithAggregatesInput | Prisma.DishTypeScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"DishType"> | string
   order?: Prisma.IntWithAggregatesFilter<"DishType"> | number
-  title?: Prisma.StringWithAggregatesFilter<"DishType"> | string
+  title?: Prisma.StringNullableWithAggregatesFilter<"DishType"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"DishType"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"DishType"> | Date | string
 }
@@ -267,7 +267,7 @@ export type DishTypeScalarWhereWithAggregatesInput = {
 export type DishTypeCreateInput = {
   id?: string
   order: number
-  title: string
+  title?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   recipes?: Prisma.RecipeCreateNestedManyWithoutDishTypeInput
@@ -276,7 +276,7 @@ export type DishTypeCreateInput = {
 export type DishTypeUncheckedCreateInput = {
   id?: string
   order: number
-  title: string
+  title?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   recipes?: Prisma.RecipeUncheckedCreateNestedManyWithoutDishTypeInput
@@ -285,7 +285,7 @@ export type DishTypeUncheckedCreateInput = {
 export type DishTypeUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   recipes?: Prisma.RecipeUpdateManyWithoutDishTypeNestedInput
@@ -294,7 +294,7 @@ export type DishTypeUpdateInput = {
 export type DishTypeUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   recipes?: Prisma.RecipeUncheckedUpdateManyWithoutDishTypeNestedInput
@@ -303,7 +303,7 @@ export type DishTypeUncheckedUpdateInput = {
 export type DishTypeCreateManyInput = {
   id?: string
   order: number
-  title: string
+  title?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -311,7 +311,7 @@ export type DishTypeCreateManyInput = {
 export type DishTypeUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -319,14 +319,14 @@ export type DishTypeUpdateManyMutationInput = {
 export type DishTypeUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type DishTypeScalarRelationFilter = {
-  is?: Prisma.DishTypeWhereInput
-  isNot?: Prisma.DishTypeWhereInput
+export type DishTypeNullableScalarRelationFilter = {
+  is?: Prisma.DishTypeWhereInput | null
+  isNot?: Prisma.DishTypeWhereInput | null
 }
 
 export type DishTypeCountOrderByAggregateInput = {
@@ -367,10 +367,12 @@ export type DishTypeCreateNestedOneWithoutRecipesInput = {
   connect?: Prisma.DishTypeWhereUniqueInput
 }
 
-export type DishTypeUpdateOneRequiredWithoutRecipesNestedInput = {
+export type DishTypeUpdateOneWithoutRecipesNestedInput = {
   create?: Prisma.XOR<Prisma.DishTypeCreateWithoutRecipesInput, Prisma.DishTypeUncheckedCreateWithoutRecipesInput>
   connectOrCreate?: Prisma.DishTypeCreateOrConnectWithoutRecipesInput
   upsert?: Prisma.DishTypeUpsertWithoutRecipesInput
+  disconnect?: Prisma.DishTypeWhereInput | boolean
+  delete?: Prisma.DishTypeWhereInput | boolean
   connect?: Prisma.DishTypeWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.DishTypeUpdateToOneWithWhereWithoutRecipesInput, Prisma.DishTypeUpdateWithoutRecipesInput>, Prisma.DishTypeUncheckedUpdateWithoutRecipesInput>
 }
@@ -378,7 +380,7 @@ export type DishTypeUpdateOneRequiredWithoutRecipesNestedInput = {
 export type DishTypeCreateWithoutRecipesInput = {
   id?: string
   order: number
-  title: string
+  title?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -386,7 +388,7 @@ export type DishTypeCreateWithoutRecipesInput = {
 export type DishTypeUncheckedCreateWithoutRecipesInput = {
   id?: string
   order: number
-  title: string
+  title?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -410,7 +412,7 @@ export type DishTypeUpdateToOneWithWhereWithoutRecipesInput = {
 export type DishTypeUpdateWithoutRecipesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -418,7 +420,7 @@ export type DishTypeUpdateWithoutRecipesInput = {
 export type DishTypeUncheckedUpdateWithoutRecipesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
-  title?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -504,7 +506,7 @@ export type $DishTypePayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     order: number
-    title: string
+    title: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["dishType"]>

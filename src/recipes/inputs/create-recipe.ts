@@ -74,7 +74,21 @@ export class CreateRecipeInput {
 
 	@Field(() => String, { nullable: false })
 	@IsNotEmpty()
-	dishTypeId!: string
+	sourceUrl!: string
+
+	@Field(() => Int, { nullable: true })
+	@IsPositive()
+	@IsOptional()
+	yield!: number | null
+
+	@Field(() => String, { nullable: true })
+	@IsNotEmpty()
+	authorName!: string | null
+
+	@Field(() => String, { nullable: true })
+	@IsNotEmpty()
+	@IsOptional()
+	dishTypeId!: string | null
 
 	@Field(() => [String], { nullable: true })
 	@ArrayNotEmpty()

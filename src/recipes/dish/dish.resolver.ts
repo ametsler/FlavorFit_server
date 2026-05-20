@@ -15,21 +15,19 @@ export class DishResolver {
 		return this.dishService.create(data)
 	}
 
-	@Query(() => [DishModel], { name: 'dishTypes' })
+	@Mutation(() => DishModel)
 	@Auth(Role.ADMIN)
+	removeDish(@Args('id', { type: () => String }) id: string) {
+		return this.dishService.remove(id)
+	}
+
+	@Query(() => [DishModel], { name: 'dishTypes' })
 	findAll() {
 		return this.dishService.findAll()
 	}
 
 	@Mutation(() => DishModel)
-	@Auth(Role.ADMIN)
 	updateDish(@Args('id') id: string, @Args('data') data: CreateDishInput) {
 		return this.dishService.update(id, data)
-	}
-
-	@Mutation(() => DishModel)
-	@Auth(Role.ADMIN)
-	removeDish(@Args('id', { type: () => String }) id: string) {
-		return this.dishService.remove(id)
 	}
 }

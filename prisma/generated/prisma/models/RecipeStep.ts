@@ -40,6 +40,7 @@ export type RecipeStepMinAggregateOutputType = {
   title: string | null
   description: string | null
   imgUrl: string | null
+  url: string | null
   recipeId: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -51,6 +52,7 @@ export type RecipeStepMaxAggregateOutputType = {
   title: string | null
   description: string | null
   imgUrl: string | null
+  url: string | null
   recipeId: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -62,6 +64,7 @@ export type RecipeStepCountAggregateOutputType = {
   title: number
   description: number
   imgUrl: number
+  url: number
   recipeId: number
   createdAt: number
   updatedAt: number
@@ -83,6 +86,7 @@ export type RecipeStepMinAggregateInputType = {
   title?: true
   description?: true
   imgUrl?: true
+  url?: true
   recipeId?: true
   createdAt?: true
   updatedAt?: true
@@ -94,6 +98,7 @@ export type RecipeStepMaxAggregateInputType = {
   title?: true
   description?: true
   imgUrl?: true
+  url?: true
   recipeId?: true
   createdAt?: true
   updatedAt?: true
@@ -105,6 +110,7 @@ export type RecipeStepCountAggregateInputType = {
   title?: true
   description?: true
   imgUrl?: true
+  url?: true
   recipeId?: true
   createdAt?: true
   updatedAt?: true
@@ -203,6 +209,7 @@ export type RecipeStepGroupByOutputType = {
   title: string
   description: string
   imgUrl: string | null
+  url: string | null
   recipeId: string
   createdAt: Date
   updatedAt: Date
@@ -237,6 +244,7 @@ export type RecipeStepWhereInput = {
   title?: Prisma.StringFilter<"RecipeStep"> | string
   description?: Prisma.StringFilter<"RecipeStep"> | string
   imgUrl?: Prisma.StringNullableFilter<"RecipeStep"> | string | null
+  url?: Prisma.StringNullableFilter<"RecipeStep"> | string | null
   recipeId?: Prisma.StringFilter<"RecipeStep"> | string
   createdAt?: Prisma.DateTimeFilter<"RecipeStep"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"RecipeStep"> | Date | string
@@ -249,6 +257,7 @@ export type RecipeStepOrderByWithRelationInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   imgUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  url?: Prisma.SortOrderInput | Prisma.SortOrder
   recipeId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -264,6 +273,7 @@ export type RecipeStepWhereUniqueInput = Prisma.AtLeast<{
   title?: Prisma.StringFilter<"RecipeStep"> | string
   description?: Prisma.StringFilter<"RecipeStep"> | string
   imgUrl?: Prisma.StringNullableFilter<"RecipeStep"> | string | null
+  url?: Prisma.StringNullableFilter<"RecipeStep"> | string | null
   recipeId?: Prisma.StringFilter<"RecipeStep"> | string
   createdAt?: Prisma.DateTimeFilter<"RecipeStep"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"RecipeStep"> | Date | string
@@ -276,6 +286,7 @@ export type RecipeStepOrderByWithAggregationInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   imgUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  url?: Prisma.SortOrderInput | Prisma.SortOrder
   recipeId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -295,6 +306,7 @@ export type RecipeStepScalarWhereWithAggregatesInput = {
   title?: Prisma.StringWithAggregatesFilter<"RecipeStep"> | string
   description?: Prisma.StringWithAggregatesFilter<"RecipeStep"> | string
   imgUrl?: Prisma.StringNullableWithAggregatesFilter<"RecipeStep"> | string | null
+  url?: Prisma.StringNullableWithAggregatesFilter<"RecipeStep"> | string | null
   recipeId?: Prisma.StringWithAggregatesFilter<"RecipeStep"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"RecipeStep"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"RecipeStep"> | Date | string
@@ -306,6 +318,7 @@ export type RecipeStepCreateInput = {
   title: string
   description: string
   imgUrl?: string | null
+  url?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   recipe: Prisma.RecipeCreateNestedOneWithoutStepsInput
@@ -317,6 +330,7 @@ export type RecipeStepUncheckedCreateInput = {
   title: string
   description: string
   imgUrl?: string | null
+  url?: string | null
   recipeId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -328,6 +342,7 @@ export type RecipeStepUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   imgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   recipe?: Prisma.RecipeUpdateOneRequiredWithoutStepsNestedInput
@@ -339,6 +354,7 @@ export type RecipeStepUncheckedUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   imgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   recipeId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -350,6 +366,7 @@ export type RecipeStepCreateManyInput = {
   title: string
   description: string
   imgUrl?: string | null
+  url?: string | null
   recipeId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -361,6 +378,7 @@ export type RecipeStepUpdateManyMutationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   imgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -371,6 +389,7 @@ export type RecipeStepUncheckedUpdateManyInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   imgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   recipeId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -392,6 +411,7 @@ export type RecipeStepCountOrderByAggregateInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   imgUrl?: Prisma.SortOrder
+  url?: Prisma.SortOrder
   recipeId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -407,6 +427,7 @@ export type RecipeStepMaxOrderByAggregateInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   imgUrl?: Prisma.SortOrder
+  url?: Prisma.SortOrder
   recipeId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -418,6 +439,7 @@ export type RecipeStepMinOrderByAggregateInput = {
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   imgUrl?: Prisma.SortOrder
+  url?: Prisma.SortOrder
   recipeId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -469,16 +491,13 @@ export type RecipeStepUncheckedUpdateManyWithoutRecipeNestedInput = {
   deleteMany?: Prisma.RecipeStepScalarWhereInput | Prisma.RecipeStepScalarWhereInput[]
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type RecipeStepCreateWithoutRecipeInput = {
   id?: string
   order: number
   title: string
   description: string
   imgUrl?: string | null
+  url?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -489,6 +508,7 @@ export type RecipeStepUncheckedCreateWithoutRecipeInput = {
   title: string
   description: string
   imgUrl?: string | null
+  url?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -528,6 +548,7 @@ export type RecipeStepScalarWhereInput = {
   title?: Prisma.StringFilter<"RecipeStep"> | string
   description?: Prisma.StringFilter<"RecipeStep"> | string
   imgUrl?: Prisma.StringNullableFilter<"RecipeStep"> | string | null
+  url?: Prisma.StringNullableFilter<"RecipeStep"> | string | null
   recipeId?: Prisma.StringFilter<"RecipeStep"> | string
   createdAt?: Prisma.DateTimeFilter<"RecipeStep"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"RecipeStep"> | Date | string
@@ -539,6 +560,7 @@ export type RecipeStepCreateManyRecipeInput = {
   title: string
   description: string
   imgUrl?: string | null
+  url?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -549,6 +571,7 @@ export type RecipeStepUpdateWithoutRecipeInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   imgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -559,6 +582,7 @@ export type RecipeStepUncheckedUpdateWithoutRecipeInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   imgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -569,6 +593,7 @@ export type RecipeStepUncheckedUpdateManyWithoutRecipeInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   imgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -581,6 +606,7 @@ export type RecipeStepSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   title?: boolean
   description?: boolean
   imgUrl?: boolean
+  url?: boolean
   recipeId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -593,6 +619,7 @@ export type RecipeStepSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   title?: boolean
   description?: boolean
   imgUrl?: boolean
+  url?: boolean
   recipeId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -605,6 +632,7 @@ export type RecipeStepSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   title?: boolean
   description?: boolean
   imgUrl?: boolean
+  url?: boolean
   recipeId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -617,12 +645,13 @@ export type RecipeStepSelectScalar = {
   title?: boolean
   description?: boolean
   imgUrl?: boolean
+  url?: boolean
   recipeId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type RecipeStepOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "order" | "title" | "description" | "imgUrl" | "recipeId" | "createdAt" | "updatedAt", ExtArgs["result"]["recipeStep"]>
+export type RecipeStepOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "order" | "title" | "description" | "imgUrl" | "url" | "recipeId" | "createdAt" | "updatedAt", ExtArgs["result"]["recipeStep"]>
 export type RecipeStepInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   recipe?: boolean | Prisma.RecipeDefaultArgs<ExtArgs>
 }
@@ -644,6 +673,7 @@ export type $RecipeStepPayload<ExtArgs extends runtime.Types.Extensions.Internal
     title: string
     description: string
     imgUrl: string | null
+    url: string | null
     recipeId: string
     createdAt: Date
     updatedAt: Date
@@ -1076,6 +1106,7 @@ export interface RecipeStepFieldRefs {
   readonly title: Prisma.FieldRef<"RecipeStep", 'String'>
   readonly description: Prisma.FieldRef<"RecipeStep", 'String'>
   readonly imgUrl: Prisma.FieldRef<"RecipeStep", 'String'>
+  readonly url: Prisma.FieldRef<"RecipeStep", 'String'>
   readonly recipeId: Prisma.FieldRef<"RecipeStep", 'String'>
   readonly createdAt: Prisma.FieldRef<"RecipeStep", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"RecipeStep", 'DateTime'>

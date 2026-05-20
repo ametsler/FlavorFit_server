@@ -60,6 +60,7 @@ export class AdminRecipesService {
 				...(recipeIngredients && {
 					ingredients: {
 						create: recipeIngredients.map(ri => ({
+							unit: ri.unit,
 							quantity: ri.quantity,
 							ingredientId: ri.ingredientId
 						}))
@@ -115,6 +116,7 @@ export class AdminRecipesService {
 			where: { id },
 			data: {
 				...data,
+				...tags,
 				...(steps && {
 					steps: {
 						create: steps.map(step => ({ ...step }))
@@ -123,6 +125,7 @@ export class AdminRecipesService {
 				...(recipeIngredients && {
 					ingredients: {
 						create: recipeIngredients.map(ri => ({
+							unit: ri.unit,
 							quantity: ri.quantity,
 							ingredientId: ri.ingredientId
 						}))

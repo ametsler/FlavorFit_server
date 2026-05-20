@@ -36,6 +36,7 @@ export type RecipeIngredientSumAggregateOutputType = {
 
 export type RecipeIngredientMinAggregateOutputType = {
   id: string | null
+  unit: $Enums.Unit | null
   quantity: runtime.Decimal | null
   recipeId: string | null
   ingredientId: string | null
@@ -45,6 +46,7 @@ export type RecipeIngredientMinAggregateOutputType = {
 
 export type RecipeIngredientMaxAggregateOutputType = {
   id: string | null
+  unit: $Enums.Unit | null
   quantity: runtime.Decimal | null
   recipeId: string | null
   ingredientId: string | null
@@ -54,6 +56,7 @@ export type RecipeIngredientMaxAggregateOutputType = {
 
 export type RecipeIngredientCountAggregateOutputType = {
   id: number
+  unit: number
   quantity: number
   recipeId: number
   ingredientId: number
@@ -73,6 +76,7 @@ export type RecipeIngredientSumAggregateInputType = {
 
 export type RecipeIngredientMinAggregateInputType = {
   id?: true
+  unit?: true
   quantity?: true
   recipeId?: true
   ingredientId?: true
@@ -82,6 +86,7 @@ export type RecipeIngredientMinAggregateInputType = {
 
 export type RecipeIngredientMaxAggregateInputType = {
   id?: true
+  unit?: true
   quantity?: true
   recipeId?: true
   ingredientId?: true
@@ -91,6 +96,7 @@ export type RecipeIngredientMaxAggregateInputType = {
 
 export type RecipeIngredientCountAggregateInputType = {
   id?: true
+  unit?: true
   quantity?: true
   recipeId?: true
   ingredientId?: true
@@ -187,7 +193,8 @@ export type RecipeIngredientGroupByArgs<ExtArgs extends runtime.Types.Extensions
 
 export type RecipeIngredientGroupByOutputType = {
   id: string
-  quantity: runtime.Decimal
+  unit: $Enums.Unit
+  quantity: runtime.Decimal | null
   recipeId: string
   ingredientId: string
   createdAt: Date
@@ -219,7 +226,8 @@ export type RecipeIngredientWhereInput = {
   OR?: Prisma.RecipeIngredientWhereInput[]
   NOT?: Prisma.RecipeIngredientWhereInput | Prisma.RecipeIngredientWhereInput[]
   id?: Prisma.StringFilter<"RecipeIngredient"> | string
-  quantity?: Prisma.DecimalFilter<"RecipeIngredient"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.EnumUnitFilter<"RecipeIngredient"> | $Enums.Unit
+  quantity?: Prisma.DecimalNullableFilter<"RecipeIngredient"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   recipeId?: Prisma.StringFilter<"RecipeIngredient"> | string
   ingredientId?: Prisma.StringFilter<"RecipeIngredient"> | string
   createdAt?: Prisma.DateTimeFilter<"RecipeIngredient"> | Date | string
@@ -231,7 +239,8 @@ export type RecipeIngredientWhereInput = {
 
 export type RecipeIngredientOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  quantity?: Prisma.SortOrder
+  unit?: Prisma.SortOrder
+  quantity?: Prisma.SortOrderInput | Prisma.SortOrder
   recipeId?: Prisma.SortOrder
   ingredientId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -247,7 +256,8 @@ export type RecipeIngredientWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.RecipeIngredientWhereInput | Prisma.RecipeIngredientWhereInput[]
   OR?: Prisma.RecipeIngredientWhereInput[]
   NOT?: Prisma.RecipeIngredientWhereInput | Prisma.RecipeIngredientWhereInput[]
-  quantity?: Prisma.DecimalFilter<"RecipeIngredient"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.EnumUnitFilter<"RecipeIngredient"> | $Enums.Unit
+  quantity?: Prisma.DecimalNullableFilter<"RecipeIngredient"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   recipeId?: Prisma.StringFilter<"RecipeIngredient"> | string
   ingredientId?: Prisma.StringFilter<"RecipeIngredient"> | string
   createdAt?: Prisma.DateTimeFilter<"RecipeIngredient"> | Date | string
@@ -259,7 +269,8 @@ export type RecipeIngredientWhereUniqueInput = Prisma.AtLeast<{
 
 export type RecipeIngredientOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  quantity?: Prisma.SortOrder
+  unit?: Prisma.SortOrder
+  quantity?: Prisma.SortOrderInput | Prisma.SortOrder
   recipeId?: Prisma.SortOrder
   ingredientId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -276,7 +287,8 @@ export type RecipeIngredientScalarWhereWithAggregatesInput = {
   OR?: Prisma.RecipeIngredientScalarWhereWithAggregatesInput[]
   NOT?: Prisma.RecipeIngredientScalarWhereWithAggregatesInput | Prisma.RecipeIngredientScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"RecipeIngredient"> | string
-  quantity?: Prisma.DecimalWithAggregatesFilter<"RecipeIngredient"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.EnumUnitWithAggregatesFilter<"RecipeIngredient"> | $Enums.Unit
+  quantity?: Prisma.DecimalNullableWithAggregatesFilter<"RecipeIngredient"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   recipeId?: Prisma.StringWithAggregatesFilter<"RecipeIngredient"> | string
   ingredientId?: Prisma.StringWithAggregatesFilter<"RecipeIngredient"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"RecipeIngredient"> | Date | string
@@ -285,7 +297,8 @@ export type RecipeIngredientScalarWhereWithAggregatesInput = {
 
 export type RecipeIngredientCreateInput = {
   id?: string
-  quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit: $Enums.Unit
+  quantity?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   OrderItem?: Prisma.OrderItemCreateNestedManyWithoutRecipeIngredientInput
@@ -295,7 +308,8 @@ export type RecipeIngredientCreateInput = {
 
 export type RecipeIngredientUncheckedCreateInput = {
   id?: string
-  quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit: $Enums.Unit
+  quantity?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   recipeId: string
   ingredientId: string
   createdAt?: Date | string
@@ -305,7 +319,8 @@ export type RecipeIngredientUncheckedCreateInput = {
 
 export type RecipeIngredientUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.EnumUnitFieldUpdateOperationsInput | $Enums.Unit
+  quantity?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   OrderItem?: Prisma.OrderItemUpdateManyWithoutRecipeIngredientNestedInput
@@ -315,7 +330,8 @@ export type RecipeIngredientUpdateInput = {
 
 export type RecipeIngredientUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.EnumUnitFieldUpdateOperationsInput | $Enums.Unit
+  quantity?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   recipeId?: Prisma.StringFieldUpdateOperationsInput | string
   ingredientId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -325,7 +341,8 @@ export type RecipeIngredientUncheckedUpdateInput = {
 
 export type RecipeIngredientCreateManyInput = {
   id?: string
-  quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit: $Enums.Unit
+  quantity?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   recipeId: string
   ingredientId: string
   createdAt?: Date | string
@@ -334,14 +351,16 @@ export type RecipeIngredientCreateManyInput = {
 
 export type RecipeIngredientUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.EnumUnitFieldUpdateOperationsInput | $Enums.Unit
+  quantity?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type RecipeIngredientUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.EnumUnitFieldUpdateOperationsInput | $Enums.Unit
+  quantity?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   recipeId?: Prisma.StringFieldUpdateOperationsInput | string
   ingredientId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -370,6 +389,7 @@ export type RecipeIngredientRecipeIdIngredientIdCompoundUniqueInput = {
 
 export type RecipeIngredientCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  unit?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   recipeId?: Prisma.SortOrder
   ingredientId?: Prisma.SortOrder
@@ -383,6 +403,7 @@ export type RecipeIngredientAvgOrderByAggregateInput = {
 
 export type RecipeIngredientMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  unit?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   recipeId?: Prisma.SortOrder
   ingredientId?: Prisma.SortOrder
@@ -392,6 +413,7 @@ export type RecipeIngredientMaxOrderByAggregateInput = {
 
 export type RecipeIngredientMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  unit?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   recipeId?: Prisma.SortOrder
   ingredientId?: Prisma.SortOrder
@@ -459,6 +481,10 @@ export type RecipeIngredientUncheckedUpdateManyWithoutRecipeNestedInput = {
   deleteMany?: Prisma.RecipeIngredientScalarWhereInput | Prisma.RecipeIngredientScalarWhereInput[]
 }
 
+export type EnumUnitFieldUpdateOperationsInput = {
+  set?: $Enums.Unit
+}
+
 export type RecipeIngredientCreateNestedManyWithoutIngredientInput = {
   create?: Prisma.XOR<Prisma.RecipeIngredientCreateWithoutIngredientInput, Prisma.RecipeIngredientUncheckedCreateWithoutIngredientInput> | Prisma.RecipeIngredientCreateWithoutIngredientInput[] | Prisma.RecipeIngredientUncheckedCreateWithoutIngredientInput[]
   connectOrCreate?: Prisma.RecipeIngredientCreateOrConnectWithoutIngredientInput | Prisma.RecipeIngredientCreateOrConnectWithoutIngredientInput[]
@@ -503,7 +529,8 @@ export type RecipeIngredientUncheckedUpdateManyWithoutIngredientNestedInput = {
 
 export type RecipeIngredientCreateWithoutOrderItemInput = {
   id?: string
-  quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit: $Enums.Unit
+  quantity?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   recipe: Prisma.RecipeCreateNestedOneWithoutIngredientsInput
@@ -512,7 +539,8 @@ export type RecipeIngredientCreateWithoutOrderItemInput = {
 
 export type RecipeIngredientUncheckedCreateWithoutOrderItemInput = {
   id?: string
-  quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit: $Enums.Unit
+  quantity?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   recipeId: string
   ingredientId: string
   createdAt?: Date | string
@@ -537,7 +565,8 @@ export type RecipeIngredientUpdateToOneWithWhereWithoutOrderItemInput = {
 
 export type RecipeIngredientUpdateWithoutOrderItemInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.EnumUnitFieldUpdateOperationsInput | $Enums.Unit
+  quantity?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   recipe?: Prisma.RecipeUpdateOneRequiredWithoutIngredientsNestedInput
@@ -546,7 +575,8 @@ export type RecipeIngredientUpdateWithoutOrderItemInput = {
 
 export type RecipeIngredientUncheckedUpdateWithoutOrderItemInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.EnumUnitFieldUpdateOperationsInput | $Enums.Unit
+  quantity?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   recipeId?: Prisma.StringFieldUpdateOperationsInput | string
   ingredientId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -555,7 +585,8 @@ export type RecipeIngredientUncheckedUpdateWithoutOrderItemInput = {
 
 export type RecipeIngredientCreateWithoutRecipeInput = {
   id?: string
-  quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit: $Enums.Unit
+  quantity?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   OrderItem?: Prisma.OrderItemCreateNestedManyWithoutRecipeIngredientInput
@@ -564,7 +595,8 @@ export type RecipeIngredientCreateWithoutRecipeInput = {
 
 export type RecipeIngredientUncheckedCreateWithoutRecipeInput = {
   id?: string
-  quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit: $Enums.Unit
+  quantity?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   ingredientId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -602,7 +634,8 @@ export type RecipeIngredientScalarWhereInput = {
   OR?: Prisma.RecipeIngredientScalarWhereInput[]
   NOT?: Prisma.RecipeIngredientScalarWhereInput | Prisma.RecipeIngredientScalarWhereInput[]
   id?: Prisma.StringFilter<"RecipeIngredient"> | string
-  quantity?: Prisma.DecimalFilter<"RecipeIngredient"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.EnumUnitFilter<"RecipeIngredient"> | $Enums.Unit
+  quantity?: Prisma.DecimalNullableFilter<"RecipeIngredient"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   recipeId?: Prisma.StringFilter<"RecipeIngredient"> | string
   ingredientId?: Prisma.StringFilter<"RecipeIngredient"> | string
   createdAt?: Prisma.DateTimeFilter<"RecipeIngredient"> | Date | string
@@ -611,7 +644,8 @@ export type RecipeIngredientScalarWhereInput = {
 
 export type RecipeIngredientCreateWithoutIngredientInput = {
   id?: string
-  quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit: $Enums.Unit
+  quantity?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   OrderItem?: Prisma.OrderItemCreateNestedManyWithoutRecipeIngredientInput
@@ -620,7 +654,8 @@ export type RecipeIngredientCreateWithoutIngredientInput = {
 
 export type RecipeIngredientUncheckedCreateWithoutIngredientInput = {
   id?: string
-  quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit: $Enums.Unit
+  quantity?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   recipeId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -655,7 +690,8 @@ export type RecipeIngredientUpdateManyWithWhereWithoutIngredientInput = {
 
 export type RecipeIngredientCreateManyRecipeInput = {
   id?: string
-  quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit: $Enums.Unit
+  quantity?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   ingredientId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -663,7 +699,8 @@ export type RecipeIngredientCreateManyRecipeInput = {
 
 export type RecipeIngredientUpdateWithoutRecipeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.EnumUnitFieldUpdateOperationsInput | $Enums.Unit
+  quantity?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   OrderItem?: Prisma.OrderItemUpdateManyWithoutRecipeIngredientNestedInput
@@ -672,7 +709,8 @@ export type RecipeIngredientUpdateWithoutRecipeInput = {
 
 export type RecipeIngredientUncheckedUpdateWithoutRecipeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.EnumUnitFieldUpdateOperationsInput | $Enums.Unit
+  quantity?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   ingredientId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -681,7 +719,8 @@ export type RecipeIngredientUncheckedUpdateWithoutRecipeInput = {
 
 export type RecipeIngredientUncheckedUpdateManyWithoutRecipeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.EnumUnitFieldUpdateOperationsInput | $Enums.Unit
+  quantity?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   ingredientId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -689,7 +728,8 @@ export type RecipeIngredientUncheckedUpdateManyWithoutRecipeInput = {
 
 export type RecipeIngredientCreateManyIngredientInput = {
   id?: string
-  quantity: runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit: $Enums.Unit
+  quantity?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   recipeId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -697,7 +737,8 @@ export type RecipeIngredientCreateManyIngredientInput = {
 
 export type RecipeIngredientUpdateWithoutIngredientInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.EnumUnitFieldUpdateOperationsInput | $Enums.Unit
+  quantity?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   OrderItem?: Prisma.OrderItemUpdateManyWithoutRecipeIngredientNestedInput
@@ -706,7 +747,8 @@ export type RecipeIngredientUpdateWithoutIngredientInput = {
 
 export type RecipeIngredientUncheckedUpdateWithoutIngredientInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.EnumUnitFieldUpdateOperationsInput | $Enums.Unit
+  quantity?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   recipeId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -715,7 +757,8 @@ export type RecipeIngredientUncheckedUpdateWithoutIngredientInput = {
 
 export type RecipeIngredientUncheckedUpdateManyWithoutIngredientInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  quantity?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  unit?: Prisma.EnumUnitFieldUpdateOperationsInput | $Enums.Unit
+  quantity?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   recipeId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -754,6 +797,7 @@ export type RecipeIngredientCountOutputTypeCountOrderItemArgs<ExtArgs extends ru
 
 export type RecipeIngredientSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  unit?: boolean
   quantity?: boolean
   recipeId?: boolean
   ingredientId?: boolean
@@ -767,6 +811,7 @@ export type RecipeIngredientSelect<ExtArgs extends runtime.Types.Extensions.Inte
 
 export type RecipeIngredientSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  unit?: boolean
   quantity?: boolean
   recipeId?: boolean
   ingredientId?: boolean
@@ -778,6 +823,7 @@ export type RecipeIngredientSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
 
 export type RecipeIngredientSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  unit?: boolean
   quantity?: boolean
   recipeId?: boolean
   ingredientId?: boolean
@@ -789,6 +835,7 @@ export type RecipeIngredientSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
 
 export type RecipeIngredientSelectScalar = {
   id?: boolean
+  unit?: boolean
   quantity?: boolean
   recipeId?: boolean
   ingredientId?: boolean
@@ -796,7 +843,7 @@ export type RecipeIngredientSelectScalar = {
   updatedAt?: boolean
 }
 
-export type RecipeIngredientOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "quantity" | "recipeId" | "ingredientId" | "createdAt" | "updatedAt", ExtArgs["result"]["recipeIngredient"]>
+export type RecipeIngredientOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "unit" | "quantity" | "recipeId" | "ingredientId" | "createdAt" | "updatedAt", ExtArgs["result"]["recipeIngredient"]>
 export type RecipeIngredientInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   OrderItem?: boolean | Prisma.RecipeIngredient$OrderItemArgs<ExtArgs>
   recipe?: boolean | Prisma.RecipeDefaultArgs<ExtArgs>
@@ -821,7 +868,8 @@ export type $RecipeIngredientPayload<ExtArgs extends runtime.Types.Extensions.In
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    quantity: runtime.Decimal
+    unit: $Enums.Unit
+    quantity: runtime.Decimal | null
     recipeId: string
     ingredientId: string
     createdAt: Date
@@ -1253,6 +1301,7 @@ export interface Prisma__RecipeIngredientClient<T, Null = never, ExtArgs extends
  */
 export interface RecipeIngredientFieldRefs {
   readonly id: Prisma.FieldRef<"RecipeIngredient", 'String'>
+  readonly unit: Prisma.FieldRef<"RecipeIngredient", 'Unit'>
   readonly quantity: Prisma.FieldRef<"RecipeIngredient", 'Decimal'>
   readonly recipeId: Prisma.FieldRef<"RecipeIngredient", 'String'>
   readonly ingredientId: Prisma.FieldRef<"RecipeIngredient", 'String'>

@@ -35,6 +35,7 @@ export type RecipeAvgAggregateOutputType = {
   carbohydrates: number | null
   fiber: number | null
   rating: runtime.Decimal | null
+  yield: number | null
 }
 
 export type RecipeSumAggregateOutputType = {
@@ -46,12 +47,14 @@ export type RecipeSumAggregateOutputType = {
   carbohydrates: number | null
   fiber: number | null
   rating: runtime.Decimal | null
+  yield: number | null
 }
 
 export type RecipeMinAggregateOutputType = {
   id: string | null
   title: string | null
   description: string | null
+  image: string | null
   cuisineType: string | null
   difficulty: $Enums.Difficulty | null
   prepTime: number | null
@@ -63,6 +66,9 @@ export type RecipeMinAggregateOutputType = {
   fiber: number | null
   rating: runtime.Decimal | null
   slug: string | null
+  sourceUrl: string | null
+  yield: number | null
+  authorName: string | null
   authorId: string | null
   dishTypeId: string | null
   createdAt: Date | null
@@ -73,6 +79,7 @@ export type RecipeMaxAggregateOutputType = {
   id: string | null
   title: string | null
   description: string | null
+  image: string | null
   cuisineType: string | null
   difficulty: $Enums.Difficulty | null
   prepTime: number | null
@@ -84,6 +91,9 @@ export type RecipeMaxAggregateOutputType = {
   fiber: number | null
   rating: runtime.Decimal | null
   slug: string | null
+  sourceUrl: string | null
+  yield: number | null
+  authorName: string | null
   authorId: string | null
   dishTypeId: string | null
   createdAt: Date | null
@@ -94,6 +104,7 @@ export type RecipeCountAggregateOutputType = {
   id: number
   title: number
   description: number
+  image: number
   cuisineType: number
   difficulty: number
   prepTime: number
@@ -105,6 +116,9 @@ export type RecipeCountAggregateOutputType = {
   fiber: number
   rating: number
   slug: number
+  sourceUrl: number
+  yield: number
+  authorName: number
   authorId: number
   dishTypeId: number
   createdAt: number
@@ -122,6 +136,7 @@ export type RecipeAvgAggregateInputType = {
   carbohydrates?: true
   fiber?: true
   rating?: true
+  yield?: true
 }
 
 export type RecipeSumAggregateInputType = {
@@ -133,12 +148,14 @@ export type RecipeSumAggregateInputType = {
   carbohydrates?: true
   fiber?: true
   rating?: true
+  yield?: true
 }
 
 export type RecipeMinAggregateInputType = {
   id?: true
   title?: true
   description?: true
+  image?: true
   cuisineType?: true
   difficulty?: true
   prepTime?: true
@@ -150,6 +167,9 @@ export type RecipeMinAggregateInputType = {
   fiber?: true
   rating?: true
   slug?: true
+  sourceUrl?: true
+  yield?: true
+  authorName?: true
   authorId?: true
   dishTypeId?: true
   createdAt?: true
@@ -160,6 +180,7 @@ export type RecipeMaxAggregateInputType = {
   id?: true
   title?: true
   description?: true
+  image?: true
   cuisineType?: true
   difficulty?: true
   prepTime?: true
@@ -171,6 +192,9 @@ export type RecipeMaxAggregateInputType = {
   fiber?: true
   rating?: true
   slug?: true
+  sourceUrl?: true
+  yield?: true
+  authorName?: true
   authorId?: true
   dishTypeId?: true
   createdAt?: true
@@ -181,6 +205,7 @@ export type RecipeCountAggregateInputType = {
   id?: true
   title?: true
   description?: true
+  image?: true
   cuisineType?: true
   difficulty?: true
   prepTime?: true
@@ -192,6 +217,9 @@ export type RecipeCountAggregateInputType = {
   fiber?: true
   rating?: true
   slug?: true
+  sourceUrl?: true
+  yield?: true
+  authorName?: true
   authorId?: true
   dishTypeId?: true
   createdAt?: true
@@ -289,9 +317,10 @@ export type RecipeGroupByOutputType = {
   id: string
   title: string
   description: string
-  cuisineType: string
+  image: string | null
+  cuisineType: string | null
   difficulty: $Enums.Difficulty
-  prepTime: number
+  prepTime: number | null
   cookTime: number
   calories: number | null
   protein: number | null
@@ -300,8 +329,11 @@ export type RecipeGroupByOutputType = {
   fiber: number | null
   rating: runtime.Decimal | null
   slug: string
+  sourceUrl: string | null
+  yield: number | null
+  authorName: string | null
   authorId: string
-  dishTypeId: string
+  dishTypeId: string | null
   createdAt: Date
   updatedAt: Date
   _count: RecipeCountAggregateOutputType | null
@@ -333,9 +365,10 @@ export type RecipeWhereInput = {
   id?: Prisma.StringFilter<"Recipe"> | string
   title?: Prisma.StringFilter<"Recipe"> | string
   description?: Prisma.StringFilter<"Recipe"> | string
-  cuisineType?: Prisma.StringFilter<"Recipe"> | string
+  image?: Prisma.StringNullableFilter<"Recipe"> | string | null
+  cuisineType?: Prisma.StringNullableFilter<"Recipe"> | string | null
   difficulty?: Prisma.EnumDifficultyFilter<"Recipe"> | $Enums.Difficulty
-  prepTime?: Prisma.IntFilter<"Recipe"> | number
+  prepTime?: Prisma.IntNullableFilter<"Recipe"> | number | null
   cookTime?: Prisma.IntFilter<"Recipe"> | number
   calories?: Prisma.IntNullableFilter<"Recipe"> | number | null
   protein?: Prisma.IntNullableFilter<"Recipe"> | number | null
@@ -344,8 +377,11 @@ export type RecipeWhereInput = {
   fiber?: Prisma.IntNullableFilter<"Recipe"> | number | null
   rating?: Prisma.DecimalNullableFilter<"Recipe"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFilter<"Recipe"> | string
+  sourceUrl?: Prisma.StringNullableFilter<"Recipe"> | string | null
+  yield?: Prisma.IntNullableFilter<"Recipe"> | number | null
+  authorName?: Prisma.StringNullableFilter<"Recipe"> | string | null
   authorId?: Prisma.StringFilter<"Recipe"> | string
-  dishTypeId?: Prisma.StringFilter<"Recipe"> | string
+  dishTypeId?: Prisma.StringNullableFilter<"Recipe"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Recipe"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Recipe"> | Date | string
   ingredients?: Prisma.RecipeIngredientListRelationFilter
@@ -355,16 +391,17 @@ export type RecipeWhereInput = {
   views?: Prisma.RecipeViewListRelationFilter
   tags?: Prisma.RecipeToRecipeTagListRelationFilter
   author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  dishType?: Prisma.XOR<Prisma.DishTypeScalarRelationFilter, Prisma.DishTypeWhereInput>
+  dishType?: Prisma.XOR<Prisma.DishTypeNullableScalarRelationFilter, Prisma.DishTypeWhereInput> | null
 }
 
 export type RecipeOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  cuisineType?: Prisma.SortOrder
+  image?: Prisma.SortOrderInput | Prisma.SortOrder
+  cuisineType?: Prisma.SortOrderInput | Prisma.SortOrder
   difficulty?: Prisma.SortOrder
-  prepTime?: Prisma.SortOrder
+  prepTime?: Prisma.SortOrderInput | Prisma.SortOrder
   cookTime?: Prisma.SortOrder
   calories?: Prisma.SortOrderInput | Prisma.SortOrder
   protein?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -373,8 +410,11 @@ export type RecipeOrderByWithRelationInput = {
   fiber?: Prisma.SortOrderInput | Prisma.SortOrder
   rating?: Prisma.SortOrderInput | Prisma.SortOrder
   slug?: Prisma.SortOrder
+  sourceUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  yield?: Prisma.SortOrderInput | Prisma.SortOrder
+  authorName?: Prisma.SortOrderInput | Prisma.SortOrder
   authorId?: Prisma.SortOrder
-  dishTypeId?: Prisma.SortOrder
+  dishTypeId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   ingredients?: Prisma.RecipeIngredientOrderByRelationAggregateInput
@@ -395,9 +435,10 @@ export type RecipeWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.RecipeWhereInput | Prisma.RecipeWhereInput[]
   title?: Prisma.StringFilter<"Recipe"> | string
   description?: Prisma.StringFilter<"Recipe"> | string
-  cuisineType?: Prisma.StringFilter<"Recipe"> | string
+  image?: Prisma.StringNullableFilter<"Recipe"> | string | null
+  cuisineType?: Prisma.StringNullableFilter<"Recipe"> | string | null
   difficulty?: Prisma.EnumDifficultyFilter<"Recipe"> | $Enums.Difficulty
-  prepTime?: Prisma.IntFilter<"Recipe"> | number
+  prepTime?: Prisma.IntNullableFilter<"Recipe"> | number | null
   cookTime?: Prisma.IntFilter<"Recipe"> | number
   calories?: Prisma.IntNullableFilter<"Recipe"> | number | null
   protein?: Prisma.IntNullableFilter<"Recipe"> | number | null
@@ -405,8 +446,11 @@ export type RecipeWhereUniqueInput = Prisma.AtLeast<{
   carbohydrates?: Prisma.IntNullableFilter<"Recipe"> | number | null
   fiber?: Prisma.IntNullableFilter<"Recipe"> | number | null
   rating?: Prisma.DecimalNullableFilter<"Recipe"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  sourceUrl?: Prisma.StringNullableFilter<"Recipe"> | string | null
+  yield?: Prisma.IntNullableFilter<"Recipe"> | number | null
+  authorName?: Prisma.StringNullableFilter<"Recipe"> | string | null
   authorId?: Prisma.StringFilter<"Recipe"> | string
-  dishTypeId?: Prisma.StringFilter<"Recipe"> | string
+  dishTypeId?: Prisma.StringNullableFilter<"Recipe"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Recipe"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Recipe"> | Date | string
   ingredients?: Prisma.RecipeIngredientListRelationFilter
@@ -416,16 +460,17 @@ export type RecipeWhereUniqueInput = Prisma.AtLeast<{
   views?: Prisma.RecipeViewListRelationFilter
   tags?: Prisma.RecipeToRecipeTagListRelationFilter
   author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  dishType?: Prisma.XOR<Prisma.DishTypeScalarRelationFilter, Prisma.DishTypeWhereInput>
+  dishType?: Prisma.XOR<Prisma.DishTypeNullableScalarRelationFilter, Prisma.DishTypeWhereInput> | null
 }, "id" | "slug">
 
 export type RecipeOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
-  cuisineType?: Prisma.SortOrder
+  image?: Prisma.SortOrderInput | Prisma.SortOrder
+  cuisineType?: Prisma.SortOrderInput | Prisma.SortOrder
   difficulty?: Prisma.SortOrder
-  prepTime?: Prisma.SortOrder
+  prepTime?: Prisma.SortOrderInput | Prisma.SortOrder
   cookTime?: Prisma.SortOrder
   calories?: Prisma.SortOrderInput | Prisma.SortOrder
   protein?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -434,8 +479,11 @@ export type RecipeOrderByWithAggregationInput = {
   fiber?: Prisma.SortOrderInput | Prisma.SortOrder
   rating?: Prisma.SortOrderInput | Prisma.SortOrder
   slug?: Prisma.SortOrder
+  sourceUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  yield?: Prisma.SortOrderInput | Prisma.SortOrder
+  authorName?: Prisma.SortOrderInput | Prisma.SortOrder
   authorId?: Prisma.SortOrder
-  dishTypeId?: Prisma.SortOrder
+  dishTypeId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.RecipeCountOrderByAggregateInput
@@ -452,9 +500,10 @@ export type RecipeScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Recipe"> | string
   title?: Prisma.StringWithAggregatesFilter<"Recipe"> | string
   description?: Prisma.StringWithAggregatesFilter<"Recipe"> | string
-  cuisineType?: Prisma.StringWithAggregatesFilter<"Recipe"> | string
+  image?: Prisma.StringNullableWithAggregatesFilter<"Recipe"> | string | null
+  cuisineType?: Prisma.StringNullableWithAggregatesFilter<"Recipe"> | string | null
   difficulty?: Prisma.EnumDifficultyWithAggregatesFilter<"Recipe"> | $Enums.Difficulty
-  prepTime?: Prisma.IntWithAggregatesFilter<"Recipe"> | number
+  prepTime?: Prisma.IntNullableWithAggregatesFilter<"Recipe"> | number | null
   cookTime?: Prisma.IntWithAggregatesFilter<"Recipe"> | number
   calories?: Prisma.IntNullableWithAggregatesFilter<"Recipe"> | number | null
   protein?: Prisma.IntNullableWithAggregatesFilter<"Recipe"> | number | null
@@ -463,8 +512,11 @@ export type RecipeScalarWhereWithAggregatesInput = {
   fiber?: Prisma.IntNullableWithAggregatesFilter<"Recipe"> | number | null
   rating?: Prisma.DecimalNullableWithAggregatesFilter<"Recipe"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringWithAggregatesFilter<"Recipe"> | string
+  sourceUrl?: Prisma.StringNullableWithAggregatesFilter<"Recipe"> | string | null
+  yield?: Prisma.IntNullableWithAggregatesFilter<"Recipe"> | number | null
+  authorName?: Prisma.StringNullableWithAggregatesFilter<"Recipe"> | string | null
   authorId?: Prisma.StringWithAggregatesFilter<"Recipe"> | string
-  dishTypeId?: Prisma.StringWithAggregatesFilter<"Recipe"> | string
+  dishTypeId?: Prisma.StringNullableWithAggregatesFilter<"Recipe"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Recipe"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Recipe"> | Date | string
 }
@@ -473,9 +525,10 @@ export type RecipeCreateInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -484,6 +537,9 @@ export type RecipeCreateInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   ingredients?: Prisma.RecipeIngredientCreateNestedManyWithoutRecipeInput
@@ -493,16 +549,17 @@ export type RecipeCreateInput = {
   views?: Prisma.RecipeViewCreateNestedManyWithoutRecipeInput
   tags?: Prisma.RecipeToRecipeTagCreateNestedManyWithoutRecipesInput
   author: Prisma.UserCreateNestedOneWithoutRecipeInput
-  dishType: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
+  dishType?: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
 }
 
 export type RecipeUncheckedCreateInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -511,8 +568,11 @@ export type RecipeUncheckedCreateInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
   authorId: string
-  dishTypeId: string
+  dishTypeId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   ingredients?: Prisma.RecipeIngredientUncheckedCreateNestedManyWithoutRecipeInput
@@ -527,9 +587,10 @@ export type RecipeUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -538,6 +599,9 @@ export type RecipeUpdateInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ingredients?: Prisma.RecipeIngredientUpdateManyWithoutRecipeNestedInput
@@ -547,16 +611,17 @@ export type RecipeUpdateInput = {
   views?: Prisma.RecipeViewUpdateManyWithoutRecipeNestedInput
   tags?: Prisma.RecipeToRecipeTagUpdateManyWithoutRecipesNestedInput
   author?: Prisma.UserUpdateOneRequiredWithoutRecipeNestedInput
-  dishType?: Prisma.DishTypeUpdateOneRequiredWithoutRecipesNestedInput
+  dishType?: Prisma.DishTypeUpdateOneWithoutRecipesNestedInput
 }
 
 export type RecipeUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -565,8 +630,11 @@ export type RecipeUncheckedUpdateInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
-  dishTypeId?: Prisma.StringFieldUpdateOperationsInput | string
+  dishTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ingredients?: Prisma.RecipeIngredientUncheckedUpdateManyWithoutRecipeNestedInput
@@ -581,9 +649,10 @@ export type RecipeCreateManyInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -592,8 +661,11 @@ export type RecipeCreateManyInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
   authorId: string
-  dishTypeId: string
+  dishTypeId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -602,9 +674,10 @@ export type RecipeUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -613,6 +686,9 @@ export type RecipeUpdateManyMutationInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -621,9 +697,10 @@ export type RecipeUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -632,8 +709,11 @@ export type RecipeUncheckedUpdateManyInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
-  dishTypeId?: Prisma.StringFieldUpdateOperationsInput | string
+  dishTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -647,6 +727,7 @@ export type RecipeCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  image?: Prisma.SortOrder
   cuisineType?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
   prepTime?: Prisma.SortOrder
@@ -658,6 +739,9 @@ export type RecipeCountOrderByAggregateInput = {
   fiber?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   slug?: Prisma.SortOrder
+  sourceUrl?: Prisma.SortOrder
+  yield?: Prisma.SortOrder
+  authorName?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
   dishTypeId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -673,12 +757,14 @@ export type RecipeAvgOrderByAggregateInput = {
   carbohydrates?: Prisma.SortOrder
   fiber?: Prisma.SortOrder
   rating?: Prisma.SortOrder
+  yield?: Prisma.SortOrder
 }
 
 export type RecipeMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  image?: Prisma.SortOrder
   cuisineType?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
   prepTime?: Prisma.SortOrder
@@ -690,6 +776,9 @@ export type RecipeMaxOrderByAggregateInput = {
   fiber?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   slug?: Prisma.SortOrder
+  sourceUrl?: Prisma.SortOrder
+  yield?: Prisma.SortOrder
+  authorName?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
   dishTypeId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -700,6 +789,7 @@ export type RecipeMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  image?: Prisma.SortOrder
   cuisineType?: Prisma.SortOrder
   difficulty?: Prisma.SortOrder
   prepTime?: Prisma.SortOrder
@@ -711,6 +801,9 @@ export type RecipeMinOrderByAggregateInput = {
   fiber?: Prisma.SortOrder
   rating?: Prisma.SortOrder
   slug?: Prisma.SortOrder
+  sourceUrl?: Prisma.SortOrder
+  yield?: Prisma.SortOrder
+  authorName?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
   dishTypeId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -726,6 +819,7 @@ export type RecipeSumOrderByAggregateInput = {
   carbohydrates?: Prisma.SortOrder
   fiber?: Prisma.SortOrder
   rating?: Prisma.SortOrder
+  yield?: Prisma.SortOrder
 }
 
 export type RecipeListRelationFilter = {
@@ -778,6 +872,10 @@ export type RecipeUpdateOneRequiredWithoutCommentsNestedInput = {
   upsert?: Prisma.RecipeUpsertWithoutCommentsInput
   connect?: Prisma.RecipeWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.RecipeUpdateToOneWithWhereWithoutCommentsInput, Prisma.RecipeUpdateWithoutCommentsInput>, Prisma.RecipeUncheckedUpdateWithoutCommentsInput>
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
 }
 
 export type EnumDifficultyFieldUpdateOperationsInput = {
@@ -930,9 +1028,10 @@ export type RecipeCreateWithoutLikesInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -941,6 +1040,9 @@ export type RecipeCreateWithoutLikesInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   ingredients?: Prisma.RecipeIngredientCreateNestedManyWithoutRecipeInput
@@ -949,16 +1051,17 @@ export type RecipeCreateWithoutLikesInput = {
   views?: Prisma.RecipeViewCreateNestedManyWithoutRecipeInput
   tags?: Prisma.RecipeToRecipeTagCreateNestedManyWithoutRecipesInput
   author: Prisma.UserCreateNestedOneWithoutRecipeInput
-  dishType: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
+  dishType?: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
 }
 
 export type RecipeUncheckedCreateWithoutLikesInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -967,8 +1070,11 @@ export type RecipeUncheckedCreateWithoutLikesInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
   authorId: string
-  dishTypeId: string
+  dishTypeId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   ingredients?: Prisma.RecipeIngredientUncheckedCreateNestedManyWithoutRecipeInput
@@ -998,9 +1104,10 @@ export type RecipeUpdateWithoutLikesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1009,6 +1116,9 @@ export type RecipeUpdateWithoutLikesInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ingredients?: Prisma.RecipeIngredientUpdateManyWithoutRecipeNestedInput
@@ -1017,16 +1127,17 @@ export type RecipeUpdateWithoutLikesInput = {
   views?: Prisma.RecipeViewUpdateManyWithoutRecipeNestedInput
   tags?: Prisma.RecipeToRecipeTagUpdateManyWithoutRecipesNestedInput
   author?: Prisma.UserUpdateOneRequiredWithoutRecipeNestedInput
-  dishType?: Prisma.DishTypeUpdateOneRequiredWithoutRecipesNestedInput
+  dishType?: Prisma.DishTypeUpdateOneWithoutRecipesNestedInput
 }
 
 export type RecipeUncheckedUpdateWithoutLikesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1035,8 +1146,11 @@ export type RecipeUncheckedUpdateWithoutLikesInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
-  dishTypeId?: Prisma.StringFieldUpdateOperationsInput | string
+  dishTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ingredients?: Prisma.RecipeIngredientUncheckedUpdateManyWithoutRecipeNestedInput
@@ -1050,9 +1164,10 @@ export type RecipeCreateWithoutViewsInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -1061,6 +1176,9 @@ export type RecipeCreateWithoutViewsInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   ingredients?: Prisma.RecipeIngredientCreateNestedManyWithoutRecipeInput
@@ -1069,16 +1187,17 @@ export type RecipeCreateWithoutViewsInput = {
   likes?: Prisma.RecipeLikeCreateNestedManyWithoutRecipeInput
   tags?: Prisma.RecipeToRecipeTagCreateNestedManyWithoutRecipesInput
   author: Prisma.UserCreateNestedOneWithoutRecipeInput
-  dishType: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
+  dishType?: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
 }
 
 export type RecipeUncheckedCreateWithoutViewsInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -1087,8 +1206,11 @@ export type RecipeUncheckedCreateWithoutViewsInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
   authorId: string
-  dishTypeId: string
+  dishTypeId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   ingredients?: Prisma.RecipeIngredientUncheckedCreateNestedManyWithoutRecipeInput
@@ -1118,9 +1240,10 @@ export type RecipeUpdateWithoutViewsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1129,6 +1252,9 @@ export type RecipeUpdateWithoutViewsInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ingredients?: Prisma.RecipeIngredientUpdateManyWithoutRecipeNestedInput
@@ -1137,16 +1263,17 @@ export type RecipeUpdateWithoutViewsInput = {
   likes?: Prisma.RecipeLikeUpdateManyWithoutRecipeNestedInput
   tags?: Prisma.RecipeToRecipeTagUpdateManyWithoutRecipesNestedInput
   author?: Prisma.UserUpdateOneRequiredWithoutRecipeNestedInput
-  dishType?: Prisma.DishTypeUpdateOneRequiredWithoutRecipesNestedInput
+  dishType?: Prisma.DishTypeUpdateOneWithoutRecipesNestedInput
 }
 
 export type RecipeUncheckedUpdateWithoutViewsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1155,8 +1282,11 @@ export type RecipeUncheckedUpdateWithoutViewsInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
-  dishTypeId?: Prisma.StringFieldUpdateOperationsInput | string
+  dishTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ingredients?: Prisma.RecipeIngredientUncheckedUpdateManyWithoutRecipeNestedInput
@@ -1170,9 +1300,10 @@ export type RecipeCreateWithoutCommentsInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -1181,6 +1312,9 @@ export type RecipeCreateWithoutCommentsInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   ingredients?: Prisma.RecipeIngredientCreateNestedManyWithoutRecipeInput
@@ -1189,16 +1323,17 @@ export type RecipeCreateWithoutCommentsInput = {
   views?: Prisma.RecipeViewCreateNestedManyWithoutRecipeInput
   tags?: Prisma.RecipeToRecipeTagCreateNestedManyWithoutRecipesInput
   author: Prisma.UserCreateNestedOneWithoutRecipeInput
-  dishType: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
+  dishType?: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
 }
 
 export type RecipeUncheckedCreateWithoutCommentsInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -1207,8 +1342,11 @@ export type RecipeUncheckedCreateWithoutCommentsInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
   authorId: string
-  dishTypeId: string
+  dishTypeId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   ingredients?: Prisma.RecipeIngredientUncheckedCreateNestedManyWithoutRecipeInput
@@ -1238,9 +1376,10 @@ export type RecipeUpdateWithoutCommentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1249,6 +1388,9 @@ export type RecipeUpdateWithoutCommentsInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ingredients?: Prisma.RecipeIngredientUpdateManyWithoutRecipeNestedInput
@@ -1257,16 +1399,17 @@ export type RecipeUpdateWithoutCommentsInput = {
   views?: Prisma.RecipeViewUpdateManyWithoutRecipeNestedInput
   tags?: Prisma.RecipeToRecipeTagUpdateManyWithoutRecipesNestedInput
   author?: Prisma.UserUpdateOneRequiredWithoutRecipeNestedInput
-  dishType?: Prisma.DishTypeUpdateOneRequiredWithoutRecipesNestedInput
+  dishType?: Prisma.DishTypeUpdateOneWithoutRecipesNestedInput
 }
 
 export type RecipeUncheckedUpdateWithoutCommentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1275,8 +1418,11 @@ export type RecipeUncheckedUpdateWithoutCommentsInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
-  dishTypeId?: Prisma.StringFieldUpdateOperationsInput | string
+  dishTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ingredients?: Prisma.RecipeIngredientUncheckedUpdateManyWithoutRecipeNestedInput
@@ -1290,9 +1436,10 @@ export type RecipeCreateWithoutDishTypeInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -1301,6 +1448,9 @@ export type RecipeCreateWithoutDishTypeInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   ingredients?: Prisma.RecipeIngredientCreateNestedManyWithoutRecipeInput
@@ -1316,9 +1466,10 @@ export type RecipeUncheckedCreateWithoutDishTypeInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -1327,6 +1478,9 @@ export type RecipeUncheckedCreateWithoutDishTypeInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
   authorId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1371,9 +1525,10 @@ export type RecipeScalarWhereInput = {
   id?: Prisma.StringFilter<"Recipe"> | string
   title?: Prisma.StringFilter<"Recipe"> | string
   description?: Prisma.StringFilter<"Recipe"> | string
-  cuisineType?: Prisma.StringFilter<"Recipe"> | string
+  image?: Prisma.StringNullableFilter<"Recipe"> | string | null
+  cuisineType?: Prisma.StringNullableFilter<"Recipe"> | string | null
   difficulty?: Prisma.EnumDifficultyFilter<"Recipe"> | $Enums.Difficulty
-  prepTime?: Prisma.IntFilter<"Recipe"> | number
+  prepTime?: Prisma.IntNullableFilter<"Recipe"> | number | null
   cookTime?: Prisma.IntFilter<"Recipe"> | number
   calories?: Prisma.IntNullableFilter<"Recipe"> | number | null
   protein?: Prisma.IntNullableFilter<"Recipe"> | number | null
@@ -1382,8 +1537,11 @@ export type RecipeScalarWhereInput = {
   fiber?: Prisma.IntNullableFilter<"Recipe"> | number | null
   rating?: Prisma.DecimalNullableFilter<"Recipe"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFilter<"Recipe"> | string
+  sourceUrl?: Prisma.StringNullableFilter<"Recipe"> | string | null
+  yield?: Prisma.IntNullableFilter<"Recipe"> | number | null
+  authorName?: Prisma.StringNullableFilter<"Recipe"> | string | null
   authorId?: Prisma.StringFilter<"Recipe"> | string
-  dishTypeId?: Prisma.StringFilter<"Recipe"> | string
+  dishTypeId?: Prisma.StringNullableFilter<"Recipe"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Recipe"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Recipe"> | Date | string
 }
@@ -1392,9 +1550,10 @@ export type RecipeCreateWithoutStepsInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -1403,6 +1562,9 @@ export type RecipeCreateWithoutStepsInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   ingredients?: Prisma.RecipeIngredientCreateNestedManyWithoutRecipeInput
@@ -1411,16 +1573,17 @@ export type RecipeCreateWithoutStepsInput = {
   views?: Prisma.RecipeViewCreateNestedManyWithoutRecipeInput
   tags?: Prisma.RecipeToRecipeTagCreateNestedManyWithoutRecipesInput
   author: Prisma.UserCreateNestedOneWithoutRecipeInput
-  dishType: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
+  dishType?: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
 }
 
 export type RecipeUncheckedCreateWithoutStepsInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -1429,8 +1592,11 @@ export type RecipeUncheckedCreateWithoutStepsInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
   authorId: string
-  dishTypeId: string
+  dishTypeId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   ingredients?: Prisma.RecipeIngredientUncheckedCreateNestedManyWithoutRecipeInput
@@ -1460,9 +1626,10 @@ export type RecipeUpdateWithoutStepsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1471,6 +1638,9 @@ export type RecipeUpdateWithoutStepsInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ingredients?: Prisma.RecipeIngredientUpdateManyWithoutRecipeNestedInput
@@ -1479,16 +1649,17 @@ export type RecipeUpdateWithoutStepsInput = {
   views?: Prisma.RecipeViewUpdateManyWithoutRecipeNestedInput
   tags?: Prisma.RecipeToRecipeTagUpdateManyWithoutRecipesNestedInput
   author?: Prisma.UserUpdateOneRequiredWithoutRecipeNestedInput
-  dishType?: Prisma.DishTypeUpdateOneRequiredWithoutRecipesNestedInput
+  dishType?: Prisma.DishTypeUpdateOneWithoutRecipesNestedInput
 }
 
 export type RecipeUncheckedUpdateWithoutStepsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1497,8 +1668,11 @@ export type RecipeUncheckedUpdateWithoutStepsInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
-  dishTypeId?: Prisma.StringFieldUpdateOperationsInput | string
+  dishTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ingredients?: Prisma.RecipeIngredientUncheckedUpdateManyWithoutRecipeNestedInput
@@ -1512,9 +1686,10 @@ export type RecipeCreateWithoutIngredientsInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -1523,6 +1698,9 @@ export type RecipeCreateWithoutIngredientsInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   steps?: Prisma.RecipeStepCreateNestedManyWithoutRecipeInput
@@ -1531,16 +1709,17 @@ export type RecipeCreateWithoutIngredientsInput = {
   views?: Prisma.RecipeViewCreateNestedManyWithoutRecipeInput
   tags?: Prisma.RecipeToRecipeTagCreateNestedManyWithoutRecipesInput
   author: Prisma.UserCreateNestedOneWithoutRecipeInput
-  dishType: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
+  dishType?: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
 }
 
 export type RecipeUncheckedCreateWithoutIngredientsInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -1549,8 +1728,11 @@ export type RecipeUncheckedCreateWithoutIngredientsInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
   authorId: string
-  dishTypeId: string
+  dishTypeId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   steps?: Prisma.RecipeStepUncheckedCreateNestedManyWithoutRecipeInput
@@ -1580,9 +1762,10 @@ export type RecipeUpdateWithoutIngredientsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1591,6 +1774,9 @@ export type RecipeUpdateWithoutIngredientsInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   steps?: Prisma.RecipeStepUpdateManyWithoutRecipeNestedInput
@@ -1599,16 +1785,17 @@ export type RecipeUpdateWithoutIngredientsInput = {
   views?: Prisma.RecipeViewUpdateManyWithoutRecipeNestedInput
   tags?: Prisma.RecipeToRecipeTagUpdateManyWithoutRecipesNestedInput
   author?: Prisma.UserUpdateOneRequiredWithoutRecipeNestedInput
-  dishType?: Prisma.DishTypeUpdateOneRequiredWithoutRecipesNestedInput
+  dishType?: Prisma.DishTypeUpdateOneWithoutRecipesNestedInput
 }
 
 export type RecipeUncheckedUpdateWithoutIngredientsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1617,8 +1804,11 @@ export type RecipeUncheckedUpdateWithoutIngredientsInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
-  dishTypeId?: Prisma.StringFieldUpdateOperationsInput | string
+  dishTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   steps?: Prisma.RecipeStepUncheckedUpdateManyWithoutRecipeNestedInput
@@ -1632,9 +1822,10 @@ export type RecipeCreateWithoutTagsInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -1643,6 +1834,9 @@ export type RecipeCreateWithoutTagsInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   ingredients?: Prisma.RecipeIngredientCreateNestedManyWithoutRecipeInput
@@ -1651,16 +1845,17 @@ export type RecipeCreateWithoutTagsInput = {
   likes?: Prisma.RecipeLikeCreateNestedManyWithoutRecipeInput
   views?: Prisma.RecipeViewCreateNestedManyWithoutRecipeInput
   author: Prisma.UserCreateNestedOneWithoutRecipeInput
-  dishType: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
+  dishType?: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
 }
 
 export type RecipeUncheckedCreateWithoutTagsInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -1669,8 +1864,11 @@ export type RecipeUncheckedCreateWithoutTagsInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
   authorId: string
-  dishTypeId: string
+  dishTypeId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   ingredients?: Prisma.RecipeIngredientUncheckedCreateNestedManyWithoutRecipeInput
@@ -1700,9 +1898,10 @@ export type RecipeUpdateWithoutTagsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1711,6 +1910,9 @@ export type RecipeUpdateWithoutTagsInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ingredients?: Prisma.RecipeIngredientUpdateManyWithoutRecipeNestedInput
@@ -1719,16 +1921,17 @@ export type RecipeUpdateWithoutTagsInput = {
   likes?: Prisma.RecipeLikeUpdateManyWithoutRecipeNestedInput
   views?: Prisma.RecipeViewUpdateManyWithoutRecipeNestedInput
   author?: Prisma.UserUpdateOneRequiredWithoutRecipeNestedInput
-  dishType?: Prisma.DishTypeUpdateOneRequiredWithoutRecipesNestedInput
+  dishType?: Prisma.DishTypeUpdateOneWithoutRecipesNestedInput
 }
 
 export type RecipeUncheckedUpdateWithoutTagsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1737,8 +1940,11 @@ export type RecipeUncheckedUpdateWithoutTagsInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
-  dishTypeId?: Prisma.StringFieldUpdateOperationsInput | string
+  dishTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ingredients?: Prisma.RecipeIngredientUncheckedUpdateManyWithoutRecipeNestedInput
@@ -1752,9 +1958,10 @@ export type RecipeCreateWithoutAuthorInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -1763,6 +1970,9 @@ export type RecipeCreateWithoutAuthorInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   ingredients?: Prisma.RecipeIngredientCreateNestedManyWithoutRecipeInput
@@ -1771,16 +1981,17 @@ export type RecipeCreateWithoutAuthorInput = {
   likes?: Prisma.RecipeLikeCreateNestedManyWithoutRecipeInput
   views?: Prisma.RecipeViewCreateNestedManyWithoutRecipeInput
   tags?: Prisma.RecipeToRecipeTagCreateNestedManyWithoutRecipesInput
-  dishType: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
+  dishType?: Prisma.DishTypeCreateNestedOneWithoutRecipesInput
 }
 
 export type RecipeUncheckedCreateWithoutAuthorInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -1789,7 +2000,10 @@ export type RecipeUncheckedCreateWithoutAuthorInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
-  dishTypeId: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
+  dishTypeId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   ingredients?: Prisma.RecipeIngredientUncheckedCreateNestedManyWithoutRecipeInput
@@ -1830,9 +2044,10 @@ export type RecipeCreateManyDishTypeInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -1841,6 +2056,9 @@ export type RecipeCreateManyDishTypeInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
   authorId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1850,9 +2068,10 @@ export type RecipeUpdateWithoutDishTypeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1861,6 +2080,9 @@ export type RecipeUpdateWithoutDishTypeInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ingredients?: Prisma.RecipeIngredientUpdateManyWithoutRecipeNestedInput
@@ -1876,9 +2098,10 @@ export type RecipeUncheckedUpdateWithoutDishTypeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1887,6 +2110,9 @@ export type RecipeUncheckedUpdateWithoutDishTypeInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1902,9 +2128,10 @@ export type RecipeUncheckedUpdateManyWithoutDishTypeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1913,6 +2140,9 @@ export type RecipeUncheckedUpdateManyWithoutDishTypeInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1922,9 +2152,10 @@ export type RecipeCreateManyAuthorInput = {
   id?: string
   title: string
   description: string
-  cuisineType: string
-  difficulty: $Enums.Difficulty
-  prepTime: number
+  image?: string | null
+  cuisineType?: string | null
+  difficulty?: $Enums.Difficulty
+  prepTime?: number | null
   cookTime: number
   calories?: number | null
   protein?: number | null
@@ -1933,7 +2164,10 @@ export type RecipeCreateManyAuthorInput = {
   fiber?: number | null
   rating?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug: string
-  dishTypeId: string
+  sourceUrl?: string | null
+  yield?: number | null
+  authorName?: string | null
+  dishTypeId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -1942,9 +2176,10 @@ export type RecipeUpdateWithoutAuthorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1953,6 +2188,9 @@ export type RecipeUpdateWithoutAuthorInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ingredients?: Prisma.RecipeIngredientUpdateManyWithoutRecipeNestedInput
@@ -1961,16 +2199,17 @@ export type RecipeUpdateWithoutAuthorInput = {
   likes?: Prisma.RecipeLikeUpdateManyWithoutRecipeNestedInput
   views?: Prisma.RecipeViewUpdateManyWithoutRecipeNestedInput
   tags?: Prisma.RecipeToRecipeTagUpdateManyWithoutRecipesNestedInput
-  dishType?: Prisma.DishTypeUpdateOneRequiredWithoutRecipesNestedInput
+  dishType?: Prisma.DishTypeUpdateOneWithoutRecipesNestedInput
 }
 
 export type RecipeUncheckedUpdateWithoutAuthorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1979,7 +2218,10 @@ export type RecipeUncheckedUpdateWithoutAuthorInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  dishTypeId?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dishTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   ingredients?: Prisma.RecipeIngredientUncheckedUpdateManyWithoutRecipeNestedInput
@@ -1994,9 +2236,10 @@ export type RecipeUncheckedUpdateManyWithoutAuthorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
-  cuisineType?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cuisineType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   difficulty?: Prisma.EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
-  prepTime?: Prisma.IntFieldUpdateOperationsInput | number
+  prepTime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   cookTime?: Prisma.IntFieldUpdateOperationsInput | number
   calories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   protein?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -2005,7 +2248,10 @@ export type RecipeUncheckedUpdateManyWithoutAuthorInput = {
   fiber?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   rating?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
-  dishTypeId?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  yield?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  authorName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dishTypeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -2090,6 +2336,7 @@ export type RecipeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   id?: boolean
   title?: boolean
   description?: boolean
+  image?: boolean
   cuisineType?: boolean
   difficulty?: boolean
   prepTime?: boolean
@@ -2101,6 +2348,9 @@ export type RecipeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   fiber?: boolean
   rating?: boolean
   slug?: boolean
+  sourceUrl?: boolean
+  yield?: boolean
+  authorName?: boolean
   authorId?: boolean
   dishTypeId?: boolean
   createdAt?: boolean
@@ -2112,7 +2362,7 @@ export type RecipeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   views?: boolean | Prisma.Recipe$viewsArgs<ExtArgs>
   tags?: boolean | Prisma.Recipe$tagsArgs<ExtArgs>
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  dishType?: boolean | Prisma.DishTypeDefaultArgs<ExtArgs>
+  dishType?: boolean | Prisma.Recipe$dishTypeArgs<ExtArgs>
   _count?: boolean | Prisma.RecipeCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["recipe"]>
 
@@ -2120,6 +2370,7 @@ export type RecipeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   id?: boolean
   title?: boolean
   description?: boolean
+  image?: boolean
   cuisineType?: boolean
   difficulty?: boolean
   prepTime?: boolean
@@ -2131,18 +2382,22 @@ export type RecipeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   fiber?: boolean
   rating?: boolean
   slug?: boolean
+  sourceUrl?: boolean
+  yield?: boolean
+  authorName?: boolean
   authorId?: boolean
   dishTypeId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  dishType?: boolean | Prisma.DishTypeDefaultArgs<ExtArgs>
+  dishType?: boolean | Prisma.Recipe$dishTypeArgs<ExtArgs>
 }, ExtArgs["result"]["recipe"]>
 
 export type RecipeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   title?: boolean
   description?: boolean
+  image?: boolean
   cuisineType?: boolean
   difficulty?: boolean
   prepTime?: boolean
@@ -2154,18 +2409,22 @@ export type RecipeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   fiber?: boolean
   rating?: boolean
   slug?: boolean
+  sourceUrl?: boolean
+  yield?: boolean
+  authorName?: boolean
   authorId?: boolean
   dishTypeId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  dishType?: boolean | Prisma.DishTypeDefaultArgs<ExtArgs>
+  dishType?: boolean | Prisma.Recipe$dishTypeArgs<ExtArgs>
 }, ExtArgs["result"]["recipe"]>
 
 export type RecipeSelectScalar = {
   id?: boolean
   title?: boolean
   description?: boolean
+  image?: boolean
   cuisineType?: boolean
   difficulty?: boolean
   prepTime?: boolean
@@ -2177,13 +2436,16 @@ export type RecipeSelectScalar = {
   fiber?: boolean
   rating?: boolean
   slug?: boolean
+  sourceUrl?: boolean
+  yield?: boolean
+  authorName?: boolean
   authorId?: boolean
   dishTypeId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type RecipeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "cuisineType" | "difficulty" | "prepTime" | "cookTime" | "calories" | "protein" | "fats" | "carbohydrates" | "fiber" | "rating" | "slug" | "authorId" | "dishTypeId" | "createdAt" | "updatedAt", ExtArgs["result"]["recipe"]>
+export type RecipeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "image" | "cuisineType" | "difficulty" | "prepTime" | "cookTime" | "calories" | "protein" | "fats" | "carbohydrates" | "fiber" | "rating" | "slug" | "sourceUrl" | "yield" | "authorName" | "authorId" | "dishTypeId" | "createdAt" | "updatedAt", ExtArgs["result"]["recipe"]>
 export type RecipeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   ingredients?: boolean | Prisma.Recipe$ingredientsArgs<ExtArgs>
   steps?: boolean | Prisma.Recipe$stepsArgs<ExtArgs>
@@ -2192,16 +2454,16 @@ export type RecipeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   views?: boolean | Prisma.Recipe$viewsArgs<ExtArgs>
   tags?: boolean | Prisma.Recipe$tagsArgs<ExtArgs>
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  dishType?: boolean | Prisma.DishTypeDefaultArgs<ExtArgs>
+  dishType?: boolean | Prisma.Recipe$dishTypeArgs<ExtArgs>
   _count?: boolean | Prisma.RecipeCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type RecipeIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  dishType?: boolean | Prisma.DishTypeDefaultArgs<ExtArgs>
+  dishType?: boolean | Prisma.Recipe$dishTypeArgs<ExtArgs>
 }
 export type RecipeIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  dishType?: boolean | Prisma.DishTypeDefaultArgs<ExtArgs>
+  dishType?: boolean | Prisma.Recipe$dishTypeArgs<ExtArgs>
 }
 
 export type $RecipePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2214,15 +2476,16 @@ export type $RecipePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     views: Prisma.$RecipeViewPayload<ExtArgs>[]
     tags: Prisma.$RecipeToRecipeTagPayload<ExtArgs>[]
     author: Prisma.$UserPayload<ExtArgs>
-    dishType: Prisma.$DishTypePayload<ExtArgs>
+    dishType: Prisma.$DishTypePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     title: string
     description: string
-    cuisineType: string
+    image: string | null
+    cuisineType: string | null
     difficulty: $Enums.Difficulty
-    prepTime: number
+    prepTime: number | null
     cookTime: number
     calories: number | null
     protein: number | null
@@ -2231,8 +2494,11 @@ export type $RecipePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     fiber: number | null
     rating: runtime.Decimal | null
     slug: string
+    sourceUrl: string | null
+    yield: number | null
+    authorName: string | null
     authorId: string
-    dishTypeId: string
+    dishTypeId: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["recipe"]>
@@ -2636,7 +2902,7 @@ export interface Prisma__RecipeClient<T, Null = never, ExtArgs extends runtime.T
   views<T extends Prisma.Recipe$viewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Recipe$viewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecipeViewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   tags<T extends Prisma.Recipe$tagsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Recipe$tagsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecipeToRecipeTagPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   author<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  dishType<T extends Prisma.DishTypeDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DishTypeDefaultArgs<ExtArgs>>): Prisma.Prisma__DishTypeClient<runtime.Types.Result.GetResult<Prisma.$DishTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  dishType<T extends Prisma.Recipe$dishTypeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Recipe$dishTypeArgs<ExtArgs>>): Prisma.Prisma__DishTypeClient<runtime.Types.Result.GetResult<Prisma.$DishTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2669,6 +2935,7 @@ export interface RecipeFieldRefs {
   readonly id: Prisma.FieldRef<"Recipe", 'String'>
   readonly title: Prisma.FieldRef<"Recipe", 'String'>
   readonly description: Prisma.FieldRef<"Recipe", 'String'>
+  readonly image: Prisma.FieldRef<"Recipe", 'String'>
   readonly cuisineType: Prisma.FieldRef<"Recipe", 'String'>
   readonly difficulty: Prisma.FieldRef<"Recipe", 'Difficulty'>
   readonly prepTime: Prisma.FieldRef<"Recipe", 'Int'>
@@ -2680,6 +2947,9 @@ export interface RecipeFieldRefs {
   readonly fiber: Prisma.FieldRef<"Recipe", 'Int'>
   readonly rating: Prisma.FieldRef<"Recipe", 'Decimal'>
   readonly slug: Prisma.FieldRef<"Recipe", 'String'>
+  readonly sourceUrl: Prisma.FieldRef<"Recipe", 'String'>
+  readonly yield: Prisma.FieldRef<"Recipe", 'Int'>
+  readonly authorName: Prisma.FieldRef<"Recipe", 'String'>
   readonly authorId: Prisma.FieldRef<"Recipe", 'String'>
   readonly dishTypeId: Prisma.FieldRef<"Recipe", 'String'>
   readonly createdAt: Prisma.FieldRef<"Recipe", 'DateTime'>
@@ -3221,6 +3491,25 @@ export type Recipe$tagsArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   take?: number
   skip?: number
   distinct?: Prisma.RecipeToRecipeTagScalarFieldEnum | Prisma.RecipeToRecipeTagScalarFieldEnum[]
+}
+
+/**
+ * Recipe.dishType
+ */
+export type Recipe$dishTypeArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DishType
+   */
+  select?: Prisma.DishTypeSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the DishType
+   */
+  omit?: Prisma.DishTypeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DishTypeInclude<ExtArgs> | null
+  where?: Prisma.DishTypeWhereInput
 }
 
 /**

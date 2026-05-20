@@ -4,8 +4,7 @@ import {
 	IsEnum,
 	IsNotEmpty,
 	IsOptional,
-	IsPositive,
-	IsUrl
+	IsPositive
 } from 'class-validator'
 
 @InputType()

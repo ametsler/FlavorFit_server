@@ -9,8 +9,8 @@ export class DishModel {
 	@Field(() => Int, { nullable: false })
 	order!: number
 
-	@Field(() => String, { nullable: false })
-	title!: string
+	@Field(() => String, { nullable: true })
+	title!: string | null
 
 	@Field(() => Date, { nullable: false })
 	createdAt!: Date
