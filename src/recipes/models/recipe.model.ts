@@ -6,7 +6,6 @@ import { UserModel } from 'src/users/models/user.model'
 import { RecipeTagModel } from 'src/recipes/tag/models/recipe-tag.model'
 import { CommentModel } from 'src/comments/models/comment.model'
 import { RecipeIngredientModel } from 'src/recipes/models/recipe-ingredient.model'
-import { Decimal } from '@prisma/client/runtime/client'
 
 @ObjectType()
 export class RecipeModel {

@@ -109,14 +109,27 @@ export class RecipesService {
 		}
 	}
 
-	async getBySlug(slug: string) {
+	async getBySlug(slug: string, userId: string) {
 		const recipe = await this.prisma.recipe.findUnique({
 			where: { slug },
 			include: {
-				author: true,
+				author: {
+					include: {
+						profile: true
+					}
+				},
+				tags: true,
 				dishType: true,
 				steps: true,
-				comments: true,
+				comments: {
+					include: {
+						author: {
+							include: {
+								profile: true
+							}
+						}
+					}
+				},
 				ingredients: {
 					include: {
 						ingredient: true
@@ -135,6 +148,18 @@ export class RecipesService {
 			throw new NotFoundException(`Recipe with id ${slug} not found`)
 		}
 
-		return recipe
+		const myLikes = await this.prisma.recipeLike.findFirst({
+			where: {
+				recipeId: recipe.id,
+				userId
+			}
+		})
+
+		return {
+			...recipe,
+			likes: recipe._count.likes,
+			views: recipe._count.views,
+			hasLike: !!myLikes
+		}
 	}
 }

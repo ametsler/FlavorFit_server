@@ -63,7 +63,10 @@ export class RecipesResolver {
 
 	@Query(() => RecipeModel, { name: 'recipeBySlug' })
 	@Auth()
-	getRecipeBySlug(@Args('slug') slug: string) {
-		return this.recipesService.getBySlug(slug)
+	getRecipeBySlug(
+		@CurrentUser('id') userId: string,
+		@Args('slug') slug: string
+	) {
+		return this.recipesService.getBySlug(slug, userId)
 	}
 }
