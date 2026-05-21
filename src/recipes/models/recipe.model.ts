@@ -1,17 +1,12 @@
-import { Field } from '@nestjs/graphql';
-import { ObjectType } from '@nestjs/graphql';
-import { ID } from '@nestjs/graphql';
-import { Int } from '@nestjs/graphql';
-import { Float } from '@nestjs/graphql';
+import { Field, Float, ID, Int, ObjectType } from '@nestjs/graphql'
 import { Difficulty } from 'prisma/generated/prisma/enums'
-import { RecipeLikeModel } from 'src/recipes/like/models/recipe-like.model'
-import { RecipeViewModel } from 'src/recipes/view/models/view.model'
 import { DishModel } from 'src/recipes/dish/models/dish.model'
 import { RecipeStepModel } from 'src/recipes/step/models/step.model'
 import { UserModel } from 'src/users/models/user.model'
 import { RecipeTagModel } from 'src/recipes/tag/models/recipe-tag.model'
 import { CommentModel } from 'src/comments/models/comment.model'
 import { RecipeIngredientModel } from 'src/recipes/models/recipe-ingredient.model'
+import { Decimal } from '@prisma/client/runtime/client'
 
 @ObjectType()
 export class RecipeModel {
@@ -31,7 +26,7 @@ export class RecipeModel {
 	slug!: string
 
 	@Field(() => String, { nullable: true })
-	cuisineType!: string
+	cuisineType!: string | null
 
 	@Field(() => Difficulty, { nullable: false })
 	difficulty!: `${Difficulty}`
@@ -75,6 +70,18 @@ export class RecipeModel {
 	@Field(() => String, { nullable: true })
 	dishTypeId!: string | null
 
+	@Field(() => Int, { defaultValue: 0 })
+	likes!: number
+
+	@Field(() => Int, { defaultValue: 0 })
+	views!: number
+
+	@Field(() => Boolean, { defaultValue: false })
+	hasLike!: boolean
+
+	@Field(() => Boolean, { nullable: false })
+	active!: boolean
+
 	@Field(() => Date, { nullable: false })
 	createdAt!: Date
 
@@ -89,12 +96,6 @@ export class RecipeModel {
 
 	@Field(() => [CommentModel], { nullable: true })
 	comments?: Array<CommentModel>
-
-	@Field(() => [RecipeLikeModel], { nullable: true })
-	likes?: Array<RecipeLikeModel>
-
-	@Field(() => [RecipeViewModel], { nullable: true })
-	views?: Array<RecipeViewModel>
 
 	@Field(() => [RecipeTagModel], { nullable: true })
 	tags?: Array<RecipeTagModel>

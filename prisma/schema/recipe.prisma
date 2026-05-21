@@ -1,6 +1,7 @@
 model Recipe {
   id String @id @default(cuid())
 
+  active        Boolean    @default(false)
   title         String
   description   String
   image         String?

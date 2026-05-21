@@ -1,26 +1,11 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service'
 import { CreateRecipeInput } from 'src/recipes/inputs/create-recipe'
+import { RecipeFilterInput } from 'src/recipes/inputs/recipe-filter.input'
 
 @Injectable()
 export class AdminRecipesService {
 	constructor(private readonly prisma: PrismaService) {}
-
-	getAll() {
-		return this.prisma.recipe.findMany({
-			include: {
-				author: true,
-				dishType: true,
-				steps: true,
-				tags: true,
-				ingredients: {
-					include: {
-						ingredient: true
-					}
-				}
-			}
-		})
-	}
 
 	async getById(id: string) {
 		const recipe = await this.prisma.recipe.findUnique({
@@ -71,7 +56,7 @@ export class AdminRecipesService {
 
 		//ToDo refactoring
 		if (tags && tags.length > 0) {
-      const existingTags = await this.prisma.recipeTag.findMany({
+			const existingTags = await this.prisma.recipeTag.findMany({
 				where: {
 					name: {
 						in: tags
@@ -80,14 +65,14 @@ export class AdminRecipesService {
 				select: {
 					name: true
 				}
-			});
-			const existingTagNames = existingTags.map(tag => tag.name);
-			const newTagNames = tags.filter(tag => !existingTagNames.includes(tag));
+			})
+			const existingTagNames = existingTags.map(tag => tag.name)
+			const newTagNames = tags.filter(tag => !existingTagNames.includes(tag))
 
 			if (newTagNames.length > 0) {
 				await this.prisma.recipeTag.createMany({
 					data: newTagNames.map(name => ({ name }))
-				});
+				})
 			}
 
 			const tagsSaved = await this.prisma.recipeTag.findMany({

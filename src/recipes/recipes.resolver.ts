@@ -7,6 +7,7 @@ import { RecipeModel } from 'src/recipes/models/recipe.model'
 import { CreateRecipeInput } from 'src/recipes/inputs/create-recipe'
 import { CurrentUser } from 'src/auth/decorators/current-user.decorator'
 import { RecipeFilterInput } from 'src/recipes/inputs/recipe-filter.input'
+import { GetAllRecipesModel } from 'src/recipes/models/get-all-recipes.model'
 
 @Resolver()
 export class RecipesResolver {
@@ -14,12 +15,6 @@ export class RecipesResolver {
 		private readonly recipesService: RecipesService,
 		private readonly adminRecipesService: AdminRecipesService
 	) {}
-
-	@Query(() => [RecipeModel], { name: 'recipes' })
-	@Auth(Role.ADMIN)
-	getRecipes() {
-		return this.adminRecipesService.getAll()
-	}
 
 	@Query(() => RecipeModel, { name: 'recipeById' })
 	@Auth(Role.ADMIN)
@@ -52,16 +47,18 @@ export class RecipesResolver {
 			const recipe = await this.adminRecipesService.deleteById(id)
 			return !!recipe
 		} catch (error) {
+			console.warn(error)
 			return false
 		}
 	}
 
-	@Query(() => [RecipeModel], { name: 'recipesPageable' })
+	@Query(() => GetAllRecipesModel, { name: 'recipes' })
 	@Auth()
-	getRecipesPageable(
-		@Args('filter', { nullable: true }) filter?: RecipeFilterInput
+	getRecipes(
+		@CurrentUser('id') userId: string,
+		@Args('input') input: RecipeFilterInput
 	) {
-		return this.recipesService.getAll(filter)
+		return this.recipesService.getAll(input, userId)
 	}
 
 	@Query(() => RecipeModel, { name: 'recipeBySlug' })

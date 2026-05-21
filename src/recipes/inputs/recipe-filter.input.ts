@@ -1,5 +1,6 @@
-import { Field, InputType } from '@nestjs/graphql'
-import { IsIn, IsOptional, IsString } from 'class-validator'
+import { Field, InputType, Int } from '@nestjs/graphql'
+import { IsIn, IsOptional, IsPositive, IsString } from 'class-validator'
+import { Order, Sorting } from 'src/recipes/recipe.enum'
 
 @InputType()
 export class RecipeFilterInput {
@@ -13,21 +14,21 @@ export class RecipeFilterInput {
 	@IsString()
 	category?: string
 
-	@Field(() => String, { nullable: true })
+	@Field(() => Sorting, { defaultValue: Sorting.DATE })
 	@IsOptional()
-	@IsIn(['date', 'recommended', 'popularity'])
-	sortBy?: 'date' | 'recommended' | 'popularity' = 'date'
+	@IsIn(Object.values(Sorting))
+	sortBy!: Sorting
 
-	@Field(() => String, { nullable: true })
+	@Field(() => Order, { defaultValue: Order.DESC })
 	@IsOptional()
-	@IsIn(['asc', 'desc'])
-	sortOrder?: 'asc' | 'desc' = 'desc'
+	@IsIn(Object.values(Order))
+	sortOrder!: Order
 
-	@Field(() => Number, { nullable: true, defaultValue: 0 })
-	@IsOptional()
-	skip?: number
+	@Field(() => Int, { defaultValue: 1 })
+	@IsPositive()
+	page!: number
 
-	@Field(() => Number, { nullable: true, defaultValue: 10 })
-	@IsOptional()
-	take?: number
+	@Field(() => Int, { defaultValue: 10 })
+	@IsPositive()
+	limit!: number
 }

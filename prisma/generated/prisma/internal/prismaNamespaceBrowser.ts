@@ -170,6 +170,7 @@ export type CommentLikeScalarFieldEnum = (typeof CommentLikeScalarFieldEnum)[key
 
 export const RecipeScalarFieldEnum = {
   id: 'id',
+  active: 'active',
   title: 'title',
   description: 'description',
   image: 'image',

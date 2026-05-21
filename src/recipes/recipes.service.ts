@@ -2,29 +2,35 @@ import { Injectable, NotFoundException } from '@nestjs/common'
 import { PrismaService } from 'src/prisma/prisma.service'
 import { RecipeFilterInput } from 'src/recipes/inputs/recipe-filter.input'
 import type * as Prisma from 'prisma/generated/prisma/internal/prismaNamespace'
+import { Sorting } from 'src/recipes/recipe.enum'
+import { RecipeLikeModel } from 'src/recipes/like/models/recipe-like.model'
 
 @Injectable()
 export class RecipesService {
 	constructor(private readonly prisma: PrismaService) {}
 
-	getAll(filter?: RecipeFilterInput) {
+	async getAll(
+		{ searchTerm, category, sortOrder, sortBy, limit, page }: RecipeFilterInput,
+		userId: string
+	) {
 		const whereConditions: Prisma.RecipeWhereInput = {}
+		whereConditions.active = true
 
-		if (filter?.category) {
+		if (category) {
 			whereConditions.dishType = {
-				title: { contains: filter.category, mode: 'insensitive' }
+				title: { contains: category, mode: 'insensitive' }
 			}
 		}
 
-		if (filter?.searchTerm) {
+		if (searchTerm) {
 			whereConditions.OR = [
-				{ title: { contains: filter.searchTerm, mode: 'insensitive' } },
-				{ description: { contains: filter.searchTerm, mode: 'insensitive' } },
+				{ title: { contains: searchTerm, mode: 'insensitive' } },
+				{ description: { contains: searchTerm, mode: 'insensitive' } },
 				{
 					ingredients: {
 						some: {
 							ingredient: {
-								name: { contains: filter.searchTerm, mode: 'insensitive' }
+								name: { contains: searchTerm, mode: 'insensitive' }
 							}
 						}
 					}
@@ -35,38 +41,72 @@ export class RecipesService {
 		let orderBy:
 			| Prisma.RecipeOrderByWithRelationInput
 			| Prisma.RecipeOrderByWithRelationInput[] = { createdAt: 'desc' }
-		if (filter?.sortBy) {
-			switch (filter.sortBy) {
-				case 'date':
-					orderBy = { createdAt: filter.sortOrder }
+		if (sortBy) {
+			switch (sortBy) {
+				case Sorting.DATE:
+					orderBy = { createdAt: sortOrder }
 					break
-				case 'recommended':
-					orderBy = { likes: { _count: filter.sortOrder } }
+				case Sorting.RECOMMENDED:
+					orderBy = { likes: { _count: sortOrder } }
 					break
-				case 'popularity':
-					orderBy = { views: { _count: filter.sortOrder } }
+				case Sorting.POPULARITY:
+					orderBy = { views: { _count: sortOrder } }
 					break
 			}
 		}
 
-		return this.prisma.recipe.findMany({
-			skip: filter?.skip || 0,
-			take: filter?.take || 10,
-			where: whereConditions,
-			orderBy,
-			include: {
-				author: true,
-				dishType: true,
-				steps: true,
-				ingredients: {
-					include: {
-						ingredient: true
+		const skip = (page - 1) * limit
+
+		const [items, total] = await Promise.all([
+			this.prisma.recipe.findMany({
+				skip,
+				take: limit,
+				where: whereConditions,
+				orderBy,
+				include: {
+					_count: {
+						select: {
+							likes: true,
+							views: true
+						}
 					}
-				},
-				likes: true,
-				views: true
+				}
+			}),
+			this.prisma.recipe.count({ where: whereConditions })
+		])
+		if (items.length == 0) {
+			return {
+				items,
+				total,
+				hasMore: false
 			}
-		})
+		}
+
+		let myLikes: RecipeLikeModel[]
+		if (userId) {
+			const recipeIds = items.map(item => item.id)
+
+			myLikes = await this.prisma.recipeLike.findMany({
+				where: {
+					recipeId: {
+						in: recipeIds
+					},
+					userId
+				}
+			})
+		}
+
+		const updatedItems = items.map(item => ({
+			...item,
+			likes: item._count.likes,
+			views: item._count.views,
+			hasLike: myLikes ? !!myLikes.find(l => l.recipeId === item.id) : false
+		}))
+		return {
+			items: updatedItems,
+			total,
+			hasMore: skip + items.length < total
+		}
 	}
 
 	async getBySlug(slug: string) {
@@ -76,9 +116,16 @@ export class RecipesService {
 				author: true,
 				dishType: true,
 				steps: true,
+				comments: true,
 				ingredients: {
 					include: {
 						ingredient: true
+					}
+				},
+				_count: {
+					select: {
+						likes: true,
+						views: true
 					}
 				}
 			}
