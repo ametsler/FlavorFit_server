@@ -10,6 +10,13 @@ export class CommentsService {
 			data: {
 				authorId,
 				...data
+			},
+			include: {
+				author: {
+					include: {
+						profile: true
+					}
+				}
 			}
 		})
 	}
