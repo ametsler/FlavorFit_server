@@ -900,10 +900,6 @@ export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type EnumDifficultyFieldUpdateOperationsInput = {
   set?: $Enums.Difficulty
 }

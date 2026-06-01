@@ -69,4 +69,10 @@ export class RecipesResolver {
 	) {
 		return this.recipesService.getBySlug(slug, userId)
 	}
+
+	@Query(() => RecipeModel, { name: 'randomRecipe' })
+	@Auth()
+	getRandomRecipe(@CurrentUser('id') userId: string) {
+		return this.recipesService.getRandom(userId)
+	}
 }

@@ -456,6 +456,11 @@ export type UserScalarRelationFilter = {
   isNot?: Prisma.UserWhereInput
 }
 
+export type UserNullableScalarRelationFilter = {
+  is?: Prisma.UserWhereInput | null
+  isNot?: Prisma.UserWhereInput | null
+}
+
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
@@ -532,10 +537,12 @@ export type UserCreateNestedOneWithoutRecipeViewInput = {
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutRecipeViewNestedInput = {
+export type UserUpdateOneWithoutRecipeViewNestedInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutRecipeViewInput, Prisma.UserUncheckedCreateWithoutRecipeViewInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutRecipeViewInput
   upsert?: Prisma.UserUpsertWithoutRecipeViewInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutRecipeViewInput, Prisma.UserUpdateWithoutRecipeViewInput>, Prisma.UserUncheckedUpdateWithoutRecipeViewInput>
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { PrismaService } from 'src/prisma/prisma.service'
 import { CreateViewInput } from './inputs/create-view.input'
+import { RecipeViewWhereUniqueInput } from 'prisma/generated/prisma/models/RecipeView'
 
 @Injectable()
 export class ViewService {
@@ -25,11 +26,9 @@ export class ViewService {
 	remove(userId: string, data: CreateViewInput) {
 		return this.prisma.recipeView.delete({
 			where: {
-				recipeId_userId: {
-					recipeId: data.recipeId,
-					userId: userId
-				}
-			}
+				recipeId: data.recipeId,
+				userId
+			} as RecipeViewWhereUniqueInput
 		})
 	}
 }

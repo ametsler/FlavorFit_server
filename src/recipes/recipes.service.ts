@@ -155,6 +155,69 @@ export class RecipesService {
 			}
 		})
 
+		this.prisma.recipeView
+			.create({
+				data: {
+					userId,
+					recipeId: recipe.id
+				}
+			})
+			.catch(() =>
+				console.error(
+					`Не добавлен просмотр рецепта ${recipe.id} для пользователя ${userId}`
+				)
+			)
+
+		return {
+			...recipe,
+			likes: recipe._count.likes,
+			views: recipe._count.views,
+			hasLike: !!myLikes
+		}
+	}
+
+	async getRandom(userId: string) {
+		const count = await this.prisma.recipe.count()
+		const randomIndex = Math.floor(Math.random() * count)
+
+		const recipes = await this.prisma.recipe.findMany({
+			skip: randomIndex,
+			take: 1,
+			include: {
+				author: {
+					include: {
+						profile: true
+					}
+				},
+				tags: true,
+				dishType: true,
+				ingredients: {
+					include: {
+						ingredient: true
+					}
+				},
+				_count: {
+					select: {
+						likes: true,
+						views: true
+					}
+				}
+			}
+		})
+
+		if (!recipes.length) {
+			throw new NotFoundException(`Рецептов не найдено`)
+		}
+
+		const recipe = recipes[0]
+
+		const myLikes = await this.prisma.recipeLike.findFirst({
+			where: {
+				recipeId: recipe.id,
+				userId
+			}
+		})
+
 		return {
 			...recipe,
 			likes: recipe._count.likes,
