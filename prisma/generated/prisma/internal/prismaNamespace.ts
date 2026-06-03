@@ -400,7 +400,8 @@ export const ModelName = {
   RecipeToRecipeTag: 'RecipeToRecipeTag',
   User: 'User',
   Profile: 'Profile',
-  BodyMeasurement: 'BodyMeasurement'
+  BodyMeasurement: 'BodyMeasurement',
+  UserSchedule: 'UserSchedule'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -416,7 +417,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "delivery" | "order" | "orderItem" | "recipeLike" | "recipeView" | "comment" | "commentLike" | "recipe" | "dishType" | "recipeStep" | "recipeIngredient" | "ingredient" | "recipeTag" | "recipeToRecipeTag" | "user" | "profile" | "bodyMeasurement"
+    modelProps: "delivery" | "order" | "orderItem" | "recipeLike" | "recipeView" | "comment" | "commentLike" | "recipe" | "dishType" | "recipeStep" | "recipeIngredient" | "ingredient" | "recipeTag" | "recipeToRecipeTag" | "user" | "profile" | "bodyMeasurement" | "userSchedule"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1678,6 +1679,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    UserSchedule: {
+      payload: Prisma.$UserSchedulePayload<ExtArgs>
+      fields: Prisma.UserScheduleFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.UserScheduleFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSchedulePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.UserScheduleFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSchedulePayload>
+        }
+        findFirst: {
+          args: Prisma.UserScheduleFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSchedulePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.UserScheduleFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSchedulePayload>
+        }
+        findMany: {
+          args: Prisma.UserScheduleFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSchedulePayload>[]
+        }
+        create: {
+          args: Prisma.UserScheduleCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSchedulePayload>
+        }
+        createMany: {
+          args: Prisma.UserScheduleCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.UserScheduleCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSchedulePayload>[]
+        }
+        delete: {
+          args: Prisma.UserScheduleDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSchedulePayload>
+        }
+        update: {
+          args: Prisma.UserScheduleUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSchedulePayload>
+        }
+        deleteMany: {
+          args: Prisma.UserScheduleDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.UserScheduleUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.UserScheduleUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSchedulePayload>[]
+        }
+        upsert: {
+          args: Prisma.UserScheduleUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserSchedulePayload>
+        }
+        aggregate: {
+          args: Prisma.UserScheduleAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateUserSchedule>
+        }
+        groupBy: {
+          args: Prisma.UserScheduleGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserScheduleGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.UserScheduleCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserScheduleCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1949,6 +2024,20 @@ export const BodyMeasurementScalarFieldEnum = {
 } as const
 
 export type BodyMeasurementScalarFieldEnum = (typeof BodyMeasurementScalarFieldEnum)[keyof typeof BodyMeasurementScalarFieldEnum]
+
+
+export const UserScheduleScalarFieldEnum = {
+  id: 'id',
+  start: 'start',
+  end: 'end',
+  complete: 'complete',
+  reminder: 'reminder',
+  rate: 'rate',
+  recipeId: 'recipeId',
+  userId: 'userId'
+} as const
+
+export type UserScheduleScalarFieldEnum = (typeof UserScheduleScalarFieldEnum)[keyof typeof UserScheduleScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -2281,6 +2370,7 @@ export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
   profile?: Prisma.ProfileOmit
   bodyMeasurement?: Prisma.BodyMeasurementOmit
+  userSchedule?: Prisma.UserScheduleOmit
 }
 
 /* Types for Logging */

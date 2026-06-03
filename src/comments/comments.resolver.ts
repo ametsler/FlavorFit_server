@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { CommentsService } from './comments.service';
 import { CommentModel } from './models/comment.model';
 import { CreateCommentInput } from './inputs/create-comment.input';

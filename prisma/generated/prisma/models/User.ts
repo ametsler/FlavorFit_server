@@ -238,6 +238,7 @@ export type UserWhereInput = {
   comment?: Prisma.CommentListRelationFilter
   commentLike?: Prisma.CommentLikeListRelationFilter
   order?: Prisma.OrderListRelationFilter
+  userSchedule?: Prisma.UserScheduleListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -260,6 +261,7 @@ export type UserOrderByWithRelationInput = {
   comment?: Prisma.CommentOrderByRelationAggregateInput
   commentLike?: Prisma.CommentLikeOrderByRelationAggregateInput
   order?: Prisma.OrderOrderByRelationAggregateInput
+  userSchedule?: Prisma.UserScheduleOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -285,6 +287,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   comment?: Prisma.CommentListRelationFilter
   commentLike?: Prisma.CommentLikeListRelationFilter
   order?: Prisma.OrderListRelationFilter
+  userSchedule?: Prisma.UserScheduleListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -341,6 +344,7 @@ export type UserCreateInput = {
   comment?: Prisma.CommentCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeCreateNestedManyWithoutUserInput
   order?: Prisma.OrderCreateNestedManyWithoutUserInput
+  userSchedule?: Prisma.UserScheduleCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -363,6 +367,7 @@ export type UserUncheckedCreateInput = {
   comment?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeUncheckedCreateNestedManyWithoutUserInput
   order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  userSchedule?: Prisma.UserScheduleUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -385,6 +390,7 @@ export type UserUpdateInput = {
   comment?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  userSchedule?: Prisma.UserScheduleUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -407,6 +413,7 @@ export type UserUncheckedUpdateInput = {
   comment?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUncheckedUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  userSchedule?: Prisma.UserScheduleUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -625,6 +632,20 @@ export type UserUpdateOneRequiredWithoutBodyMeasurementNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBodyMeasurementInput, Prisma.UserUpdateWithoutBodyMeasurementInput>, Prisma.UserUncheckedUpdateWithoutBodyMeasurementInput>
 }
 
+export type UserCreateNestedOneWithoutUserScheduleInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUserScheduleInput, Prisma.UserUncheckedCreateWithoutUserScheduleInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserScheduleInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutUserScheduleNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutUserScheduleInput, Prisma.UserUncheckedCreateWithoutUserScheduleInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutUserScheduleInput
+  upsert?: Prisma.UserUpsertWithoutUserScheduleInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUserScheduleInput, Prisma.UserUpdateWithoutUserScheduleInput>, Prisma.UserUncheckedUpdateWithoutUserScheduleInput>
+}
+
 export type UserCreateWithoutOrderInput = {
   id?: string
   email: string
@@ -644,6 +665,7 @@ export type UserCreateWithoutOrderInput = {
   recipeView?: Prisma.RecipeViewCreateNestedManyWithoutUserInput
   comment?: Prisma.CommentCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeCreateNestedManyWithoutUserInput
+  userSchedule?: Prisma.UserScheduleCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutOrderInput = {
@@ -665,6 +687,7 @@ export type UserUncheckedCreateWithoutOrderInput = {
   recipeView?: Prisma.RecipeViewUncheckedCreateNestedManyWithoutUserInput
   comment?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeUncheckedCreateNestedManyWithoutUserInput
+  userSchedule?: Prisma.UserScheduleUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutOrderInput = {
@@ -702,6 +725,7 @@ export type UserUpdateWithoutOrderInput = {
   recipeView?: Prisma.RecipeViewUpdateManyWithoutUserNestedInput
   comment?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUpdateManyWithoutUserNestedInput
+  userSchedule?: Prisma.UserScheduleUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOrderInput = {
@@ -723,6 +747,7 @@ export type UserUncheckedUpdateWithoutOrderInput = {
   recipeView?: Prisma.RecipeViewUncheckedUpdateManyWithoutUserNestedInput
   comment?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUncheckedUpdateManyWithoutUserNestedInput
+  userSchedule?: Prisma.UserScheduleUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRecipeLikeInput = {
@@ -744,6 +769,7 @@ export type UserCreateWithoutRecipeLikeInput = {
   comment?: Prisma.CommentCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeCreateNestedManyWithoutUserInput
   order?: Prisma.OrderCreateNestedManyWithoutUserInput
+  userSchedule?: Prisma.UserScheduleCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRecipeLikeInput = {
@@ -765,6 +791,7 @@ export type UserUncheckedCreateWithoutRecipeLikeInput = {
   comment?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeUncheckedCreateNestedManyWithoutUserInput
   order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  userSchedule?: Prisma.UserScheduleUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRecipeLikeInput = {
@@ -802,6 +829,7 @@ export type UserUpdateWithoutRecipeLikeInput = {
   comment?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  userSchedule?: Prisma.UserScheduleUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRecipeLikeInput = {
@@ -823,6 +851,7 @@ export type UserUncheckedUpdateWithoutRecipeLikeInput = {
   comment?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUncheckedUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  userSchedule?: Prisma.UserScheduleUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRecipeViewInput = {
@@ -844,6 +873,7 @@ export type UserCreateWithoutRecipeViewInput = {
   comment?: Prisma.CommentCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeCreateNestedManyWithoutUserInput
   order?: Prisma.OrderCreateNestedManyWithoutUserInput
+  userSchedule?: Prisma.UserScheduleCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRecipeViewInput = {
@@ -865,6 +895,7 @@ export type UserUncheckedCreateWithoutRecipeViewInput = {
   comment?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeUncheckedCreateNestedManyWithoutUserInput
   order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  userSchedule?: Prisma.UserScheduleUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRecipeViewInput = {
@@ -902,6 +933,7 @@ export type UserUpdateWithoutRecipeViewInput = {
   comment?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  userSchedule?: Prisma.UserScheduleUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRecipeViewInput = {
@@ -923,6 +955,7 @@ export type UserUncheckedUpdateWithoutRecipeViewInput = {
   comment?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUncheckedUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  userSchedule?: Prisma.UserScheduleUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCommentInput = {
@@ -944,6 +977,7 @@ export type UserCreateWithoutCommentInput = {
   recipeView?: Prisma.RecipeViewCreateNestedManyWithoutUserInput
   commentLike?: Prisma.CommentLikeCreateNestedManyWithoutUserInput
   order?: Prisma.OrderCreateNestedManyWithoutUserInput
+  userSchedule?: Prisma.UserScheduleCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommentInput = {
@@ -965,6 +999,7 @@ export type UserUncheckedCreateWithoutCommentInput = {
   recipeView?: Prisma.RecipeViewUncheckedCreateNestedManyWithoutUserInput
   commentLike?: Prisma.CommentLikeUncheckedCreateNestedManyWithoutUserInput
   order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  userSchedule?: Prisma.UserScheduleUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommentInput = {
@@ -1002,6 +1037,7 @@ export type UserUpdateWithoutCommentInput = {
   recipeView?: Prisma.RecipeViewUpdateManyWithoutUserNestedInput
   commentLike?: Prisma.CommentLikeUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  userSchedule?: Prisma.UserScheduleUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentInput = {
@@ -1023,6 +1059,7 @@ export type UserUncheckedUpdateWithoutCommentInput = {
   recipeView?: Prisma.RecipeViewUncheckedUpdateManyWithoutUserNestedInput
   commentLike?: Prisma.CommentLikeUncheckedUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  userSchedule?: Prisma.UserScheduleUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCommentLikeInput = {
@@ -1044,6 +1081,7 @@ export type UserCreateWithoutCommentLikeInput = {
   recipeView?: Prisma.RecipeViewCreateNestedManyWithoutUserInput
   comment?: Prisma.CommentCreateNestedManyWithoutAuthorInput
   order?: Prisma.OrderCreateNestedManyWithoutUserInput
+  userSchedule?: Prisma.UserScheduleCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCommentLikeInput = {
@@ -1065,6 +1103,7 @@ export type UserUncheckedCreateWithoutCommentLikeInput = {
   recipeView?: Prisma.RecipeViewUncheckedCreateNestedManyWithoutUserInput
   comment?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
   order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  userSchedule?: Prisma.UserScheduleUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCommentLikeInput = {
@@ -1102,6 +1141,7 @@ export type UserUpdateWithoutCommentLikeInput = {
   recipeView?: Prisma.RecipeViewUpdateManyWithoutUserNestedInput
   comment?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
   order?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  userSchedule?: Prisma.UserScheduleUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentLikeInput = {
@@ -1123,6 +1163,7 @@ export type UserUncheckedUpdateWithoutCommentLikeInput = {
   recipeView?: Prisma.RecipeViewUncheckedUpdateManyWithoutUserNestedInput
   comment?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
   order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  userSchedule?: Prisma.UserScheduleUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutRecipeInput = {
@@ -1144,6 +1185,7 @@ export type UserCreateWithoutRecipeInput = {
   comment?: Prisma.CommentCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeCreateNestedManyWithoutUserInput
   order?: Prisma.OrderCreateNestedManyWithoutUserInput
+  userSchedule?: Prisma.UserScheduleCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRecipeInput = {
@@ -1165,6 +1207,7 @@ export type UserUncheckedCreateWithoutRecipeInput = {
   comment?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeUncheckedCreateNestedManyWithoutUserInput
   order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  userSchedule?: Prisma.UserScheduleUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRecipeInput = {
@@ -1202,6 +1245,7 @@ export type UserUpdateWithoutRecipeInput = {
   comment?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  userSchedule?: Prisma.UserScheduleUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRecipeInput = {
@@ -1223,6 +1267,7 @@ export type UserUncheckedUpdateWithoutRecipeInput = {
   comment?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUncheckedUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  userSchedule?: Prisma.UserScheduleUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutProfileInput = {
@@ -1244,6 +1289,7 @@ export type UserCreateWithoutProfileInput = {
   comment?: Prisma.CommentCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeCreateNestedManyWithoutUserInput
   order?: Prisma.OrderCreateNestedManyWithoutUserInput
+  userSchedule?: Prisma.UserScheduleCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProfileInput = {
@@ -1265,6 +1311,7 @@ export type UserUncheckedCreateWithoutProfileInput = {
   comment?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeUncheckedCreateNestedManyWithoutUserInput
   order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  userSchedule?: Prisma.UserScheduleUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProfileInput = {
@@ -1302,6 +1349,7 @@ export type UserUpdateWithoutProfileInput = {
   comment?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  userSchedule?: Prisma.UserScheduleUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProfileInput = {
@@ -1323,6 +1371,7 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   comment?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUncheckedUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  userSchedule?: Prisma.UserScheduleUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBodyMeasurementInput = {
@@ -1344,6 +1393,7 @@ export type UserCreateWithoutBodyMeasurementInput = {
   comment?: Prisma.CommentCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeCreateNestedManyWithoutUserInput
   order?: Prisma.OrderCreateNestedManyWithoutUserInput
+  userSchedule?: Prisma.UserScheduleCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBodyMeasurementInput = {
@@ -1365,6 +1415,7 @@ export type UserUncheckedCreateWithoutBodyMeasurementInput = {
   comment?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
   commentLike?: Prisma.CommentLikeUncheckedCreateNestedManyWithoutUserInput
   order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  userSchedule?: Prisma.UserScheduleUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBodyMeasurementInput = {
@@ -1402,6 +1453,7 @@ export type UserUpdateWithoutBodyMeasurementInput = {
   comment?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  userSchedule?: Prisma.UserScheduleUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBodyMeasurementInput = {
@@ -1423,6 +1475,111 @@ export type UserUncheckedUpdateWithoutBodyMeasurementInput = {
   comment?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
   commentLike?: Prisma.CommentLikeUncheckedUpdateManyWithoutUserNestedInput
   order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  userSchedule?: Prisma.UserScheduleUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutUserScheduleInput = {
+  id?: string
+  email: string
+  password: string
+  role?: $Enums.Role
+  isEmailVerified?: boolean
+  emailVerificationToken?: string | null
+  emailVerificationTokenExpiresAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordTokenExpiresAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  bodyMeasurement?: Prisma.BodyMeasurementCreateNestedOneWithoutUserInput
+  recipe?: Prisma.RecipeCreateNestedManyWithoutAuthorInput
+  recipeLike?: Prisma.RecipeLikeCreateNestedManyWithoutUserInput
+  recipeView?: Prisma.RecipeViewCreateNestedManyWithoutUserInput
+  comment?: Prisma.CommentCreateNestedManyWithoutAuthorInput
+  commentLike?: Prisma.CommentLikeCreateNestedManyWithoutUserInput
+  order?: Prisma.OrderCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutUserScheduleInput = {
+  id?: string
+  email: string
+  password: string
+  role?: $Enums.Role
+  isEmailVerified?: boolean
+  emailVerificationToken?: string | null
+  emailVerificationTokenExpiresAt?: Date | string | null
+  resetPasswordToken?: string | null
+  resetPasswordTokenExpiresAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  bodyMeasurement?: Prisma.BodyMeasurementUncheckedCreateNestedOneWithoutUserInput
+  recipe?: Prisma.RecipeUncheckedCreateNestedManyWithoutAuthorInput
+  recipeLike?: Prisma.RecipeLikeUncheckedCreateNestedManyWithoutUserInput
+  recipeView?: Prisma.RecipeViewUncheckedCreateNestedManyWithoutUserInput
+  comment?: Prisma.CommentUncheckedCreateNestedManyWithoutAuthorInput
+  commentLike?: Prisma.CommentLikeUncheckedCreateNestedManyWithoutUserInput
+  order?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutUserScheduleInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutUserScheduleInput, Prisma.UserUncheckedCreateWithoutUserScheduleInput>
+}
+
+export type UserUpsertWithoutUserScheduleInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutUserScheduleInput, Prisma.UserUncheckedUpdateWithoutUserScheduleInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutUserScheduleInput, Prisma.UserUncheckedCreateWithoutUserScheduleInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutUserScheduleInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutUserScheduleInput, Prisma.UserUncheckedUpdateWithoutUserScheduleInput>
+}
+
+export type UserUpdateWithoutUserScheduleInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  bodyMeasurement?: Prisma.BodyMeasurementUpdateOneWithoutUserNestedInput
+  recipe?: Prisma.RecipeUpdateManyWithoutAuthorNestedInput
+  recipeLike?: Prisma.RecipeLikeUpdateManyWithoutUserNestedInput
+  recipeView?: Prisma.RecipeViewUpdateManyWithoutUserNestedInput
+  comment?: Prisma.CommentUpdateManyWithoutAuthorNestedInput
+  commentLike?: Prisma.CommentLikeUpdateManyWithoutUserNestedInput
+  order?: Prisma.OrderUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutUserScheduleInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emailVerificationToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerificationTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  resetPasswordToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resetPasswordTokenExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  bodyMeasurement?: Prisma.BodyMeasurementUncheckedUpdateOneWithoutUserNestedInput
+  recipe?: Prisma.RecipeUncheckedUpdateManyWithoutAuthorNestedInput
+  recipeLike?: Prisma.RecipeLikeUncheckedUpdateManyWithoutUserNestedInput
+  recipeView?: Prisma.RecipeViewUncheckedUpdateManyWithoutUserNestedInput
+  comment?: Prisma.CommentUncheckedUpdateManyWithoutAuthorNestedInput
+  commentLike?: Prisma.CommentLikeUncheckedUpdateManyWithoutUserNestedInput
+  order?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -1437,6 +1594,7 @@ export type UserCountOutputType = {
   comment: number
   commentLike: number
   order: number
+  userSchedule: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1446,6 +1604,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   comment?: boolean | UserCountOutputTypeCountCommentArgs
   commentLike?: boolean | UserCountOutputTypeCountCommentLikeArgs
   order?: boolean | UserCountOutputTypeCountOrderArgs
+  userSchedule?: boolean | UserCountOutputTypeCountUserScheduleArgs
 }
 
 /**
@@ -1500,6 +1659,13 @@ export type UserCountOutputTypeCountOrderArgs<ExtArgs extends runtime.Types.Exte
   where?: Prisma.OrderWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountUserScheduleArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserScheduleWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1521,6 +1687,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   comment?: boolean | Prisma.User$commentArgs<ExtArgs>
   commentLike?: boolean | Prisma.User$commentLikeArgs<ExtArgs>
   order?: boolean | Prisma.User$orderArgs<ExtArgs>
+  userSchedule?: boolean | Prisma.User$userScheduleArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1576,6 +1743,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   comment?: boolean | Prisma.User$commentArgs<ExtArgs>
   commentLike?: boolean | Prisma.User$commentLikeArgs<ExtArgs>
   order?: boolean | Prisma.User$orderArgs<ExtArgs>
+  userSchedule?: boolean | Prisma.User$userScheduleArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1592,6 +1760,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     comment: Prisma.$CommentPayload<ExtArgs>[]
     commentLike: Prisma.$CommentLikePayload<ExtArgs>[]
     order: Prisma.$OrderPayload<ExtArgs>[]
+    userSchedule: Prisma.$UserSchedulePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2007,6 +2176,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   comment<T extends Prisma.User$commentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$commentArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   commentLike<T extends Prisma.User$commentLikeArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$commentLikeArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentLikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   order<T extends Prisma.User$orderArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$orderArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  userSchedule<T extends Prisma.User$userScheduleArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userScheduleArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserSchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2614,6 +2784,30 @@ export type User$orderArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
   take?: number
   skip?: number
   distinct?: Prisma.OrderScalarFieldEnum | Prisma.OrderScalarFieldEnum[]
+}
+
+/**
+ * User.userSchedule
+ */
+export type User$userScheduleArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserSchedule
+   */
+  select?: Prisma.UserScheduleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserSchedule
+   */
+  omit?: Prisma.UserScheduleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserScheduleInclude<ExtArgs> | null
+  where?: Prisma.UserScheduleWhereInput
+  orderBy?: Prisma.UserScheduleOrderByWithRelationInput | Prisma.UserScheduleOrderByWithRelationInput[]
+  cursor?: Prisma.UserScheduleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserScheduleScalarFieldEnum | Prisma.UserScheduleScalarFieldEnum[]
 }
 
 /**

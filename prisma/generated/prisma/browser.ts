@@ -102,3 +102,8 @@ export type Profile = Prisma.ProfileModel
  * 
  */
 export type BodyMeasurement = Prisma.BodyMeasurementModel
+/**
+ * Model UserSchedule
+ * 
+ */
+export type UserSchedule = Prisma.UserScheduleModel

@@ -67,7 +67,8 @@ export const ModelName = {
   RecipeToRecipeTag: 'RecipeToRecipeTag',
   User: 'User',
   Profile: 'Profile',
-  BodyMeasurement: 'BodyMeasurement'
+  BodyMeasurement: 'BodyMeasurement',
+  UserSchedule: 'UserSchedule'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -318,6 +319,20 @@ export const BodyMeasurementScalarFieldEnum = {
 } as const
 
 export type BodyMeasurementScalarFieldEnum = (typeof BodyMeasurementScalarFieldEnum)[keyof typeof BodyMeasurementScalarFieldEnum]
+
+
+export const UserScheduleScalarFieldEnum = {
+  id: 'id',
+  start: 'start',
+  end: 'end',
+  complete: 'complete',
+  reminder: 'reminder',
+  rate: 'rate',
+  recipeId: 'recipeId',
+  userId: 'userId'
+} as const
+
+export type UserScheduleScalarFieldEnum = (typeof UserScheduleScalarFieldEnum)[keyof typeof UserScheduleScalarFieldEnum]
 
 
 export const SortOrder = {

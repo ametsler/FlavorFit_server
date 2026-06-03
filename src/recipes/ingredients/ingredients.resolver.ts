@@ -43,6 +43,7 @@ export class IngredientsResolver {
 			const ingredient = await this.ingredientsService.deleteById(id)
 			return !!ingredient
 		} catch (error) {
+			console.error(error)
 			return false
 		}
 	}

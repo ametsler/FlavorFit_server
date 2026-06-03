@@ -20,12 +20,13 @@ model Recipe {
   yield         Int?
   authorName    String?    @map("author_name")
 
-  ingredients RecipeIngredient[]
-  steps       RecipeStep[]
-  comments    Comment[]
-  likes       RecipeLike[]
-  views       RecipeView[]
-  tags        RecipeToRecipeTag[]
+  ingredients  RecipeIngredient[]
+  steps        RecipeStep[]
+  comments     Comment[]
+  likes        RecipeLike[]
+  views        RecipeView[]
+  tags         RecipeToRecipeTag[]
+  userSchedule UserSchedule[]
 
   author     User      @relation(fields: [authorId], references: [id])
   authorId   String    @map("author_id")

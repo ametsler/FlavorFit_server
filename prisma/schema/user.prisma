@@ -15,12 +15,13 @@ model User {
   profile         Profile?
   bodyMeasurement BodyMeasurement?
 
-  recipe      Recipe[]
-  recipeLike  RecipeLike[]
-  recipeView  RecipeView[]
-  comment     Comment[]
-  commentLike CommentLike[]
-  order       Order[]
+  recipe       Recipe[]
+  recipeLike   RecipeLike[]
+  recipeView   RecipeView[]
+  comment      Comment[]
+  commentLike  CommentLike[]
+  order        Order[]
+  userSchedule UserSchedule[]
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -72,6 +73,23 @@ model BodyMeasurement {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("body_measurements")
+}
+
+model UserSchedule {
+  id String @id @default(cuid())
+
+  start    DateTime @map("start")
+  end      DateTime @map("end")
+  complete Boolean
+  reminder Int?
+  rate     Int?
+
+  recipe   Recipe @relation(fields: [recipeId], references: [id])
+  recipeId String @map("recipe_id")
+  user     User   @relation(fields: [userId], references: [id])
+  userId   String @map("user_id")
+
+  @@map("user_schedule")
 }
 
 enum Role {
