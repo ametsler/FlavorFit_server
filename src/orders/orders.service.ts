@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { CreateOrderInput } from './inputs/create-order.input'
 import { PrismaService } from 'src/prisma/prisma.service'
 import { OrderStatus } from 'prisma/generated/prisma/enums'
+import { convertToBaseUnit } from 'src/utils/convert-units.util'
 
 @Injectable()
 export class OrdersService {
@@ -40,7 +41,14 @@ export class OrdersService {
 					`Ingredient ${recipeIngredient.ingredient.name} has no price`
 				)
 			}
-			totalAmount += Number(recipeIngredient.ingredient.price) * item.quantity
+
+			const baseQuantity = convertToBaseUnit(item.quantity, recipeIngredient.unit)
+			if (baseQuantity === null) {
+				throw new Error(
+					`Cannot convert quantity for ingredient ${recipeIngredient.ingredient.name} with unit ${recipeIngredient.unit}`
+				)
+			}
+			totalAmount += Number(recipeIngredient.ingredient.price) * baseQuantity
 			return {
 				recipeIngredientId: item.recipeIngredientId,
 				quantity: item.quantity
@@ -104,6 +112,18 @@ export class OrdersService {
 			where: {
 				userId,
 				id
+			},
+			include: {
+				items: {
+					include: {
+						recipeIngredient: {
+							include: {
+								ingredient: true,
+								recipe: true
+							}
+						}
+					}
+				}
 			}
 		})
 	}
