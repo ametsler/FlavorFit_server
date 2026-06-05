@@ -1,13 +1,13 @@
 import { Field, InputType } from '@nestjs/graphql'
 import { ArrayNotEmpty, ValidateNested } from 'class-validator'
-import { CreateItemInput } from 'src/orders/inputs/create-item.input'
+import { OrderItemInput } from 'src/orders/inputs/order-item.input'
 import { Type } from 'class-transformer'
 
 @InputType()
 export class CreateOrderInput {
-	@Field(() => [CreateItemInput], { nullable: false })
+	@Field(() => [OrderItemInput], { nullable: false })
 	@ArrayNotEmpty()
 	@ValidateNested()
-	@Type(() => CreateItemInput)
-	items!: Array<CreateItemInput>
+	@Type(() => OrderItemInput)
+	items!: Array<OrderItemInput>
 }

@@ -11,8 +11,6 @@ export class OrdersService {
 			throw new Error('Order must have at least one item')
 		}
 
-		const number = Math.random().toString(36).substring(8).toUpperCase()
-
 		const recipeIngredientIds = data.items.map(item => item.recipeIngredientId)
 		const recipeIngredients = await this.prisma.recipeIngredient.findMany({
 			where: {
@@ -33,7 +31,9 @@ export class OrdersService {
 				throw new Error('Invalid recipe ingredient id')
 			}
 			if (!recipeIngredient.ingredient) {
-				throw new Error(`Invalid ingredient for recipe ingredient id ${item.recipeIngredientId}`)
+				throw new Error(
+					`Invalid ingredient for recipe ingredient id ${item.recipeIngredientId}`
+				)
 			}
 			if (!recipeIngredient.ingredient.price) {
 				throw new Error(
@@ -46,6 +46,8 @@ export class OrdersService {
 				quantity: item.quantity
 			}
 		})
+
+		const number = Math.random().toString(36).substring(8).toUpperCase()
 
 		return this.prisma.order.create({
 			data: {
